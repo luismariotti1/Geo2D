@@ -8,10 +8,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MenuBar.add_child(Abrir, "Abrir");
-	$MenuBar.get_popup().add_item("Salvar");	
-	$MenuBar.get_popup().add_item("Fechar");
+	$MenuButtonHelp.get_popup().connect("id_pressed", self, "_on_item_help_pressed")
 
+func _on_item_help_pressed(id):
+	var item_name = $MenuButtonHelp.get_popup().get_item_text(id)
+	if item_name == "About":
+		$WindowDialogAbout.popup()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
