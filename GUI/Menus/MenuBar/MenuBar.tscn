@@ -91,14 +91,15 @@ __meta__ = {
 }
 
 [node name="WindowDialogAbout" type="WindowDialog" parent="HBoxContainer/MenuButtonHelp"]
+visible = true
 anchor_left = 0.0781715
-anchor_top = 0.260006
+anchor_top = -0.106661
 anchor_right = 1.19722
 anchor_bottom = -0.106661
-margin_left = 256.0
-margin_top = 200.0
-margin_right = 400.0
-margin_bottom = 400.0
+margin_left = 255.717
+margin_top = 200.2
+margin_right = 399.717
+margin_bottom = 400.2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource( 1 )
@@ -119,5 +120,57 @@ Versão: Geo2D 1.0
 Desenvolvedores: Diegão, Rondônia e Luixxz"
 autowrap = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
+
+[node name="Label2" type="Label" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label"]
+margin_top = 157.0
+margin_right = 188.0
+margin_bottom = 175.0
+text = "Github:"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2"]
+margin_left = 50.0
+margin_right = 190.0
+margin_bottom = 18.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer"]
+margin_right = 26.0
+margin_bottom = 18.0
+action_mode = 0
+text = "Luis"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer"]
+margin_left = 30.0
+margin_right = 81.0
+margin_bottom = 18.0
+action_mode = 0
+text = "Eberson"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer"]
+margin_left = 85.0
+margin_right = 122.0
+margin_bottom = 18.0
+action_mode = 0
+text = "Diego"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer/LinkButton" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer/LinkButton3" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton3_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer/LinkButton2" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton2_pressed"]

@@ -18,6 +18,13 @@ func _on_item_help_pressed(id):
 		$WindowDialogAbout.popup()
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_LinkButton_pressed():
+	OS.shell_open("https://github.com/luismariotti1")
+
+
+func _on_LinkButton2_pressed():
+	OS.shell_open("https://github.com/Srdiegoibs")
+
+
+func _on_LinkButton3_pressed():
+	OS.shell_open("https://github.com/Eb3r-r00t")

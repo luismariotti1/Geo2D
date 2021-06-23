@@ -8,7 +8,7 @@ extends MenuButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 #Function to pick up item pressed
 func _on_item_pressed(id):
