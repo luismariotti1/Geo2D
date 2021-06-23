@@ -110,7 +110,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout"]
+[node name="LabelDescriptions" type="Label" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Descrição: Geo2D é um programa para criar e manipular figuras planas regulares e irregulares. 
@@ -123,7 +123,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label"]
+[node name="LabelGithub" type="Label" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions"]
 margin_top = 157.0
 margin_right = 188.0
 margin_bottom = 175.0
@@ -134,7 +134,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub"]
 margin_left = 50.0
 margin_right = 190.0
 margin_bottom = 18.0
@@ -142,7 +142,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub/HBoxContainer"]
 margin_right = 26.0
 margin_bottom = 18.0
 action_mode = 0
@@ -151,7 +151,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinkButton3" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer"]
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub/HBoxContainer"]
 margin_left = 30.0
 margin_right = 81.0
 margin_bottom = 18.0
@@ -161,7 +161,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer"]
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub/HBoxContainer"]
 margin_left = 85.0
 margin_right = 122.0
 margin_bottom = 18.0
@@ -171,6 +171,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer/LinkButton" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer/LinkButton3" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton3_pressed"]
-[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/Label/Label2/HBoxContainer/LinkButton2" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton2_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub/HBoxContainer/LinkButton" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub/HBoxContainer/LinkButton3" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton3_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuButtonHelp/WindowDialogAbout/LabelDescriptions/LabelGithub/HBoxContainer/LinkButton2" to="HBoxContainer/MenuButtonHelp" method="_on_LinkButton2_pressed"]
