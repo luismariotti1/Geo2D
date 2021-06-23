@@ -1,4 +1,20 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/dialogFigures.png" type="Texture" id=3]
+[ext_resource path="res://assets/buttonHexagono.png" type="Texture" id=4]
+[ext_resource path="res://assets/buttonVertice.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Menus/SideMenu/Panel.gd" type="Script" id=7]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.stex"
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex"
+
+[sub_resource type="StreamTexture" id=3]
+resource_local_to_scene = true
+load_path = "res://.import/buttonQuadrado.png-17de44f5a2051648b40e019d3ad26c0e.stex"
 
 [node name="SideMenu" type="Control"]
 margin_left = 768.0
@@ -12,7 +28,116 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.286275, 0.207843, 0.984314, 1 )
+margin_left = 0.299197
+margin_top = -1.6577
+margin_right = 0.299194
+margin_bottom = -1.65771
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="logo" type="TextureRect" parent="."]
+margin_left = 90.0
+margin_top = 10.318
+margin_right = 164.0
+margin_bottom = 57.318
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 78.0
+margin_right = 241.0
+margin_bottom = 145.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = -1.2337
+margin_top = -9.66517
+margin_right = 44.7663
+margin_bottom = 4.33483
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Figures"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = -11.4368
+margin_top = -9.33303
+margin_right = 259.563
+margin_bottom = 84.667
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trianguloButton" type="Button" parent="Panel"]
+margin_left = 5.49084
+margin_top = 13.4543
+margin_right = 51.4908
+margin_bottom = 59.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel/trianguloButton"]
+position = Vector2( 23.0799, 22.135 )
+texture = SubResource( 2 )
+
+[node name="quadradoButton" type="Button" parent="Panel"]
+margin_left = 61.0454
+margin_top = 13.4543
+margin_right = 107.045
+margin_bottom = 59.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel/quadradoButton"]
+position = Vector2( 24.359, 22.9935 )
+texture = SubResource( 3 )
+
+[node name="HexagonoButton" type="Button" parent="Panel"]
+margin_left = 117.839
+margin_top = 12.6606
+margin_right = 163.839
+margin_bottom = 58.6606
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel/HexagonoButton"]
+position = Vector2( 23.0684, 22.448 )
+texture = ExtResource( 4 )
+
+[node name="verticeButton" type="Button" parent="Panel"]
+margin_left = 173.045
+margin_top = 13.4543
+margin_right = 219.045
+margin_bottom = 59.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel/verticeButton"]
+position = Vector2( 23.9293, 22.4696 )
+texture = ExtResource( 5 )
+
+[connection signal="mouse_entered" from="Panel/trianguloButton" to="Panel" method="_on_trianguloButton_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/trianguloButton" to="Panel" method="_on_trianguloButton_mouse_exited"]
+[connection signal="pressed" from="Panel/trianguloButton" to="Panel" method="_on_trianguloButton_pressed"]
+[connection signal="mouse_entered" from="Panel/quadradoButton" to="Panel" method="_on_quadradoButton_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/quadradoButton" to="Panel" method="_on_quadradoButton_mouse_exited"]
+[connection signal="pressed" from="Panel/quadradoButton" to="Panel" method="_on_quadradoButton_pressed"]
+[connection signal="mouse_entered" from="Panel/HexagonoButton" to="Panel" method="_on_HexagonoButton_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/HexagonoButton" to="Panel" method="_on_HexagonoButton_mouse_exited"]
+[connection signal="pressed" from="Panel/HexagonoButton" to="Panel" method="_on_HexagonoButton_pressed"]
+[connection signal="mouse_entered" from="Panel/verticeButton" to="Panel" method="_on_verticeButton_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/verticeButton" to="Panel" method="_on_verticeButton_mouse_exited"]
+[connection signal="pressed" from="Panel/verticeButton" to="Panel" method="_on_verticeButton_pressed"]
