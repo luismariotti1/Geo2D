@@ -1,0 +1,4 @@
+[gd_resource type="StyleBoxTexture" format=2]
+
+[resource]
+region_rect = Rect2( 0, 0, 40, 40 )

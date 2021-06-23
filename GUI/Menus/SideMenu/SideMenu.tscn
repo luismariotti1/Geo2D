@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://assets/Input Focus.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/dialogFigures.png" type="Texture" id=3]
 [ext_resource path="res://assets/buttonHexagono.png" type="Texture" id=4]
 [ext_resource path="res://assets/buttonVertice.png" type="Texture" id=5]
@@ -51,6 +52,7 @@ margin_left = 16.0
 margin_top = 78.0
 margin_right = 241.0
 margin_bottom = 145.0
+custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
