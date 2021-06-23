@@ -129,6 +129,57 @@ __meta__ = {
 position = Vector2( 23.9293, 22.4696 )
 texture = ExtResource( 5 )
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 189.0
+margin_right = 251.0
+margin_bottom = 562.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 243.0
+margin_bottom = 28.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 236.0
+margin_bottom = 21.0
+
+[node name="PropDescription" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+margin_right = 112.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Description"
+
+[node name="PropValue" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 116.0
+margin_right = 229.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Value"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 32.0
+margin_right = 243.0
+margin_bottom = 373.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 236.0
+margin_bottom = 334.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
+margin_right = 229.0
+margin_bottom = 327.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [connection signal="mouse_entered" from="Panel/trianguloButton" to="Panel" method="_on_trianguloButton_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/trianguloButton" to="Panel" method="_on_trianguloButton_mouse_exited"]
 [connection signal="pressed" from="Panel/trianguloButton" to="Panel" method="_on_trianguloButton_pressed"]
