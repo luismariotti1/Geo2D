@@ -19,5 +19,4 @@ __meta__ = {
 theme = SubResource( 1 )
 
 [node name="Display" parent="." instance=ExtResource( 3 )]
-margin_left = 1.25989
 margin_right = 769.26
