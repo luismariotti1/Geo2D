@@ -5,3 +5,5 @@
 [node name="Main" type="Node2D"]
 
 [node name="Layout" parent="." instance=ExtResource( 1 )]
+margin_left = 0.943848
+margin_right = 1024.94
