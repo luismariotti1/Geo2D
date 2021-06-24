@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex"
+path="res://.import/buttonQuadradoPressed.png-d587808fde020505ac6af422ae0ea0f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttonTriangulo.png"
-dest_files=[ "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex" ]
+source_file="res://assets/Icons/Buttons/Square/buttonQuadradoPressed.png"
+dest_files=[ "res://.import/buttonQuadradoPressed.png-d587808fde020505ac6af422ae0ea0f7.stex" ]
 
 [params]
 

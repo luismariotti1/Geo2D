@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 # config botao triangulo
 func _on_trianguloButton_mouse_entered():

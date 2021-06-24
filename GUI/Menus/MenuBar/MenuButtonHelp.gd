@@ -1,11 +1,5 @@
 extends 'res://GUI/Menus/MenuBar/MenuButtonMain.gd'
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_popup().add_item("About")
@@ -15,16 +9,6 @@ func _ready():
 func _on_item_help_pressed(id):
 	var item_name = get_popup().get_item_text(id)
 	if item_name == "About":
-		$WindowDialogAbout.popup()
-	
-
-func _on_LinkButton_pressed():
-	OS.shell_open("https://github.com/luismariotti1")
-
-
-func _on_LinkButton2_pressed():
-	OS.shell_open("https://github.com/Srdiegoibs")
-
-
-func _on_LinkButton3_pressed():
-	OS.shell_open("https://github.com/Eb3r-r00t")
+		var popup = load("res://GUI/PopUp/About/About.tscn").instance()
+		get_tree().get_root().get_node("Main/Layout").add_child(popup)
+		popup.popup()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dialogFigures.png-a6d8ec9fb5830099f69b24fd4feeb213.stex"
+path="res://.import/buttonVertice.png-d54f136fe2e2adf257abccf7e3faf814.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dialogFigures.png"
-dest_files=[ "res://.import/dialogFigures.png-a6d8ec9fb5830099f69b24fd4feeb213.stex" ]
+source_file="res://assets/Icons/Buttons/Vertex/buttonVertice.png"
+dest_files=[ "res://.import/buttonVertice.png-d54f136fe2e2adf257abccf7e3faf814.stex" ]
 
 [params]
 
