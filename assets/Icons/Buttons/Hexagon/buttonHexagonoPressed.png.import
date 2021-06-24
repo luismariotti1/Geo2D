@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttonVertice.png-292e84ad0f77e919f9b6b2e18cfc8cd1.stex"
+path="res://.import/buttonHexagonoPressed.png-0f28e2081f305d8c41283abd05b258ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttonVertice.png"
-dest_files=[ "res://.import/buttonVertice.png-292e84ad0f77e919f9b6b2e18cfc8cd1.stex" ]
+source_file="res://assets/Icons/Buttons/Hexagon/buttonHexagonoPressed.png"
+dest_files=[ "res://.import/buttonHexagonoPressed.png-0f28e2081f305d8c41283abd05b258ee.stex" ]
 
 [params]
 

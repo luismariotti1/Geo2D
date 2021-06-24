@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttonHexagono.png-c18e20c8089f862bba242a244df4fb5b.stex"
+path="res://.import/buttonTrianguloPressed.png-88d2bfd42e0b569de718ffda7497958d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttonHexagono.png"
-dest_files=[ "res://.import/buttonHexagono.png-c18e20c8089f862bba242a244df4fb5b.stex" ]
+source_file="res://assets/Icons/Buttons/Triangle/buttonTrianguloPressed.png"
+dest_files=[ "res://.import/buttonTrianguloPressed.png-88d2bfd42e0b569de718ffda7497958d.stex" ]
 
 [params]
 
