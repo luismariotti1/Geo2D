@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Menus/SideMenu/Panel/trianguloButton.gd" type="Script" id=2]
 [ext_resource path="res://assets/Icons/Buttons/Hexagon/buttonHexagono.png" type="Texture" id=3]
 [ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
 
@@ -50,6 +51,7 @@ margin_left = 5.49084
 margin_top = 13.4543
 margin_right = 51.4908
 margin_bottom = 59.4543
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,6 +98,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="verticeButton"]
 position = Vector2( 23.068, 22.448 )
 texture = SubResource( 3 )
+
 [connection signal="mouse_entered" from="trianguloButton" to="." method="_on_trianguloButton_mouse_entered"]
 [connection signal="mouse_exited" from="trianguloButton" to="." method="_on_trianguloButton_mouse_exited"]
 [connection signal="pressed" from="trianguloButton" to="." method="_on_trianguloButton_pressed"]
