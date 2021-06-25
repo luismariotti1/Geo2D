@@ -8,16 +8,22 @@ var distX = 0
 var distY = 0
 var label = Label.new()
 var font = label.get_font("")
+var limitX = 0
+var limitY = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	axis_center_position = Vector2(rect_size.x/2, rect_size.y/2)
+	limitX = get_parent().get_rect().size.x
+	limitY = get_parent().get_rect().size.y
+	axis_center_position = Vector2(limitX/2, limitY/2)
 
 func _process(delta):
 	update()
 	if (is_clicking == true and clicked_position != null):
 		axis_center_position.x = get_global_mouse_position().x+distX
 		axis_center_position.y = get_global_mouse_position().y+distY
+	limitX = get_parent().get_rect().size.x
+	limitY = get_parent().get_rect().size.y
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -34,46 +40,53 @@ func sub_axis(subdivision = 24):
 	var sublines_color = ColorN("gray")
 	var subdivision_distance = rect_size.x/subdivision
 	
+	if cand_draw_y() and cand_draw_x():
+		draw_string (font, Vector2(axis_center_position.x-11,axis_center_position.y+15),"0", color, -1)
+	
 	var shiftX = axis_center_position.x
 	while shiftX > rect_position.x:
 		shiftX -= subdivision_distance
-		if shiftX > rect_position.x and shiftX < rect_size.x:
-			draw_line(Vector2(shiftX,rect_position.y), Vector2(shiftX,rect_size.y),sublines_color, 1.0, false)
-			draw_string (font, Vector2(shiftX,axis_center_position.y+15),str((shiftX-axis_center_position.x)/subdivision_distance), color, -1)
+		if shiftX > rect_position.x and shiftX < limitX:
+			draw_line(Vector2(shiftX,rect_position.y), Vector2(shiftX,limitY),sublines_color, 1.0, false)
+			if cand_draw_x():
+				draw_string (font, Vector2(shiftX,axis_center_position.y+15),str((shiftX-axis_center_position.x)/subdivision_distance), color, -1)
 	
 	shiftX = axis_center_position.x
-	while shiftX < rect_size.x:
+	while shiftX < limitX:
 		shiftX += subdivision_distance
-		if shiftX < rect_size.x and shiftX > rect_position.x:
-			draw_line(Vector2(shiftX,rect_position.y), Vector2(shiftX,rect_size.y),sublines_color, 1.0, false)
-			draw_string (font, Vector2(shiftX,axis_center_position.y+15),str((shiftX-axis_center_position.x)/subdivision_distance), color, -1)
+		if shiftX < limitX and shiftX > rect_position.x:
+			draw_line(Vector2(shiftX,rect_position.y), Vector2(shiftX,limitY),sublines_color, 1.0, false)
+			if cand_draw_x():
+				draw_string (font, Vector2(shiftX,axis_center_position.y+15),str((shiftX-axis_center_position.x)/subdivision_distance), color, -1)
 
 	var shiftY = axis_center_position.y
 	while shiftY > rect_position.y:
 		shiftY -= subdivision_distance
-		if shiftY > rect_position.y and shiftY < rect_size.y:
-			draw_line(Vector2(rect_position.x,shiftY), Vector2(rect_size.x,shiftY),sublines_color, 1.0, false)
-			draw_string (font, Vector2(axis_center_position.x+5,shiftY),str(-1*(shiftY-axis_center_position.y)/subdivision_distance), color, -1)
+		if shiftY > rect_position.y and shiftY < limitY:
+			draw_line(Vector2(rect_position.x,shiftY), Vector2(limitX,shiftY),sublines_color, 1.0, false)
+			if cand_draw_y():
+				draw_string (font, Vector2(axis_center_position.x+5,shiftY),str(-1*(shiftY-axis_center_position.y)/subdivision_distance), color, -1)
 
 	shiftY = axis_center_position.y
-	while shiftY < rect_size.y:
+	while shiftY < limitY:
 		shiftY += subdivision_distance
-		if shiftY < rect_size.y and shiftY > rect_position.y:
-			draw_line(Vector2(rect_position.x,shiftY), Vector2(rect_size.x,shiftY),sublines_color, 1.0, false)
-			draw_string (font, Vector2(axis_center_position.x+5,shiftY),str(-1*(shiftY-axis_center_position.y)/subdivision_distance), color, -1)
+		if shiftY < limitY and shiftY > rect_position.y:
+			draw_line(Vector2(rect_position.x,shiftY), Vector2(limitX,shiftY),sublines_color, 1.0, false)
+			if cand_draw_y():
+				draw_string (font, Vector2(axis_center_position.x+5,shiftY),str(-1*(shiftY-axis_center_position.y)/subdivision_distance), color, -1)
 
 func create_axis_x():
-	draw_line(Vector2(rect_position.x,axis_center_position.y), Vector2(rect_size.x,axis_center_position.y), color, 1.25, false)
+	draw_line(Vector2(rect_position.x,axis_center_position.y), Vector2(limitX,axis_center_position.y), color, 1.25, false)
 
 func create_axis_y():
-	draw_line(Vector2(axis_center_position.x,rect_position.y), Vector2(axis_center_position.x,rect_size.y), color, 1.25, false)
+	draw_line(Vector2(axis_center_position.x,rect_position.y), Vector2(axis_center_position.x,limitY), color, 1.25, false)
 	
 func cand_draw_y():
-	if axis_center_position.x <= rect_size.x and axis_center_position.x >= rect_position.x:
+	if axis_center_position.x <= limitX and axis_center_position.x >= rect_position.x:
 		return true
 
 func cand_draw_x():
-	if axis_center_position.y <= rect_size.y and axis_center_position.y >= rect_position.y:
+	if axis_center_position.y <= limitY and axis_center_position.y >= rect_position.y:
 		return true
 
 func _draw():
@@ -82,6 +95,3 @@ func _draw():
 	if cand_draw_y():
 		create_axis_y()
 	sub_axis()
-#   Talvez uma possivel forma de manter a resolução
-#	print(get_viewport().size, get_viewport().get_final_transform ( ))
-	
