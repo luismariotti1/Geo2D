@@ -63,7 +63,7 @@ func sub_axis(subdivision = 24):
 			draw_string (font, Vector2(axis_center_position.x+5,shiftY),str(-1*(shiftY-axis_center_position.y)/subdivision_distance), color, -1)
 
 func create_axis_x():
-	draw_line(Vector2(rect_position.x,axis_center_position.y), Vector2(rect_size.x,axis_center_position.y), color, 1.25, false)
+	draw_line(Vector2(rect_position.x,axis_center_position.y), Vector2(get_viewport().size.x-256,axis_center_position.y), color, 1.25, false)
 
 func create_axis_y():
 	draw_line(Vector2(axis_center_position.x,rect_position.y), Vector2(axis_center_position.x,rect_size.y), color, 1.25, false)
@@ -77,10 +77,10 @@ func cand_draw_x():
 		return true
 
 func _draw():
-	if cand_draw_x():
-		create_axis_x()
-	if cand_draw_y():
-		create_axis_y()
+#	if cand_draw_x():
+	create_axis_x()
+#	if cand_draw_y():
+	create_axis_y()
 	sub_axis()
 #   Talvez uma possivel forma de manter a resolução
 #	print(get_viewport().size, get_viewport().get_final_transform ( ))
