@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Tree.gd" type="Script" id=1]
 
 [node name="Inspector" type="Control"]
 anchor_left = 0.5
@@ -33,12 +35,15 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 290.0
 margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="PropDescription" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 margin_right = 139.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Description"
+align = 1
 
 [node name="PropValue" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 margin_left = 143.0
@@ -46,6 +51,7 @@ margin_right = 283.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Value"
+align = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 32.0
@@ -65,3 +71,107 @@ margin_right = 283.0
 margin_bottom = 397.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="HBoxFigure" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 24.0
+
+[node name="LFigure" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxFigure"]
+margin_top = 5.0
+margin_right = 139.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Figure:"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxFigure"]
+margin_left = 143.0
+margin_right = 283.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="HBoxType" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 283.0
+margin_bottom = 52.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LType" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxType"]
+margin_top = 5.0
+margin_right = 139.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Type:"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxType"]
+margin_left = 143.0
+margin_right = 283.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="HBoxCenter" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 283.0
+margin_bottom = 80.0
+
+[node name="LCenter" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxCenter"]
+margin_top = 5.0
+margin_right = 139.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Center:"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxCenter"]
+margin_left = 143.0
+margin_right = 283.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="HBoxVertex" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 84.0
+margin_right = 283.0
+margin_bottom = 369.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LVertex" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxVertex"]
+margin_right = 139.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Vertex:"
+valign = 1
+
+[node name="Tree" type="Tree" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxVertex"]
+margin_left = 143.0
+margin_right = 283.0
+margin_bottom = 285.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+drop_mode_flags = 3
+script = ExtResource( 1 )
+
+[node name="HBoxEdge" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+margin_top = 373.0
+margin_right = 283.0
+margin_bottom = 397.0
+
+[node name="LEdge" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxEdge"]
+margin_top = 5.0
+margin_right = 139.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Edge:"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxEdge"]
+margin_left = 143.0
+margin_right = 283.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
