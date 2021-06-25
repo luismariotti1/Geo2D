@@ -40,6 +40,9 @@ func sub_axis(subdivision = 24):
 	var sublines_color = ColorN("gray")
 	var subdivision_distance = rect_size.x/subdivision
 	
+	if cand_draw_y() and cand_draw_x():
+		draw_string (font, Vector2(axis_center_position.x-11,axis_center_position.y+15),"0", color, -1)
+	
 	var shiftX = axis_center_position.x
 	while shiftX > rect_position.x:
 		shiftX -= subdivision_distance
@@ -92,6 +95,3 @@ func _draw():
 	if cand_draw_y():
 		create_axis_y()
 	sub_axis()
-#   Talvez uma possivel forma de manter a resolução
-#	print(get_viewport().size, get_viewport().get_final_transform ( ))
-	
