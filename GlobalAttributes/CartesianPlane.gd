@@ -15,4 +15,4 @@ func get_center_plane():
 	return center_plan
 
 func convert_catersian_to_dist(coord):
-	return Vector2(coord.x*cartesian_distance,coord.y*cartesian_distance)
+	return Vector2(coord.x*cartesian_distance,-1*coord.y*cartesian_distance)
