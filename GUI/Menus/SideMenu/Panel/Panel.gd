@@ -34,6 +34,7 @@ func mouse_entered_exited(button, a):
 
 # config botao triangulo
 func _on_trianguloButton_mouse_entered():
+	$trianguloButton.set_tooltip("Triangle")
 	mouse_entered_exited(spr0, 0.7)
 	pass # Replace with function body.
 
@@ -49,6 +50,7 @@ func _on_trianguloButton_pressed():
 
 # config botao quadrado
 func _on_quadradoButton_mouse_entered():
+	$quadradoButton.set_tooltip("Square")
 	mouse_entered_exited(spr1, 0.7)
 	pass # Replace with function body.
 
@@ -64,6 +66,7 @@ func _on_quadradoButton_pressed():
 
 # config botao hexagona
 func _on_HexagonoButton_mouse_entered():
+	$HexagonoButton.set_tooltip("Hexagon")
 	mouse_entered_exited(spr2, 0.7)
 	pass # Replace with function body.
 
@@ -79,6 +82,7 @@ func _on_HexagonoButton_pressed():
 
 # config botao vertice
 func _on_verticeButton_mouse_entered():
+	$verticeButton.set_tooltip("Vertex")
 	mouse_entered_exited(spr3, 0.7)
 	pass # Replace with function body.
 
