@@ -1,16 +1,37 @@
 extends Control
 
+var img = [
+	"res://assets/Icons/Buttons/Triangle/buttonTriangulo.png",
+	"res://assets/Icons/Buttons/Triangle/buttonTrianguloPressed.png",
+	"res://assets/Icons/Buttons/Square/buttonQuadrado.png",
+	"res://assets/Icons/Buttons/Square/buttonQuadradoPressed.png",
+	"res://assets/Icons/Buttons/Hexagon/buttonHexagono.png",
+	"res://assets/Icons/Buttons/Hexagon/buttonHexagonoPressed.png",
+	"res://assets/Icons/Buttons/Vertex/buttonVertice.png"
+	]
+
+onready var spr0 =$trianguloButton
+onready var spr1 =$quadradoButton
+onready var spr2 =$HexagonoButton
+onready var spr3 =$verticeButton
+
+func swap_button():
+	
+	pass
+
+func mouse_entered_exited(button, a):
+	button.modulate.r = a
+	button.modulate.g = a
+	button.modulate.b = a
+	pass
+
 # config botao triangulo
 func _on_trianguloButton_mouse_entered():
-	$trianguloButton.modulate.r = 0.8
-	$trianguloButton.modulate.g = 0.8
-	$trianguloButton.modulate.b = 0.8
+	mouse_entered_exited(spr0, 0.7)
 	pass # Replace with function body.
 
 func _on_trianguloButton_mouse_exited():
-	$trianguloButton.modulate.r = 1
-	$trianguloButton.modulate.g = 1
-	$trianguloButton.modulate.b = 1
+	mouse_entered_exited(spr0, 1)
 	pass # Replace with function body.
 
 func _on_trianguloButton_pressed():
@@ -20,15 +41,11 @@ func _on_trianguloButton_pressed():
 
 # config botao quadrado
 func _on_quadradoButton_mouse_entered():
-	$quadradoButton.modulate.r = 0.8
-	$quadradoButton.modulate.g = 0.8
-	$quadradoButton.modulate.b = 0.8
+	mouse_entered_exited(spr1, 0.7)
 	pass # Replace with function body.
 
 func _on_quadradoButton_mouse_exited():
-	$quadradoButton.modulate.r = 1
-	$quadradoButton.modulate.g = 1
-	$quadradoButton.modulate.b = 1
+	mouse_entered_exited(spr1, 1)
 	pass # Replace with function body.
 
 func _on_quadradoButton_pressed():
@@ -38,15 +55,11 @@ func _on_quadradoButton_pressed():
 
 # config botao hexagona
 func _on_HexagonoButton_mouse_entered():
-	$HexagonoButton.modulate.r = 0.8
-	$HexagonoButton.modulate.g = 0.8
-	$HexagonoButton.modulate.b = 0.8
+	mouse_entered_exited(spr2, 0.7)
 	pass # Replace with function body.
 
 func _on_HexagonoButton_mouse_exited():
-	$HexagonoButton.modulate.r = 1
-	$HexagonoButton.modulate.g = 1
-	$HexagonoButton.modulate.b = 1
+	mouse_entered_exited(spr2, 1)
 	pass # Replace with function body.
 
 func _on_HexagonoButton_pressed():
@@ -56,15 +69,11 @@ func _on_HexagonoButton_pressed():
 
 # config botao vertice
 func _on_verticeButton_mouse_entered():
-	$verticeButton.modulate.r = 0.8
-	$verticeButton.modulate.g = 0.8
-	$verticeButton.modulate.b = 0.8
+	mouse_entered_exited(spr3, 0.7)
 	pass # Replace with function body.
 
 func _on_verticeButton_mouse_exited():
-	$verticeButton.modulate.r = 1
-	$verticeButton.modulate.g = 1
-	$verticeButton.modulate.b = 1
+	mouse_entered_exited(spr3, 1)
 	pass # Replace with function body.
 
 func _on_verticeButton_pressed():
