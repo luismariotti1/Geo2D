@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.gd" type="Script" id=1]
-[ext_resource path="res://GUI/Menus/SideMenu/Panel/ItemList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Icons/Buttons/Hexagon/buttonHexagono.png" type="Texture" id=3]
 [ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
-[ext_resource path="res://GUI/ToolTip/ToolTip.gd" type="Script" id=5]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex"
@@ -52,6 +50,8 @@ margin_left = 5.49084
 margin_top = 13.4543
 margin_right = 51.4908
 margin_bottom = 59.4543
+disabled = true
+text = "t"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -65,6 +65,8 @@ margin_left = 61.0454
 margin_top = 13.4543
 margin_right = 107.045
 margin_bottom = 59.4543
+disabled = true
+text = "q"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,6 +80,8 @@ margin_left = 117.839
 margin_top = 12.6606
 margin_right = 163.839
 margin_bottom = 58.6606
+disabled = true
+text = "h"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,6 +95,8 @@ margin_left = 173.045
 margin_top = 13.4543
 margin_right = 219.045
 margin_bottom = 59.4543
+disabled = true
+text = "v"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -98,20 +104,6 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="verticeButton"]
 position = Vector2( 23.068, 22.448 )
 texture = SubResource( 3 )
-
-[node name="Tooltip" type="Node" parent="."]
-script = ExtResource( 5 )
-visuals_res = ExtResource( 2 )
-owner_path = NodePath("../trianguloButton")
-padding_x = 10.0
-padding_y = 10.0
-
-[node name="ItemList" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_left = 9.0
-margin_top = 77.0
-margin_right = 49.0
-margin_bottom = 104.0
 
 [connection signal="mouse_entered" from="trianguloButton" to="." method="_on_trianguloButton_mouse_entered"]
 [connection signal="mouse_exited" from="trianguloButton" to="." method="_on_trianguloButton_mouse_exited"]
