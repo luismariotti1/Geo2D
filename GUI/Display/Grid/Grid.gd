@@ -10,10 +10,14 @@ var label = Label.new()
 var font = label.get_font("")
 var limitX = 0
 var limitY = 0
+var keep_center_x = 0
+var keep_center_y = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	limitX = get_parent().get_rect().size.x
+	keep_center_x = get_parent().get_rect().size.x
+	keep_center_y = get_parent().get_rect().size.y
 	limitY = get_parent().get_rect().size.y
 	axis_center_position = Vector2(limitX/2, limitY/2)
 
@@ -24,6 +28,14 @@ func _process(delta):
 		axis_center_position.y = get_global_mouse_position().y+distY
 	limitX = get_parent().get_rect().size.x
 	limitY = get_parent().get_rect().size.y
+	print(limitX)
+	print(keep_center_x)
+	if(limitX != keep_center_x):
+	  axis_center_position.x += (limitX-keep_center_x)/2
+	  keep_center_x = limitX
+	if(limitY != keep_center_y):
+	  axis_center_position.y += (limitY-keep_center_y)/2
+	  keep_center_y = limitY
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -36,7 +48,7 @@ func _input(event):
 			is_clicking = false
 			clicked_position = null
 
-func sub_axis(subdivision = 24):
+func sub_axis(subdivision = 14):
 	var sublines_color = ColorN("gray")
 	var subdivision_distance = rect_size.x/subdivision
 	
