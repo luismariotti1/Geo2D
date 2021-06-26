@@ -1,8 +1,12 @@
 extends Control
 
-var l = 33;
+onready var CP = get_node("/root/CartesianPlane")
+var l = 48;
 var line_width = 2.0;
 var color = ColorN("red")
+
+func _ready():
+	l = CP.convert_catersian_to_dist(Vector2(4,0)).x
 
 func _physics_process(delta):
 	update()

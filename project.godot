@@ -19,6 +19,10 @@ config/name="Geo2D"
 run/main_scene="res://Main/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CartesianPlane="*res://GlobalAttributes/CartesianPlane.gd"
+
 [input]
 
 Click={
