@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.gd" type="Script" id=1]
+[ext_resource path="res://assets/Icons/Buttons/Hexagon/buttonHexagono.png" type="Texture" id=3]
+[ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex"
+
+[sub_resource type="StreamTexture" id=2]
+resource_local_to_scene = true
+load_path = "res://.import/buttonQuadrado.png-2be5accd0bdf131532df509549ddbb6f.stex"
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/buttonVertice.png-292e84ad0f77e919f9b6b2e18cfc8cd1.stex"
+
+[node name="Panel" type="Control"]
+margin_left = 16.0
+margin_top = 78.0
+margin_right = 241.0
+margin_bottom = 145.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = -1.2337
+margin_top = -9.66517
+margin_right = 44.7663
+margin_bottom = 4.33483
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Figures"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -11.4368
+margin_top = -9.33303
+margin_right = 259.563
+margin_bottom = 84.667
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trianguloButton" type="Button" parent="."]
+margin_left = 5.49084
+margin_top = 13.4543
+margin_right = 51.4908
+margin_bottom = 59.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="trianguloButton"]
+position = Vector2( 23.0799, 22.135 )
+texture = SubResource( 1 )
+
+[node name="quadradoButton" type="Button" parent="."]
+margin_left = 61.0454
+margin_top = 13.4543
+margin_right = 107.045
+margin_bottom = 59.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="quadradoButton"]
+position = Vector2( 24.359, 22.9935 )
+texture = SubResource( 2 )
+
+[node name="HexagonoButton" type="Button" parent="."]
+margin_left = 117.839
+margin_top = 12.6606
+margin_right = 163.839
+margin_bottom = 58.6606
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="HexagonoButton"]
+position = Vector2( 23.0684, 22.448 )
+texture = ExtResource( 3 )
+
+[node name="verticeButton" type="Button" parent="."]
+margin_left = 173.045
+margin_top = 13.4543
+margin_right = 219.045
+margin_bottom = 59.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="verticeButton"]
+position = Vector2( 23.068, 22.448 )
+texture = SubResource( 3 )
+
+[connection signal="mouse_entered" from="trianguloButton" to="." method="_on_trianguloButton_mouse_entered"]
+[connection signal="mouse_exited" from="trianguloButton" to="." method="_on_trianguloButton_mouse_exited"]
+[connection signal="pressed" from="trianguloButton" to="." method="_on_trianguloButton_pressed"]
+[connection signal="mouse_entered" from="quadradoButton" to="." method="_on_quadradoButton_mouse_entered"]
+[connection signal="mouse_exited" from="quadradoButton" to="." method="_on_quadradoButton_mouse_exited"]
+[connection signal="pressed" from="quadradoButton" to="." method="_on_quadradoButton_pressed"]
+[connection signal="mouse_entered" from="HexagonoButton" to="." method="_on_HexagonoButton_mouse_entered"]
+[connection signal="mouse_exited" from="HexagonoButton" to="." method="_on_HexagonoButton_mouse_exited"]
+[connection signal="pressed" from="HexagonoButton" to="." method="_on_HexagonoButton_pressed"]
+[connection signal="mouse_entered" from="verticeButton" to="." method="_on_verticeButton_mouse_entered"]
+[connection signal="mouse_exited" from="verticeButton" to="." method="_on_verticeButton_mouse_exited"]
+[connection signal="pressed" from="verticeButton" to="." method="_on_verticeButton_pressed"]

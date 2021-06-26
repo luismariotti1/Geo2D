@@ -1,8 +1,25 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GUI/Menus/MenuBar/MenuButtonArq.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Menus/MenuBar/MenuButtonMain.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Menus/MenuBar/MenuButtonTools.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Menus/MenuBar/MenuButtonFig.gd" type="Script" id=4]
+[ext_resource path="res://GUI/Menus/MenuBar/MenuButtonHelp.gd" type="Script" id=5]
+[ext_resource path="res://GUI/Menus/MenuBar/MenuBar.gd" type="Script" id=6]
 
 [node name="MenuBar" type="Control"]
 margin_right = 1024.0
 margin_bottom = 30.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -88.0 ],
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtonMain" type="MenuButton" parent="."]
+margin_right = 12.0
+margin_bottom = 30.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -10,7 +27,65 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.333333, 0.286275, 0.286275, 1 )
+color = Color( 0.223529, 0.227451, 0.223529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtonArq" type="MenuButton" parent="HBoxContainer"]
+margin_right = 35.0
+margin_bottom = 30.0
+focus_mode = 2
+text = "File"
+align = 0
+switch_on_hover = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtonFig" type="MenuButton" parent="HBoxContainer"]
+margin_left = 39.0
+margin_right = 90.0
+margin_bottom = 30.0
+focus_mode = 2
+text = "Figure"
+align = 0
+switch_on_hover = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtonTools" type="MenuButton" parent="HBoxContainer"]
+margin_left = 94.0
+margin_right = 178.0
+margin_bottom = 30.0
+focus_mode = 2
+text = "Basic Tools"
+align = 0
+switch_on_hover = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtonHelp" type="MenuButton" parent="HBoxContainer"]
+margin_left = 182.0
+margin_right = 224.0
+margin_bottom = 30.0
+focus_mode = 2
+text = "Help"
+align = 0
+switch_on_hover = true
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
