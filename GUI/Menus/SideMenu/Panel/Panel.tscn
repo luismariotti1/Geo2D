@@ -53,6 +53,7 @@ margin_left = 5.49084
 margin_top = 12.8931
 margin_right = 51.4908
 margin_bottom = 58.8931
+text = "teste"
 __meta__ = {
 "_edit_use_anchors_": false
 }
