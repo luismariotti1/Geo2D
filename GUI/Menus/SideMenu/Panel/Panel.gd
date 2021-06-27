@@ -1,5 +1,6 @@
 extends Control
 
+
 # config botao triangulo
 func _on_trianguloButton_mouse_entered():
 	$trianguloButton.modulate.r = 0.8
@@ -47,7 +48,7 @@ func _on_HexagonoButton_mouse_exited():
 	$HexagonoButton.modulate.r = 1
 	$HexagonoButton.modulate.g = 1
 	$HexagonoButton.modulate.b = 1
-	pass # Replace with function body.
+	pass # Replace with function body. 
 
 func _on_HexagonoButton_pressed():
 	pass # Replace with function body.
@@ -68,7 +69,8 @@ func _on_verticeButton_mouse_exited():
 	pass # Replace with function body.
 
 func _on_verticeButton_pressed():
-	pass # Replace with function body.
+	pass # Replace with function body
+	
 
 
 

@@ -1,3 +1,4 @@
+
 extends 'res://GUI/Menus/MenuBar/MenuButtonMain.gd'
 
 # Called when the node enters the scene tree for the first time.
