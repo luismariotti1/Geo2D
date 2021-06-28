@@ -5,25 +5,15 @@ var l = 1;
 var line_width = 2.0
 var color = ColorN("red")
 var t : Transform2D
-var rotate = false
-
-func _ready():
-	t = Transform2D(Vector2(1,0),Vector2(0,1),Vector2(0,0))
+var rotation = 45
+var scaleX = 1
+var scaleY = 1 
 
 func _physics_process(delta):
-#	rot += 0.5 * delta
-	if rotate == false:
-		t = t.rotated(deg2rad(180))
-		print(t)
-		rotate = true
-#	t.x.x = cos(rot)
-#	t.y.y = cos(rot)
-#	t.x.y = sin(rot)
-#	t.y.x = -sin(rot)
-#	t.x *= 2
-#	t.y *= 2
-	t.origin = CP.convert_cartesian_to_pos(Vector2(0,0))
-#	print(t)
+	t = Transform2D.IDENTITY
+	t = t.rotated(deg2rad(0))
+	t = t.scaled(Vector2(scaleX,scaleY))
+	t.origin = CP.convert_cartesian_to_pos(Vector2(4,0))
 	update()
 
 func _draw():
