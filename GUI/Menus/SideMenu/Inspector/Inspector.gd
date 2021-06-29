@@ -15,7 +15,7 @@ func _ready():
 	exemple_vertex()
 	show_vertex(vertex_list)
 	
-	var coord[] = Vector2(390, 30)
+#	var coord[] = Vector2(390, 30)
 	
 #	var root = center_tree.create_item()
 #	center_tree.set_hide_root(true)
