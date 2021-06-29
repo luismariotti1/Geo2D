@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Line/AtributEdit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Inspector.gd" type="Script" id=2]
 
 [node name="Inspector" type="Control"]
@@ -73,54 +74,20 @@ margin_bottom = 397.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxFigure" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
-margin_right = 283.0
-margin_bottom = 24.0
+[node name="AtributEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 
-[node name="LFigure" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxFigure"]
-margin_top = 5.0
-margin_right = 139.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-text = "Figure:"
-valign = 1
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxFigure"]
-margin_left = 143.0
-margin_right = 283.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-
-[node name="HBoxType" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+[node name="AtributEdit2" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 28.0
-margin_right = 283.0
 margin_bottom = 52.0
-__meta__ = {
-"_editor_description_": ""
-}
 
-[node name="LType" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxType"]
-margin_top = 5.0
-margin_right = 139.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-text = "Type:"
-valign = 1
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxType"]
-margin_left = 143.0
-margin_right = 283.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-
-[node name="HBoxCenter" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
+[node name="ListEdit" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
 margin_top = 56.0
 margin_right = 283.0
 margin_bottom = 210.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LCenter" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxCenter"]
+[node name="LCenter" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/ListEdit"]
 margin_right = 139.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
@@ -128,7 +95,7 @@ size_flags_vertical = 0
 text = "Center:"
 valign = 1
 
-[node name="Tree" type="Tree" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxCenter"]
+[node name="Tree" type="Tree" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/ListEdit"]
 margin_left = 143.0
 margin_right = 283.0
 margin_bottom = 154.0
