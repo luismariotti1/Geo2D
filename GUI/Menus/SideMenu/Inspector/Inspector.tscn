@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Line/AtributEdit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Inspector.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Line/List/ListEdit.tscn" type="PackedScene" id=3]
 
 [node name="Inspector" type="Control"]
 anchor_left = 0.5
@@ -75,71 +76,37 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="AtributEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_bottom = 31.0
+
+[node name="AtributeName" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/AtributEdit" index="0"]
+text = "Figure:
+"
 
 [node name="AtributEdit2" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 28.0
-margin_bottom = 52.0
+margin_top = 35.0
+margin_bottom = 66.0
 
-[node name="ListEdit" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
-margin_top = 56.0
-margin_right = 283.0
-margin_bottom = 210.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="ListEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 
-[node name="LCenter" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/ListEdit"]
-margin_right = 139.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Center:"
-valign = 1
+[node name="ListEdit2" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 218.0
+margin_bottom = 362.0
 
-[node name="Tree" type="Tree" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/ListEdit"]
-margin_left = 143.0
-margin_right = 283.0
-margin_bottom = 154.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxVertex" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
-margin_top = 214.0
-margin_right = 283.0
-margin_bottom = 369.0
-size_flags_vertical = 3
-
-[node name="LVertex" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxVertex"]
-margin_right = 139.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
+[node name="ListName" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/ListEdit2" index="0"]
 text = "Vertex:"
-valign = 1
 
-[node name="Tree" type="Tree" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxVertex"]
-margin_left = 143.0
-margin_right = 283.0
-margin_bottom = 155.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-hide_root = true
-drop_mode_flags = 1
-
-[node name="HBoxEdge" type="HBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer"]
-margin_top = 373.0
-margin_right = 283.0
+[node name="AtributEdit3" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 366.0
 margin_bottom = 397.0
 
-[node name="LEdge" type="Label" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxEdge"]
-margin_top = 5.0
-margin_right = 139.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-text = "Edge:"
-valign = 1
+[node name="AtributeName" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/AtributEdit3" index="0"]
+text = "Edge:
+"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/HBoxEdge"]
-margin_left = 143.0
-margin_right = 283.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
+[editable path="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/AtributEdit"]
+
+[editable path="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/AtributEdit2"]
+
+[editable path="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/ListEdit2"]
+
+[editable path="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/AtributEdit3"]

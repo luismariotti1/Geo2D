@@ -7,7 +7,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LType" type="Label" parent="."]
+[node name="AtributeName" type="Label" parent="."]
 margin_right = 139.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
@@ -15,7 +15,7 @@ text = "Type:
 "
 valign = 1
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="Value" type="LineEdit" parent="."]
 margin_left = 143.0
 margin_right = 283.0
 margin_bottom = 31.0
