@@ -1,17 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.gd" type="Script" id=1]
-<<<<<<< HEAD
-[ext_resource path="res://GUI/Menus/SideMenu/Panel/ItemList.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Icons/Buttons/Hexagon/buttonHexagono.png" type="Texture" id=3]
-[ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
-[ext_resource path="res://GUI/ToolTip/ToolTip.gd" type="Script" id=5]
-=======
 [ext_resource path="res://assets/Icons/Buttons/Triangle/buttonTriangulo.png" type="Texture" id=2]
 [ext_resource path="res://assets/Icons/Buttons/Hexagon/buttonHexagono.png" type="Texture" id=3]
 [ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
 [ext_resource path="res://assets/Icons/Buttons/Vertex/buttonVertice.png" type="Texture" id=5]
->>>>>>> 99c2617 (cena ajustada)
 
 [sub_resource type="StreamTexture" id=1]
 resource_local_to_scene = true
@@ -99,25 +92,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="verticeButton"]
 position = Vector2( 23.068, 22.448 )
-<<<<<<< HEAD
-texture = SubResource( 3 )
-
-[node name="Tooltip" type="Node" parent="."]
-script = ExtResource( 5 )
-visuals_res = ExtResource( 2 )
-owner_path = NodePath("../trianguloButton")
-padding_x = 10.0
-padding_y = 10.0
-
-[node name="ItemList" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_left = 9.0
-margin_top = 77.0
-margin_right = 49.0
-margin_bottom = 104.0
-=======
 texture = ExtResource( 5 )
->>>>>>> 99c2617 (cena ajustada)
 
 [connection signal="mouse_entered" from="trianguloButton" to="." method="_on_trianguloButton_mouse_entered"]
 [connection signal="mouse_exited" from="trianguloButton" to="." method="_on_trianguloButton_mouse_exited"]
