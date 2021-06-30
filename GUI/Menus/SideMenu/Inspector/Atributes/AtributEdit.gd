@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-var type : String
-var value : float
+var _type : String
+var _value : float
 
-func _init(_type, _value):
-	type = _type
-	value = _value
+func init(type, value):
+	get_node("AtributeName").text = type
+	get_node("Value").text = String(value)
