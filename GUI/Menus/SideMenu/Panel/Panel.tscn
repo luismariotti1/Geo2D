@@ -93,7 +93,6 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="verticeButton"]
 position = Vector2( 23.068, 22.448 )
 texture = ExtResource( 5 )
-
 [connection signal="mouse_entered" from="trianguloButton" to="." method="_on_trianguloButton_mouse_entered"]
 [connection signal="mouse_exited" from="trianguloButton" to="." method="_on_trianguloButton_mouse_exited"]
 [connection signal="pressed" from="trianguloButton" to="." method="_on_trianguloButton_pressed"]
