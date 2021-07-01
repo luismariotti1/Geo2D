@@ -11,22 +11,30 @@ var scaleX = 1
 var scaleY = 1
 var pivot = Vector2(-24,24)
 var translate = Vector2(0,0)
+var info : Array
 
 func set_properties_in_inspector():
-	var info = {
-	"scaleX:":scaleX, 
-	"scaleY":scaleY, 
-	"rotation":rotation
-	}
+	info = [
+		{"id":"scaleX", "label":"scaleX:", "value":scaleX},
+		{"id":"scaleY", "label":"scaleY:", "value":scaleY},
+		{"id":"rotation", "label":"rotation:", "value":rotation},
+	]
 	Insp.init_properties(info)
+
+func _adjust_variable_by_id(variable, dictionary, id):
+	if dictionary["id"] == id:
+		return dictionary["value"]
+	else:
+		return variable
+
+func update_values():
+	for i in range(info.size()):
+		scaleX = _adjust_variable_by_id(scaleX, info[i], "scaleX")
+		scaleY = _adjust_variable_by_id(scaleY, info[i],"scaleY")
+		rotation = _adjust_variable_by_id(rotation, info[i],"rotation")
 
 func _ready():
 	set_properties_in_inspector()
-	
-func update_values():
-	scaleX = Insp.get_properties()["scaleX:"]
-	scaleY = Insp.get_properties()["scaleY"]
-	rotation = Insp.get_properties()["rotation"]
 
 func _physics_process(delta):
 	update_values()
