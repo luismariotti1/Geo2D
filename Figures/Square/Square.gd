@@ -14,7 +14,7 @@ var translate = Vector2(0,0)
 
 func set_properties_in_inspector():
 	var info = {
-	"scaleX":scaleX, 
+	"scaleX:":scaleX, 
 	"scaleY":scaleY, 
 	"rotation":rotation
 	}
@@ -24,7 +24,7 @@ func _ready():
 	set_properties_in_inspector()
 	
 func update_values():
-	scaleX = Insp.get_properties()["scaleX"]
+	scaleX = Insp.get_properties()["scaleX:"]
 	scaleY = Insp.get_properties()["scaleY"]
 	rotation = Insp.get_properties()["rotation"]
 

@@ -10,7 +10,3 @@ func set_properties(name, value):
 
 func get_properties():
 	return properties
-	
-#func _process(delta):
-#	properties["scaleX"] = 10
-#	print(properties)

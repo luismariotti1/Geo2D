@@ -12,7 +12,4 @@ func _ready():
 	
 func _process(delta):
 	for i in range(atributes.size()):
-#		print(atributes[i].get_node("AtributeName").text)
-#		print(atributes[i].get_node("Value").text)
 		Insp.set_properties(atributes[i].get_node("AtributeName").text, atributes[i].get_node("Value").text)
-	pass
