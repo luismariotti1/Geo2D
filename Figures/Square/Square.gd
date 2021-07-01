@@ -1,6 +1,7 @@
 extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
+onready var Insp = get_node("/root/SetInspector")
 var l = 1;
 var line_width = 2.0
 var color = ColorN("red")
@@ -14,7 +15,7 @@ var translate = Vector2(0,0)
 func _physics_process(delta):
 	t = Transform2D.IDENTITY
 	t = t.rotated(deg2rad(rotation))
-	t = t.scaled(Vector2(scaleX,scaleY))
+	t = t.scaled(Vector2(Insp.get_scaleX(),scaleY))
 #	Cisalhamento
 #	t.y = Vector2(1,1)
 	t.origin = CP.convert_cartesian_to_pos(translate)

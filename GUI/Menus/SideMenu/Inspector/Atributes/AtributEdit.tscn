@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.gd" type="Script" id=1]
+
+[node name="AtributEdit" type="HBoxContainer"]
+margin_right = 283.0
+margin_bottom = 24.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="."]
+margin_right = 139.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "
+"
+valign = 1
+
+[node name="Value" type="LineEdit" parent="."]
+margin_left = 143.0
+margin_right = 283.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
