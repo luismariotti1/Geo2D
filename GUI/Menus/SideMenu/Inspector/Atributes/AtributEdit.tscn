@@ -5,6 +5,7 @@
 [node name="AtributEdit" type="HBoxContainer"]
 margin_right = 283.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 0, 31 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
