@@ -19,19 +19,34 @@ onready var spr1 =$quadradoButton/Sprite
 onready var spr2 =$HexagonoButton/Sprite
 onready var spr3 =$verticeButton/Sprite
 
-func disabled_button():
+func disabled_button(button):
+	for button in ['t', 'q', 'h', 'v']:
+		if button == 't':
+			update()
+			$trianguloButton.disabled = false
+			$quadradoButton.disabled = true
+			$HexagonoButton.disabled = true
+			$verticeButton.disabled = true
+#		if button == 'q':
+#			$trianguloButton.disabled = true
+#			$quadradoButton.disabled = false
+#			$HexagonoButton.disabled = true
+#			$verticeButton.disabled = true
+#		if button == $HexagonoButton.get_text():
+#			update()
+#			$trianguloButton.disabled = true
+#			$quadradoButton.disabled = true
+#			$trianguloButton.disabled = false
+#			$verticeButton.disabled = true
+#		if button == $verticeButton.get_text():
+#			update()
+#			$trianguloButton.disabled = true
+#			$quadradoButton.disabled = true
+#			$HexagonoButton.disabled = true
+#			$verticeButton.disabled = false
 	pass
 
 func _ready():
-	for x in ['t', 'q', 'h', 'v']:
-		if x == $trianguloButton.get_text():
-			$trianguloButton.set_disabled(false)
-		elif x == $quadradoButton.get_text():
-			$quadradoButton.set_disabled(false)
-		elif x == $HexagonoButton.get_text():
-			$HexagonoButton.set_disabled(false)
-		elif x == $verticeButton.get_text():
-			$verticeButton.set_disabled(false)
 	pass
 
 func swap_button(button, a, b):
@@ -63,7 +78,9 @@ func _on_trianguloButton_mouse_exited():
 	pass # Replace with function body.
 
 func _on_trianguloButton_pressed():
+	print("triangulo")
 	swap_button(spr0, 0, 1)
+	disabled_button('t')
 	pass # Replace with function body.
 
 
@@ -79,8 +96,9 @@ func _on_quadradoButton_mouse_exited():
 	pass # Replace with function body.
 
 func _on_quadradoButton_pressed():
+	print("quadrado")
 	swap_button(spr1, 2, 3)
-	
+	disabled_button('q')
 	pass # Replace with function body.
 
 
@@ -96,7 +114,9 @@ func _on_HexagonoButton_mouse_exited():
 	pass # Replace with function body.
 
 func _on_HexagonoButton_pressed():
+	print("hexagono")
 	swap_button(spr2, 4, 5)
+	disabled_button('h')
 	pass # Replace with function body.
 
 
@@ -112,7 +132,9 @@ func _on_verticeButton_mouse_exited():
 	pass # Replace with function body.
 
 func _on_verticeButton_pressed():
+	print("vertice")
 	swap_button(spr3, 6, 7)
+	disabled_button('v')
 	pass # Replace with function body.
 
 

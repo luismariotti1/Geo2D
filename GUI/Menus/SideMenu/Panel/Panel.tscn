@@ -50,7 +50,6 @@ margin_left = 5.49084
 margin_top = 13.4543
 margin_right = 51.4908
 margin_bottom = 59.4543
-disabled = true
 text = "t"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,7 +64,6 @@ margin_left = 61.0454
 margin_top = 13.4543
 margin_right = 107.045
 margin_bottom = 59.4543
-disabled = true
 text = "q"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,7 +78,6 @@ margin_left = 117.839
 margin_top = 12.6606
 margin_right = 163.839
 margin_bottom = 58.6606
-disabled = true
 text = "h"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,7 +92,6 @@ margin_left = 173.045
 margin_top = 13.4543
 margin_right = 219.045
 margin_bottom = 59.4543
-disabled = true
 text = "v"
 __meta__ = {
 "_edit_use_anchors_": false
