@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Inspector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Menus/SideMenu/SideMenu.gd" type="Script" id=3]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -12,6 +13,7 @@ margin_left = 768.0
 margin_top = 30.0
 margin_right = 1024.0
 margin_bottom = 600.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,10 +21,6 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.299197
-margin_top = -1.6577
-margin_right = 0.299194
-margin_bottom = -1.65771
 __meta__ = {
 "_edit_use_anchors_": false
 }
