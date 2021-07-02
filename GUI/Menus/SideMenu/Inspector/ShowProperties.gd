@@ -16,6 +16,8 @@ func _ready():
 			atributes[atributes.size() - 1].init(atribute)
 		add_child(atributes[atributes.size() - 1])
 
-#func _process(delta):
-#	for i in range(atributes.size()):
-#		Insp.set_properties(atributes[i].get_id(), atributes[i].get_node("Value").text)
+
+func _process(delta):
+	for i in range(atributes.size()):
+		if atributes[i] is HBoxContainer:
+			Insp.set_properties_by_id(atributes[i].get_id(), atributes[i].get_node("Value").text)
