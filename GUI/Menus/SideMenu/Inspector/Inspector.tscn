@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/ShowProperties.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn" type="PackedScene" id=2]
 
 [node name="Inspector" type="Control"]
 anchor_left = 0.5
@@ -72,3 +73,6 @@ margin_bottom = 397.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
+
+[node name="ListEdit" parent="VBoxContainer/PanelContainer2/ScrollContainer/ShowProperties" instance=ExtResource( 2 )]
+margin_bottom = 20.0

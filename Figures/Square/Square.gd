@@ -15,6 +15,7 @@ var info : Array
 
 func set_properties_in_inspector():
 	info = [
+#		{"ids":["scaleX","sacaleY"], "listLabel":"lista", "labels":["scaleX:","scaleY"], "values":[scaleX,scaleY]},
 		{"id":"scaleX", "label":"scaleX:", "value":scaleX},
 		{"id":"scaleY", "label":"scaleY:", "value":scaleY},
 		{"id":"rotation", "label":"rotation:", "value":rotation},
