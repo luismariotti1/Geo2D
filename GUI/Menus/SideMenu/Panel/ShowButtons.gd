@@ -22,16 +22,11 @@ func _ready():
 		buttons[buttons.size() - 1].init([imgs[i*2], imgs[i*2+1]])
 		add_child(buttons[buttons.size() - 1])
 
-		
-func _process(delta):
-	has_one_clicked = false
-	for i in range(buttons.size()):
-		# buttons[i].disabled = true
-		if buttons[i].pressed:
-			has_one_clicked = true
-		buttons[i].disabled = true	
-				 
+#func _process(delta):
+#	has_one_clicked = false
+#	for i in range(buttons.size()):
+#		# buttons[i].disabled = true
+#		if buttons[i].pressed:
+#			has_one_clicked = true
+#		buttons[i].disabled = true	
 
-			
-		 
-			
