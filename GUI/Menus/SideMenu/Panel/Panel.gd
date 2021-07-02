@@ -136,17 +136,3 @@ func _on_verticeButton_pressed():
 	swap_button(spr3, 6, 7)
 	disabled_button('v')
 	pass # Replace with function body.
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex"
+
+[node name="FigureButton" type="Button"]
+margin_right = 46.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 23.0799, 22.135 )
+texture = SubResource( 1 )
