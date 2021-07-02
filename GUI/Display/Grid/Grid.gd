@@ -10,10 +10,15 @@ var label = Label.new()
 var font = label.get_font("")
 var limitX = 0
 var limitY = 0
+var keep_center_x = 0
+var keep_center_y = 0
+onready var CP = get_node("/root/CartesianPlane")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	limitX = get_parent().get_rect().size.x
+	keep_center_x = get_parent().get_rect().size.x
+	keep_center_y = get_parent().get_rect().size.y
 	limitY = get_parent().get_rect().size.y
 	axis_center_position = Vector2(limitX/2, limitY/2)
 
@@ -24,6 +29,16 @@ func _process(delta):
 		axis_center_position.y = get_global_mouse_position().y+distY
 	limitX = get_parent().get_rect().size.x
 	limitY = get_parent().get_rect().size.y
+	keep_center_distance()
+	CP.set_center_plane(axis_center_position)
+
+func keep_center_distance():
+	if(limitX != keep_center_x):
+	  axis_center_position.x += (limitX-keep_center_x)/2
+	  keep_center_x = limitX
+	if(limitY != keep_center_y):
+	  axis_center_position.y += (limitY-keep_center_y)/2
+	  keep_center_y = limitY
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -36,9 +51,9 @@ func _input(event):
 			is_clicking = false
 			clicked_position = null
 
-func sub_axis(subdivision = 24):
+func sub_axis():
 	var sublines_color = ColorN("gray")
-	var subdivision_distance = rect_size.x/subdivision
+	var subdivision_distance = CP.get_cartesian_distance()
 	
 	if cand_draw_y() and cand_draw_x():
 		draw_string (font, Vector2(axis_center_position.x-11,axis_center_position.y+15),"0", color, -1)

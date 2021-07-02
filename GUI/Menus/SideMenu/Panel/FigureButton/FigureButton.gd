@@ -16,5 +16,3 @@ func _on_FigureButton_toggled(button_pressed):
 		set_image(_imgs[1])
 	else:
 		set_image(_imgs[0])
-	pass # Replace with function body.
-	

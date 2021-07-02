@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/List/ListEdit.gd" type="Script" id=1]
+
+[node name="ListEdit" type="VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 14.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowList" type="Button" parent="."]
+margin_right = 283.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "LISTA2"
+expand_icon = true
+[connection signal="toggled" from="ShowList" to="." method="_on_Button_toggled"]

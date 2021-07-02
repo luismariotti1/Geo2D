@@ -14,5 +14,4 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 23.0799, 22.135 )
-
 [connection signal="toggled" from="." to="." method="_on_FigureButton_toggled"]
