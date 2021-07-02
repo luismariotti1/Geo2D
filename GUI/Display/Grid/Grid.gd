@@ -42,14 +42,16 @@ func keep_center_distance():
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if (event.pressed == true):
-			is_clicking = true
-			clicked_position = event.position
-			distX = axis_center_position.x - clicked_position.x
-			distY = axis_center_position.y - clicked_position.y
-		else:
-			is_clicking = false
-			clicked_position = null
+		# tem que trocar o 30 por uma variavel com a altura do menu bar
+		if event.position.x < limitX and (event.position.y > 30 and  event.position.y < limitY) :
+			if (event.pressed == true):
+				is_clicking = true
+				clicked_position = event.position
+				distX = axis_center_position.x - clicked_position.x
+				distY = axis_center_position.y - clicked_position.y
+			else:
+				is_clicking = false
+				clicked_position = null
 
 func sub_axis():
 	var sublines_color = ColorN("gray")
