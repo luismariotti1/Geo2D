@@ -6,6 +6,7 @@ load_path = "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.
 [node name="FigureButton" type="Button"]
 margin_right = 46.0
 margin_bottom = 46.0
+rect_min_size = Vector2( 46, 46 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
