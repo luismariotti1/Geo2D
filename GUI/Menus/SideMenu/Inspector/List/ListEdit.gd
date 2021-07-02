@@ -9,7 +9,6 @@ var _label: String
 func init(label, infos):
 	get_node("ShowList").text = label
 	_infos = infos
-	print(infos)
 
 
 func _on_Button_toggled(button_pressed):

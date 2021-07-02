@@ -8,7 +8,7 @@ var ListEdit = load("res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn")
 
 func _ready():
 	for atribute in Insp.get_properties():
-		if atribute["type"] == "list":
+		if atribute.has("type") and atribute["type"] == "list":
 			atributes.append(ListEdit.instance())
 			atributes[atributes.size() - 1].init(atribute["listLabel"], atribute["infos"])
 		else:

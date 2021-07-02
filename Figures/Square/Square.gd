@@ -16,7 +16,7 @@ var info: Array
 
 func set_properties_in_inspector():
 	info = [
-		{"type": "atribute", "id": "rotation", "label": "rotation:", "value": rotation},
+		{"id": "rotation", "label": "rotation:", "value": rotation},
 		{
 			"listLabel": "Scales",
 			"type": "list",
@@ -30,17 +30,10 @@ func set_properties_in_inspector():
 	Insp.init_properties(info)
 
 
-#func _adjust_variable_by_id(variable, dictionary, id):
-#	if dictionary["id"] == id:
-#		return dictionary["value"]
-#	else:
-#		return variable
-
-#func update_values():
-#	for i in range(info.size()):
-#		scaleX = _adjust_variable_by_id(scaleX, info[i], "scaleX")
-#		scaleY = _adjust_variable_by_id(scaleY, info[i],"scaleY")
-#		rotation = _adjust_variable_by_id(rotation, info[i],"rotation")
+func update_values():
+	scaleX = Insp.get_properties_by_id("scaleX")
+	scaleY = Insp.get_properties_by_id("scaleY")
+	rotation = Insp.get_properties_by_id("rotation")
 
 
 func _ready():
@@ -48,7 +41,7 @@ func _ready():
 
 
 func _physics_process(delta):
-#	update_values()
+	update_values()
 	t = Transform2D.IDENTITY
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))
