@@ -14,7 +14,7 @@ var imgs = [
 var button = load("res://GUI/Menus/SideMenu/Panel/FigureButton/FigureButton.tscn")
 var buttons = []
 var has_one_clicked = false
-
+# var enable = buttons.set_disabled(true)
 
 func _ready():
 	for i in range(4):
@@ -22,24 +22,16 @@ func _ready():
 		buttons[buttons.size() - 1].init([imgs[i*2], imgs[i*2+1]])
 		add_child(buttons[buttons.size() - 1])
 
+		
 func _process(delta):
-	# has_one_clicked = false
+	has_one_clicked = false
 	for i in range(buttons.size()):
-		if buttons[i].get_index() == 0:
-			if buttons[i].pressed == true:
-				buttons[i].disabled = false
-				has_one_clicked = true
-		if buttons[i].get_index() == 1:
-			if buttons[i].pressed == true:
-				has_one_clicked = true
-		if buttons[i].get_index() == 2:
-			if buttons[i].pressed == true:
-				has_one_clicked = true
-		if buttons[i].get_index() == 3:
-			if buttons[i].pressed == true:
-				has_one_clicked = true
-				
+		# buttons[i].disabled = true
+		if buttons[i].pressed:
+			has_one_clicked = true
+		buttons[i].disabled = true	
 				 
+
 			
 		 
 			
