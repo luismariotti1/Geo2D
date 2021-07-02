@@ -8,8 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Tooltip",
+"language": "GDScript",
+"path": "res://GUI/ToolTip/ToolTip.gd"
+} ]
 _global_script_class_icons={
+"Tooltip": ""
 }
 
 [application]
@@ -17,6 +23,11 @@ _global_script_class_icons={
 config/name="Geo2D"
 run/main_scene="res://Main/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+CartesianPlane="*res://GlobalAttributes/CartesianPlane.gd"
+SetInspector="*res://GlobalAttributes/SetInspector.gd"
 
 [input]
 

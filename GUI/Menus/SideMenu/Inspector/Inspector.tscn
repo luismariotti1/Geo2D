@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/ShowProperties.gd" type="Script" id=1]
 
 [node name="Inspector" type="Control"]
 anchor_left = 0.5
@@ -33,12 +35,15 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 290.0
 margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="PropDescription" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 margin_right = 139.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Description"
+align = 1
 
 [node name="PropValue" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 margin_left = 143.0
@@ -46,6 +51,7 @@ margin_right = 283.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Value"
+align = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 32.0
@@ -60,8 +66,9 @@ margin_top = 7.0
 margin_right = 290.0
 margin_bottom = 404.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
+[node name="ShowProperties" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
 margin_right = 283.0
 margin_bottom = 397.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 1 )
