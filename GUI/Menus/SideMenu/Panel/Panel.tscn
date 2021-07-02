@@ -1,19 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.gd" type="Script" id=1]
-[ext_resource path="res://GUI/Menus/SideMenu/Panel/trianguloButton.gd" type="Script" id=2]
+[ext_resource path="res://assets/Icons/Buttons/Triangle/buttonTriangulo.png" type="Texture" id=2]
 [ext_resource path="res://assets/Icons/Buttons/Hexagon/buttonHexagono.png" type="Texture" id=3]
 [ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
+[ext_resource path="res://assets/Icons/Buttons/Vertex/buttonVertice.png" type="Texture" id=5]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/buttonTriangulo.png-b4d8655a56cb322b53886728e23b4e2d.stex"
-
-[sub_resource type="StreamTexture" id=2]
 resource_local_to_scene = true
 load_path = "res://.import/buttonQuadrado.png-2be5accd0bdf131532df509549ddbb6f.stex"
-
-[sub_resource type="StreamTexture" id=3]
-load_path = "res://.import/buttonVertice.png-292e84ad0f77e919f9b6b2e18cfc8cd1.stex"
 
 [node name="Panel" type="Control"]
 margin_left = 16.0
@@ -48,17 +43,17 @@ __meta__ = {
 
 [node name="trianguloButton" type="Button" parent="."]
 margin_left = 5.49084
-margin_top = 13.4543
+margin_top = 12.8931
 margin_right = 51.4908
-margin_bottom = 59.4543
-script = ExtResource( 2 )
+margin_bottom = 58.8931
+text = "teste"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="trianguloButton"]
 position = Vector2( 23.0799, 22.135 )
-texture = SubResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="quadradoButton" type="Button" parent="."]
 margin_left = 61.0454
@@ -71,7 +66,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="quadradoButton"]
 position = Vector2( 24.359, 22.9935 )
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 
 [node name="HexagonoButton" type="Button" parent="."]
 margin_left = 117.839
@@ -97,8 +92,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="verticeButton"]
 position = Vector2( 23.068, 22.448 )
-texture = SubResource( 3 )
-
+texture = ExtResource( 5 )
 [connection signal="mouse_entered" from="trianguloButton" to="." method="_on_trianguloButton_mouse_entered"]
 [connection signal="mouse_exited" from="trianguloButton" to="." method="_on_trianguloButton_mouse_exited"]
 [connection signal="pressed" from="trianguloButton" to="." method="_on_trianguloButton_pressed"]
