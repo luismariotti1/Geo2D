@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Panel/FigureButton/FigureButton.gd" type="Script" id=1]
+
+[node name="FigureButton" type="Button"]
+margin_right = 46.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 46, 46 )
+toggle_mode = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 23.0799, 22.135 )
+[connection signal="toggled" from="." to="." method="_on_FigureButton_toggled"]
