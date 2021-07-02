@@ -21,3 +21,7 @@ func _process(delta):
 	for i in range(atributes.size()):
 		if atributes[i] is HBoxContainer:
 			Insp.set_properties_by_id(atributes[i].get_id(), atributes[i].get_node("Value").text)
+		else:
+			for atr in atributes[i].get_children():
+				if atr is HBoxContainer:
+					Insp.set_properties_by_id(atr.get_id(), atr.get_node("Value").text)
