@@ -1,7 +1,8 @@
-extends Control
+extends HBoxContainer
 
 onready var Res = get_node("/root/MenusResolutions")
 
+var button = load("res://GUI/Menus/MenuBar/MenuBarButton/MenuBarButton.tscn")
 
 func _process(delta):
 	set_margin(MARGIN_RIGHT, Res.get_menu_bar_res().size.x)
