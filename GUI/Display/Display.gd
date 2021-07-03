@@ -1,5 +1,9 @@
 extends Control
 
+onready var Res = get_node("/root/MenusResolutions")
+
+
 func _process(delta):
-	set_margin(MARGIN_RIGHT,get_viewport().size.x-256)
-	set_margin(MARGIN_BOTTOM,get_viewport().size.y)
+	set_margin(MARGIN_TOP, Res.get_menu_bar_res().position.y)
+	set_margin(MARGIN_RIGHT, Res.get_display_res().size.x)
+	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)

@@ -28,12 +28,13 @@ config/icon="res://icon.png"
 
 CartesianPlane="*res://GlobalAttributes/CartesianPlane.gd"
 SetInspector="*res://GlobalAttributes/SetInspector.gd"
+MenusResolutions="*res://GlobalAttributes/MenusResolutions.gd"
 
 [input]
 
-drag_plan={
+Click={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
