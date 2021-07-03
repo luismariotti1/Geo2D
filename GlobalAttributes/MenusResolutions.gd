@@ -5,7 +5,7 @@ var _side_menu_res: Rect2
 var _display_res: Rect2
 
 
-func _ready():
+func _physics_process(delta):
 	_menu_bar_res = Rect2(Vector2.ZERO, Vector2(get_viewport().size.x, 30))
 	_display_res = Rect2(
 		Vector2(0, _menu_bar_res.size.y),
