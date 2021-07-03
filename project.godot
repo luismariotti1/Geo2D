@@ -30,6 +30,10 @@ CartesianPlane="*res://GlobalAttributes/CartesianPlane.gd"
 SetInspector="*res://GlobalAttributes/SetInspector.gd"
 MenusResolutions="*res://GlobalAttributes/MenusResolutions.gd"
 
+[display]
+
+mouse_cursor/custom_image=false
+
 [input]
 
 drag_plan={
