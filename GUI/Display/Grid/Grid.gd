@@ -46,19 +46,18 @@ func keep_center_distance():
 
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event.is_action_pressed("drag_plan"):
 		if (
 			event.position.x < limitX
 			and (event.position.y > Res._menu_bar_res.size.y and event.position.y < limitY)
 		):
-			if event.pressed == true:
-				is_clicking = true
-				clicked_position = event.position
-				distX = axis_center_position.x - clicked_position.x
-				distY = axis_center_position.y - clicked_position.y
-			else:
-				is_clicking = false
-				clicked_position = null
+			is_clicking = true
+			clicked_position = event.position
+			distX = axis_center_position.x - clicked_position.x
+			distY = axis_center_position.y - clicked_position.y
+	if event.is_action_released("drag_plan"):
+		is_clicking = false
+		clicked_position = null
 
 
 func sub_axis():
