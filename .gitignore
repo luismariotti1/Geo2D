@@ -8,3 +8,4 @@ export_presets.cfg
 .mono/
 data_*/
 .vscode/**
+Godot_v3.3.2-stable_win64.exe
