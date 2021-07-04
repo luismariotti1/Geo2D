@@ -3,14 +3,13 @@
 [ext_resource path="res://GUI/Menus/MenuBar/MenuBarButton/MenuBarButton.gd" type="Script" id=1]
 
 [node name="MenuBarButton" type="MenuButton"]
-margin_left = 1.25992
-margin_right = 36.2599
-margin_bottom = 30.0
+margin_right = 12.0
+margin_bottom = 20.0
 focus_mode = 2
-text = "File"
 align = 0
 switch_on_hover = true
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
