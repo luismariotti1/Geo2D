@@ -21,7 +21,7 @@ func set_image(img):
 
 
 func _on_FigureButton_toggled(button_pressed):
-	if button_pressed and ! get_parent().has_one_clicked:
+	if button_pressed:
 		set_image(_imgs[1])
 	else:
 		get_parent().button_clicked = -1
