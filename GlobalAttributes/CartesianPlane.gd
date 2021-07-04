@@ -1,7 +1,7 @@
 extends Node
 
 var default_x_resolution = 1024 - 256
-var divisions = 16
+var divisions = 14
 var cartesian_distance = default_x_resolution / divisions
 var center_plan = Vector2.ZERO
 

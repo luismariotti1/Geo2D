@@ -2,23 +2,33 @@ extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
-var l = 1
-var line_width = 2.0
+var line_width = 2
 var color = ColorN("red")
 var t: Transform2D
 var rotation = 0
 var scaleX = 1
 var scaleY = 1
-var pivot = Vector2(-24, 24)
+var coord_x = 0
+var coord_y = 0
 var translate = Vector2(0, 0)
 var info: Array
 var filled = false
 var vertex = PoolVector2Array()
 
 
-func set_properties_in_inspector():
+func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
+		{"id": "line_width", "label": "line width", "value": line_width},
+		{
+			"listLabel": "Translate",
+			"type": "list",
+			"infos":
+			[
+				{"id": "coord_x", "label": "X", "value": coord_x},
+				{"id": "coord_y", "label": "Y", "value": coord_y}
+			]
+		},
 		{
 			"listLabel": "Scales",
 			"type": "list",
@@ -29,6 +39,9 @@ func set_properties_in_inspector():
 			]
 		},
 	]
+
+
+func set_properties_in_inspector():
 	Insp.init_properties(info)
 
 
@@ -37,10 +50,10 @@ func update_values():
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
-
-
-func _ready():
-	set_properties_in_inspector()
+	line_width = Insp.get_properties_by_id("line_width")
+	coord_x = Insp.get_properties_by_id("coord_x")
+	coord_y = Insp.get_properties_by_id("coord_y")
+	translate = Vector2(coord_x,coord_y)
 
 
 func _physics_process(delta):
@@ -59,9 +72,9 @@ func custom_draw_polygon(
 ):
 	for i in range(vertex.size()):
 		if i == vertex.size() - 1:
-			draw_line(vertex[i], vertex[0], color, 2.0)
+			draw_line(vertex[i], vertex[0], color, line_width)
 		else:
-			draw_line(vertex[i], vertex[i + 1], color, 2.0)
+			draw_line(vertex[i], vertex[i + 1], color, line_width)
 	for i in range(vertex.size()):
 		draw_circle(vertex[i], 4, Color(0, 0, 0, 1))
 
