@@ -7,10 +7,6 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 data_*/
-<<<<<<< HEAD
 .vscode/**
-=======
-.vscode/launch.json
-.vscode/tasks.json
->>>>>>> 0ed636b (ajustes nos liques dos botoes)
 Godot_v3.3.2-stable_win64.exe
+SConstruct
