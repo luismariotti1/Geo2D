@@ -10,9 +10,9 @@ load_path = "res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.stex"
 
 [node name="SideMenu" type="Control"]
 margin_left = 768.0
-margin_top = 30.0
+margin_top = 20.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 590.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

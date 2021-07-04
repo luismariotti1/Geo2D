@@ -7,4 +7,5 @@ func init(id, title):
 	_id = id
 	_title = title
 	text = title
+	
 
