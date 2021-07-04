@@ -15,22 +15,9 @@ var buttons = []
 func _ready():
 	for i in range(titles.size()):
 		buttons.append(button.instance())
-		buttons[buttons.size() - 1].init(i, titles[i]["name"],titles[i]["sub_menus"].size(),titles[i]["sub_menus"])
+		buttons[buttons.size() - 1].init(i, titles[i]["name"],titles[i]["sub_menus"].size(),titles[i]["sub_menus"], titles[i]["scut"])
 		add_child(buttons[buttons.size() - 1])
 		
-	for i in range(titles.size()):
-		for j in range(titles[i]["scut"].size()):
-			buttons[i].get_popup().set_item_shortcut(j, set_shortcut(titles[i]["scut"][j]), true)
-		
-	
-func set_shortcut(key):
-	var shortcut = ShortCut.new()
-	var inputeventkey = InputEventKey.new()
-	inputeventkey.set_scancode(key)
-	inputeventkey.control = true
-	shortcut.set_shortcut(inputeventkey)
-	return shortcut
-
 
 func _process(delta):
 	set_margin(MARGIN_RIGHT, Res.get_menu_bar_res().size.x)
