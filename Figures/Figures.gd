@@ -45,12 +45,10 @@ func create_dic_to_properties():
 
 
 func init(position: Vector2):
-	coord_x = position.x
-	coord_y = position.y
-
+	Insp.set_properties_by_id("coord_x", position.x)
+	Insp.set_properties_by_id("coord_y", position.y)
 
 func set_transform(angle):
-	print(angle)
 	if angle >= 0 and angle <= 90:
 		x_axis = Vector2(-1, 0)
 		y_axis = Vector2(0, 1)
@@ -74,8 +72,8 @@ func update_values():
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
 	line_width = Insp.get_properties_by_id("line_width")
-	coord_x = Insp.get_properties_by_id("coord_x")
-	coord_y = Insp.get_properties_by_id("coord_y")
+	coord_x = float(Insp.get_properties_by_id("coord_x"))
+	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
 
 

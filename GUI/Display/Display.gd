@@ -3,6 +3,7 @@ extends Control
 onready var Res = get_node("/root/MenusResolutions")
 onready var CP = get_node("/root/CartesianPlane")
 onready var PN = get_node("/root/PanelInfo")
+onready var Insp = get_node("/root/SetInspector")
 
 var clicked_position = null
 var is_clicking = false
@@ -36,9 +37,17 @@ func is_in_display(Position):
 
 
 func create_object():
-	figures[0].set_transform(rad2deg(clicked_position.angle_to_point(get_global_mouse_position())))
-	figures[0].set_edge(
-		(clicked_position.distance_to(get_global_mouse_position()) / CP.get_cartesian_distance())*0.75
+	figures[figures.size() - 1].set_transform(
+		rad2deg(clicked_position.angle_to_point(get_global_mouse_position()))
+	)
+	figures[figures.size() - 1].set_edge(
+		(
+			(
+				clicked_position.distance_to(get_global_mouse_position())
+				/ CP.get_cartesian_distance()
+			)
+			* 0.75
+		)
 	)
 
 
@@ -47,9 +56,10 @@ func _input(event):
 		is_clicking = true
 		clicked_position = event.position
 		var new_figure = load("res://Figures/Square/Square.tscn").instance()
-		new_figure.init(CP.mouse_position_to_cartesian(clicked_position))
 		add_child(new_figure)
 		figures.append(new_figure)
+		figures[figures.size() - 1].init(CP.mouse_position_to_cartesian(clicked_position))
+		Insp.reload_atributes = true
 		# move_vertex()
 		# selection_area = selection_tool.instance()
 		# selection_area.init(clicked_position)
@@ -57,6 +67,8 @@ func _input(event):
 	if event.is_action_released("move_vertex"):
 		is_clicking = false
 		clicked_position = null
+		Insp.instance = true
+		Insp.reload_atributes = false
 		# selection_area.queue_free()
 
 # func move_vertex():

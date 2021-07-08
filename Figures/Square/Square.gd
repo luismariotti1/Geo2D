@@ -1,11 +1,11 @@
 extends "res://Figures/Figures.gd"
 
 var new_pivot = Vector2(0, 0)
-var edge = 1
+var edge = 0
 
 
 func set_edge(value):
-	edge = value
+	Insp.set_properties_by_id("edge", value)
 
 
 func _ready():
@@ -26,8 +26,7 @@ func _physics_process(_delta):
 
 
 func update_local_variables():
-	edge = Insp.get_properties_by_id("edge")
-
+	edge = float(Insp.get_properties_by_id("edge"))
 
 func _draw():
 	draw_set_transform_matrix(t)
