@@ -14,6 +14,9 @@ var translate = Vector2(0, 0)
 var info: Array
 var filled = false
 var vertex = PoolVector2Array()
+var x_axis = Vector2(1, 0)
+var y_axis = Vector2(0, 1)
+var origin = Vector2(0, 0)
 
 
 func create_dic_to_properties():
@@ -46,6 +49,21 @@ func init(position: Vector2):
 	coord_y = position.y
 
 
+func set_transform(angle):
+	print(angle)
+	if angle >= 0 and angle <= 90:
+		x_axis = Vector2(-1, 0)
+		y_axis = Vector2(0, 1)
+	if angle > 90:
+		x_axis = Vector2(1, 0)
+		y_axis = Vector2(0, 1)
+	if angle < 0 and angle >= -90:
+		x_axis = Vector2(-1, 0)
+		y_axis = Vector2(0, -1)
+	if angle < -90 and angle >= -180:
+		x_axis = Vector2(1, 0)
+		y_axis = Vector2(0, -1)
+
 func set_properties_in_inspector():
 	Insp.init_properties(info)
 
@@ -61,9 +79,10 @@ func update_values():
 	translate = Vector2(coord_x, coord_y)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_values()
-	t = Transform2D(Vector2(-1, 0),Vector2(0, -1),Vector2(0, 0))
+	# print(x_axis)
+	t = Transform2D(x_axis, y_axis, origin)
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))
 #	Cisalhamento

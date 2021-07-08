@@ -36,8 +36,9 @@ func is_in_display(Position):
 
 
 func create_object():
+	figures[0].set_transform(rad2deg(clicked_position.angle_to_point(get_global_mouse_position())))
 	figures[0].set_edge(
-		clicked_position.distance_to(get_global_mouse_position()) / CP.get_cartesian_distance()
+		(clicked_position.distance_to(get_global_mouse_position()) / CP.get_cartesian_distance())*0.75
 	)
 
 
