@@ -1,7 +1,7 @@
 extends "res://Figures/Figures.gd"
 
 var l = 1
-var new_pivot : Vector2
+var new_pivot = Vector2(0,0)
 
 func _ready():
 	create_dic_to_properties()
@@ -10,7 +10,7 @@ func _ready():
 
 func _physics_process(delta):
 	var new_vertex = []
-	new_pivot = Vector2(float(l)/2, float(l)/2)
+	# new_pivot = Vector2(float(l)/2, float(l)/2)
 	new_vertex.append(CP.convert_catersian_to_dist(Vector2(0, 0)-new_pivot)) 
 	new_vertex.append(CP.convert_catersian_to_dist(Vector2(0, l)-new_pivot))
 	new_vertex.append(CP.convert_catersian_to_dist(Vector2(l, l)-new_pivot))
