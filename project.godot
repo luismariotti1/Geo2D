@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 CartesianPlane="*res://GlobalAttributes/CartesianPlane.gd"
 SetInspector="*res://GlobalAttributes/SetInspector.gd"
 MenusResolutions="*res://GlobalAttributes/MenusResolutions.gd"
+PanelInfo="*res://GlobalAttributes/PanelInfo.gd"
 
 [display]
 

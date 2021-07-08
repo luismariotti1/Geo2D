@@ -6,6 +6,7 @@ var _id: int
 var _hovered = Color(0.7, 0.7, 0.7)
 var _not_hovered = Color(1, 1, 1)
 var _figure = "square"
+onready var PN = get_node("/root/PanelInfo")
 
 
 func init(id, configs):
@@ -27,6 +28,7 @@ func set_image(img):
 func _on_FigureButton_toggled(button_pressed):
 	if button_pressed:
 		set_image(_img_pressed)
+		PN.set_button_selected(_figure)
 		print(_figure)
 	else:
 		get_parent().button_clicked = -1

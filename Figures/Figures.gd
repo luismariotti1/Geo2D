@@ -8,8 +8,8 @@ var t: Transform2D
 var rotation = 0
 var scaleX = 1
 var scaleY = 1
-var coord_x = 0
-var coord_y = 0
+var coord_x: float
+var coord_y: float
 var translate = Vector2(0, 0)
 var info: Array
 var filled = false
@@ -41,6 +41,11 @@ func create_dic_to_properties():
 	]
 
 
+func init(position: Vector2):
+	coord_x = position.x
+	coord_y = position.y
+
+
 func set_properties_in_inspector():
 	Insp.init_properties(info)
 
@@ -53,12 +58,12 @@ func update_values():
 	line_width = Insp.get_properties_by_id("line_width")
 	coord_x = Insp.get_properties_by_id("coord_x")
 	coord_y = Insp.get_properties_by_id("coord_y")
-	translate = Vector2(coord_x,coord_y)
+	translate = Vector2(coord_x, coord_y)
 
 
 func _physics_process(delta):
 	update_values()
-	t = Transform2D.IDENTITY
+	t = Transform2D(Vector2(-1, 0),Vector2(0, -1),Vector2(0, 0))
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))
 #	Cisalhamento
@@ -85,6 +90,3 @@ func custom_draw_polygon_filled(
 	draw_colored_polygon(vertex, color)
 	for i in range(vertex.size()):
 		draw_circle(vertex[i], 4, Color(0, 0, 0, 1))
-
-
-
