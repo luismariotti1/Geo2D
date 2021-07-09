@@ -7,14 +7,16 @@ var ListEdit = load("res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn")
 
 func _process(_delta):
 	if Insp.reload_atributes:
-			for atribute in Insp.get_properties():
-				if atribute.has("type") and atribute["type"] == "list":
-					atributes.append(ListEdit.instance())
-					atributes[atributes.size() - 1].init(atribute["listLabel"], atribute["infos"])
-				else:
-					atributes.append(AtributEdit.instance())
-					atributes[atributes.size() - 1].init(atribute)
-				add_child(atributes[atributes.size() - 1])
+		for n in get_children():
+			remove_child(n)
+		for atribute in Insp.get_properties():
+			if atribute.has("type") and atribute["type"] == "list":
+				atributes.append(ListEdit.instance())
+				atributes[atributes.size() - 1].init(atribute["listLabel"], atribute["infos"])
+			else:
+				atributes.append(AtributEdit.instance())
+				atributes[atributes.size() - 1].init(atribute)
+			add_child(atributes[atributes.size() - 1])
 	Insp.reload_atributes = false
 
 	for i in range(atributes.size()):
