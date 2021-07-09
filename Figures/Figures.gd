@@ -2,6 +2,7 @@ extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
+var _id : int
 var line_width = 2
 var color = ColorN("red")
 var t: Transform2D

@@ -4,8 +4,8 @@ var new_pivot = Vector2(0, 0)
 var edge = 0
 
 
-func init():
-	print(coord_x, coord_y)
+func init(id):
+	_id = id
 	create_dic_to_properties()
 	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
 	set_properties_in_inspector()

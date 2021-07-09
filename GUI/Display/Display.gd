@@ -60,7 +60,12 @@ func _input(event):
 
 	if event.is_action_released("move_vertex"):
 		is_clicking = false
-		figures[figures.size() - 1].init()
+		figures[figures.size() - 1].init(figures.size() - 1)
+		for i in range(figures.size()):
+			if figures[i]._id == (figures.size() - 1):
+				figures[i].is_select = true
+			else:
+				figures[i].is_select = false
+
 		if is_in_display(clicked_position):
 			Insp.reload_atributes = true
-		figures[figures.size() - 1].is_select = true
