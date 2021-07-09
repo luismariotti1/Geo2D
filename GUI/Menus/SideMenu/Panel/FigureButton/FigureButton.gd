@@ -1,14 +1,19 @@
 extends Button
 
-var _imgs = []
+var _img_default: String
+var _img_pressed: String
 var _id: int
-var hovered = 0.7
-var not_hovered = 1
+var _hovered = Color(0.7, 0.7, 0.7)
+var _not_hovered = Color(1, 1, 1)
+var _figure = "square"
+onready var PN = get_node("/root/PanelInfo")
 
 
-func init(id, imgs):
-	_imgs = imgs
-	set_image(_imgs[0])
+func init(id, configs):
+	_figure = configs["figure"]
+	_img_default = configs["img_default"]
+	_img_pressed = configs["img_pressed"]
+	set_image(_img_default)
 	_id = id
 
 
@@ -22,19 +27,17 @@ func set_image(img):
 
 func _on_FigureButton_toggled(button_pressed):
 	if button_pressed:
-		set_image(_imgs[1])
+		set_image(_img_pressed)
+		PN.set_button_selected(_figure)
+		print(_figure)
 	else:
 		get_parent().button_clicked = -1
-		set_image(_imgs[0])
-
-
-func _on_FigureButton_mouse_exited():
-	modulate.r = not_hovered
-	modulate.g = not_hovered
-	modulate.b = not_hovered
+		set_image(_img_default)
 
 
 func _on_FigureButton_mouse_entered():
-	modulate.r = hovered
-	modulate.g = hovered
-	modulate.b = hovered
+	modulate = _hovered
+
+
+func _on_FigureButton_mouse_exited():
+	modulate = _not_hovered

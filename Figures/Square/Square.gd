@@ -1,25 +1,33 @@
 extends "res://Figures/Figures.gd"
 
-var l = 1
-var new_pivot : Vector2
+var new_pivot = Vector2(0, 0)
+var edge = 0
 
-func _ready():
+
+func init(id):
+	_id = id
 	create_dic_to_properties()
-	info.insert(0,{"id": "l", "label": "edge", "value": l})
+	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
 	set_properties_in_inspector()
 
-func _physics_process(delta):
+func set_edge(value):
+	edge = value
+
+func _physics_process(_delta):
 	var new_vertex = []
-	new_pivot = Vector2(float(l)/2, float(l)/2)
-	new_vertex.append(CP.convert_catersian_to_dist(Vector2(0, 0)-new_pivot)) 
-	new_vertex.append(CP.convert_catersian_to_dist(Vector2(0, l)-new_pivot))
-	new_vertex.append(CP.convert_catersian_to_dist(Vector2(l, l)-new_pivot))
-	new_vertex.append(CP.convert_catersian_to_dist(Vector2(l, 0)-new_pivot))
+	# new_pivot = Vector2(float(l)/2, float(l)/2)
+	new_vertex.append(CP.convert_catersian_to_dist(Vector2(0, 0) - new_pivot))
+	new_vertex.append(CP.convert_catersian_to_dist(Vector2(0, edge) - new_pivot))
+	new_vertex.append(CP.convert_catersian_to_dist(Vector2(edge, edge) - new_pivot))
+	new_vertex.append(CP.convert_catersian_to_dist(Vector2(edge, 0) - new_pivot))
 	vertex = new_vertex
-	update_local_variables()
+	if is_select:
+		update_local_variables()
+
 
 func update_local_variables():
-	l = Insp.get_properties_by_id("l")
+	edge = float(Insp.get_properties_by_id("edge"))
+
 
 func _draw():
 	draw_set_transform_matrix(t)

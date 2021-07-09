@@ -15,7 +15,6 @@ var keep_center_y = 0
 onready var CP = get_node("/root/CartesianPlane")
 onready var Res = get_node("/root/MenusResolutions")
 var Hold_cursor = load("res://assets/Icons/Mouse/Hold/Hold.png")
-var Arrow_cursor = load("res://arrow.png")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -61,7 +60,7 @@ func _input(event):
 	if event.is_action_released("drag_plan"):
 		is_clicking = false
 		clicked_position = null
-		Input.set_custom_mouse_cursor(Arrow_cursor)
+		Input.set_custom_mouse_cursor(null)
 
 
 func sub_axis():
