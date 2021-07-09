@@ -1,6 +1,7 @@
 extends Node
 
 var _properties: Array
+var reload_atributes = false
 
 
 func init_properties(info):
@@ -33,3 +34,4 @@ func get_properties_by_id(id):
 					return _properties[i]["infos"][j]["value"]
 		elif _properties[i]["id"] == id:
 			return _properties[i]["value"]
+

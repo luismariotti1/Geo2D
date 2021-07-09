@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/ShowProperties.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Inspector.gd" type="Script" id=2]
 
 [node name="Inspector" type="Control"]
 anchor_left = 0.5
@@ -11,6 +12,7 @@ margin_left = -155.0
 margin_top = -236.0
 margin_right = 155.0
 margin_bottom = 236.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

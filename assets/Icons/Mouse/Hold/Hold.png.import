@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hand.png-5018b0ab627ad65a38f0aa4dd23f68e4.stex"
+path="res://.import/Hold.png-83c0959f30a12973c54a6c31e4493a2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Icons/Mouse/Hold/hand.png"
-dest_files=[ "res://.import/hand.png-5018b0ab627ad65a38f0aa4dd23f68e4.stex" ]
+source_file="res://assets/Icons/Mouse/Hold/Hold.png"
+dest_files=[ "res://.import/Hold.png-83c0959f30a12973c54a6c31e4493a2e.stex" ]
 
 [params]
 
