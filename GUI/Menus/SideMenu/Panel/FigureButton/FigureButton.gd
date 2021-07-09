@@ -10,11 +10,11 @@ onready var PN = get_node("/root/PanelInfo")
 
 
 func init(id, configs):
+	_id = id
 	_figure = configs["figure"]
 	_img_default = configs["img_default"]
 	_img_pressed = configs["img_pressed"]
 	set_image(_img_default)
-	_id = id
 
 
 func get_id():
@@ -27,12 +27,14 @@ func set_image(img):
 
 func _on_FigureButton_toggled(button_pressed):
 	if button_pressed:
+		get_parent().button_clicked = _id
 		set_image(_img_pressed)
 		PN.set_button_selected(_figure)
 	else:
-		get_parent().button_clicked = -1
 		set_image(_img_default)
-		PN.set_button_selected("")
+		if _id == get_parent().button_clicked:
+			get_parent().button_clicked = -1
+			PN.set_button_selected("")
 
 
 func _on_FigureButton_mouse_entered():

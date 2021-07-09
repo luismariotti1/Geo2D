@@ -36,14 +36,7 @@ func _ready():
 		add_child(buttons[buttons.size() - 1])
 
 
-func _process(delta):
+func _process(_delta):
 	for i in len(buttons):
-		if button_clicked == -1:
-			buttons[i].disabled = false
-	for i in len(buttons):
-		if buttons[i].pressed:
-			button_clicked = buttons[i].get_id()
-	for i in len(buttons):
-		if button_clicked != -1:
-			if buttons[i].get_id() != button_clicked:
-				buttons[i].disabled = true
+		if buttons[i]._id != button_clicked:
+			buttons[i].pressed = false
