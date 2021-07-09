@@ -29,10 +29,10 @@ func _on_FigureButton_toggled(button_pressed):
 	if button_pressed:
 		set_image(_img_pressed)
 		PN.set_button_selected(_figure)
-		print(_figure)
 	else:
 		get_parent().button_clicked = -1
 		set_image(_img_default)
+		PN.set_button_selected("")
 
 
 func _on_FigureButton_mouse_entered():
