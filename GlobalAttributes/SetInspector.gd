@@ -2,7 +2,6 @@ extends Node
 
 var _properties: Array
 var reload_atributes = false
-var instance = false
 
 
 func init_properties(info):

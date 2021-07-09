@@ -17,6 +17,8 @@ var vertex = PoolVector2Array()
 var x_axis = Vector2(1, 0)
 var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
+var is_select = false
+var set_inspector = false
 
 
 func create_dic_to_properties():
@@ -29,7 +31,7 @@ func create_dic_to_properties():
 			"infos":
 			[
 				{"id": "coord_x", "label": "X", "value": coord_x},
-				{"id": "coord_y", "label": "Y", "value": coord_y}
+				{"id": "coord_y", "label": "Y", "value": coord_y},
 			]
 		},
 		{
@@ -38,17 +40,17 @@ func create_dic_to_properties():
 			"infos":
 			[
 				{"id": "scaleX", "label": "X", "value": scaleX},
-				{"id": "scaleY", "label": "Y", "value": scaleY}
+				{"id": "scaleY", "label": "Y", "value": scaleY},
 			]
 		},
 	]
 
+func set_coord(value):
+	coord_x = value.x
+	coord_y = value.y
+	translate = Vector2(coord_x,coord_y)
 
-func init(position: Vector2):
-	Insp.set_properties_by_id("coord_x", position.x)
-	Insp.set_properties_by_id("coord_y", position.y)
-
-func set_transform(angle):
+func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
 		x_axis = Vector2(-1, 0)
 		y_axis = Vector2(0, 1)
@@ -61,6 +63,7 @@ func set_transform(angle):
 	if angle < -90 and angle >= -180:
 		x_axis = Vector2(1, 0)
 		y_axis = Vector2(0, -1)
+
 
 func set_properties_in_inspector():
 	Insp.init_properties(info)
@@ -78,8 +81,8 @@ func update_values():
 
 
 func _physics_process(_delta):
-	update_values()
-	# print(x_axis)
+	if is_select:
+		update_values()
 	t = Transform2D(x_axis, y_axis, origin)
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))

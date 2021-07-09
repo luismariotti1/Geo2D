@@ -14,14 +14,12 @@ var figures = []
 
 
 func _process(_delta):
+	update()
 	set_margin(MARGIN_TOP, Res.get_menu_bar_res().position.y)
 	set_margin(MARGIN_RIGHT, Res.get_display_res().size.x)
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
-	if is_clicking == true and clicked_position != null:
+	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
 		create_object()
-	# 	move_vertex()
-	# selection_area()
-	update()
 
 
 func is_in_display(Position):
@@ -37,10 +35,9 @@ func is_in_display(Position):
 
 
 func create_object():
-	figures[figures.size() - 1].set_transform(
-		rad2deg(clicked_position.angle_to_point(get_global_mouse_position()))
-	)
-	figures[figures.size() - 1].set_edge(
+	var new_object = figures[figures.size() - 1]
+	new_object.set_quadrant(rad2deg(clicked_position.angle_to_point(get_global_mouse_position())))
+	new_object.set_edge(
 		(
 			(
 				clicked_position.distance_to(get_global_mouse_position())
@@ -55,26 +52,15 @@ func _input(event):
 	if event.is_action_pressed("move_vertex"):
 		is_clicking = true
 		clicked_position = event.position
-		var new_figure = load("res://Figures/Square/Square.tscn").instance()
-		add_child(new_figure)
-		figures.append(new_figure)
-		figures[figures.size() - 1].init(CP.mouse_position_to_cartesian(clicked_position))
-		Insp.reload_atributes = true
-		# move_vertex()
-		# selection_area = selection_tool.instance()
-		# selection_area.init(clicked_position)
-		# add_child(selection_area)
+		if is_in_display(clicked_position):
+			var new_figure = load("res://Figures/Square/Square.tscn").instance()
+			add_child(new_figure)
+			figures.append(new_figure)
+			figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
+
 	if event.is_action_released("move_vertex"):
 		is_clicking = false
-		clicked_position = null
-		Insp.instance = true
-		Insp.reload_atributes = false
-		# selection_area.queue_free()
-
-# func move_vertex():
-# 	CP.mouse_position_to_cartesian(clicked_position)
-
-# func selection_area():
-# 	if is_clicking == true and clicked_position != null:
-# 		if is_in_display(get_global_mouse_position()):
-# 			selection_area.set_tool_area(get_global_mouse_position()-clicked_position)
+		figures[figures.size() - 1].init()
+		if is_in_display(clicked_position):
+			Insp.reload_atributes = true
+		figures[figures.size() - 1].is_select = true

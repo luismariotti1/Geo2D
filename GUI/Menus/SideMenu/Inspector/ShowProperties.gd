@@ -7,7 +7,6 @@ var ListEdit = load("res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn")
 
 func _process(_delta):
 	if Insp.reload_atributes:
-		if Insp.instance:
 			for atribute in Insp.get_properties():
 				if atribute.has("type") and atribute["type"] == "list":
 					atributes.append(ListEdit.instance())
