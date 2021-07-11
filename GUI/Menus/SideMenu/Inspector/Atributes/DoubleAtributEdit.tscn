@@ -4,9 +4,9 @@
 
 
 
-[node name="AtributEdit" type="HBoxContainer"]
-margin_right = 283.0
-margin_bottom = 24.0
+[node name="DoubleAtributEdit" type="HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 0, 31 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -16,14 +16,18 @@ __meta__ = {
 [node name="AtributeName" type="Label" parent="."]
 margin_right = 102.0
 margin_bottom = 31.0
-rect_min_size = Vector2( 102, 0 )
+rect_min_size = Vector2( 90, 0 )
+size_flags_horizontal = 3
 text = "
 "
 valign = 1
 
-[node name="Value" type="LineEdit" parent="."]
+[node name="Value1" type="LineEdit" parent="."]
 margin_left = 106.0
-margin_right = 283.0
+margin_right = 164.0
 margin_bottom = 31.0
-rect_min_size = Vector2( 120, 0 )
-size_flags_horizontal = 3
+
+[node name="Value2" type="LineEdit" parent="."]
+margin_left = 168.0
+margin_right = 226.0
+margin_bottom = 31.0

@@ -1,8 +1,8 @@
-extends Control 
+extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
-var _id : int
+var _id: int
 var line_width = 2
 var color = ColorN("red")
 var t: Transform2D
@@ -22,6 +22,8 @@ var is_select = false
 var set_inspector = false
 var new_pivot = Vector2(0, 0)
 var edge = 0
+var vertice = Vector2(1, 1)
+
 
 func init(id):
 	_id = id
@@ -41,10 +43,12 @@ func _draw():
 	else:
 		custom_draw_polygon_filled(vertex, color)
 
+
 func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
 		{"id": "line_width", "label": "line width", "value": line_width},
+		{"type": "double_atribute", "id": "vertice", "label": "vertices", "values": vertice},
 		{
 			"listLabel": "Translate",
 			"type": "list",
@@ -69,7 +73,7 @@ func create_dic_to_properties():
 func set_coord(value):
 	coord_x = value.x
 	coord_y = value.y
-	translate = Vector2(coord_x,coord_y)
+	translate = Vector2(coord_x, coord_y)
 
 
 func set_quadrant(angle):

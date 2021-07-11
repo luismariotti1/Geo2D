@@ -38,6 +38,7 @@ margin_bottom = 21.0
 margin_right = 283.0
 margin_bottom = 14.0
 text = "Selection Pane"
+align = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 32.0
