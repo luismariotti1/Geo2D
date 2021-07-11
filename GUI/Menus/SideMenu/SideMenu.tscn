@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/Panel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Inspector.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/Menus/SideMenu/SideMenu.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Menus/SideMenu/Selection/Selecion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Menus/SideMenu/Selection/Selecion.gd" type="Script" id=5]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -43,6 +45,17 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
-margin_top = 166.0
+margin_top = 265.0
 margin_right = 254.0
-margin_bottom = 560.0
+margin_bottom = 559.0
+
+[node name="Selecion" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.0155017
+anchor_top = 0.256212
+anchor_right = 0.0155017
+anchor_bottom = 0.442177
+margin_left = 3.03156
+margin_top = 20.9591
+margin_right = 250.032
+margin_bottom = 20.9591
+script = ExtResource( 5 )
