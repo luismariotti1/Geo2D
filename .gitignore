@@ -83,3 +83,5 @@ assets/Icons/Buttons/Vertex/buttonVertice.png.import
 assets/Icons/Buttons/Vertex/buttonVerticePressed.png.import
 assets/Icons/Mouse/Hold/Hold.png.import
 Main/Main.tscn
+project.godot
+.vscode/settings.json
