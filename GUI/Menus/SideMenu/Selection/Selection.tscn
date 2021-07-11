@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="Selecion" type="Control"]
+[node name="Selection" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -9,6 +9,7 @@ margin_left = -155.0
 margin_top = -40.0
 margin_right = 155.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 310, 80 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
