@@ -18,7 +18,6 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1.52588e-05
 rect_min_size = Vector2( 240, 0 )
 size_flags_horizontal = 3
 __meta__ = {
@@ -26,28 +25,30 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 252.0
+margin_right = 240.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 240, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 245.0
+margin_right = 233.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PropDescription" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_right = 117.0
+margin_right = 111.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Description"
 align = 1
 
 [node name="PropValue" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 121.0
-margin_right = 238.0
+margin_left = 115.0
+margin_right = 226.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Value"
@@ -65,7 +66,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 233.0
 margin_bottom = 221.0
-scroll_horizontal_enabled = false
+rect_min_size = Vector2( 226, 0 )
 
 [node name="ShowProperties" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
 margin_right = 226.0
