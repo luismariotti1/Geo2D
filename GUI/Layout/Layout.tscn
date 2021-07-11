@@ -18,5 +18,3 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [node name="SideMenu" parent="." instance=ExtResource( 2 )]
-margin_top = 30.0
-margin_bottom = 600.0
