@@ -2,7 +2,7 @@ extends Control
 
 onready var Res = get_node("/root/MenusResolutions")
 
-func _process(delta):
+func _process(_delta):
 	set_margin(MARGIN_TOP, Res.get_selection_res().position.y)
 	set_margin(MARGIN_LEFT, Res.get_selection_res().position.x)
 	set_margin(MARGIN_RIGHT, Res.get_selection_res().size.x)

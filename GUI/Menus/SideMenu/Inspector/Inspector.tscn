@@ -18,37 +18,34 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.02
-anchor_right = 0.98
-anchor_bottom = 0.97
-margin_left = 1.23978e-05
-margin_top = 3.8147e-06
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 297.0
+margin_right = 310.0
 margin_bottom = 28.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 290.0
+margin_right = 303.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PropDescription" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_right = 139.0
+margin_right = 146.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Description"
 align = 1
 
 [node name="PropValue" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 143.0
-margin_right = 283.0
+margin_left = 150.0
+margin_right = 296.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Value"
@@ -56,20 +53,20 @@ align = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 32.0
-margin_right = 297.0
-margin_bottom = 457.0
+margin_right = 310.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer2"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 290.0
-margin_bottom = 418.0
+margin_right = 303.0
+margin_bottom = 433.0
 
 [node name="ShowProperties" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
-margin_right = 283.0
-margin_bottom = 411.0
+margin_right = 296.0
+margin_bottom = 426.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
