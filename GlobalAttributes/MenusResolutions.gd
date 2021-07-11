@@ -17,8 +17,8 @@ func _physics_process(delta):
 		Vector2(get_viewport().size.x, get_viewport().size.y)
 	)
 
-	_selection_res = Rect2(Vector2(7,164), Vector2(254, _side_menu_res.size.x*0.26))
-	_inspector_res = Rect2(Vector2(7,_selection_res.size.y+5), Vector2(254, 274))
+	_selection_res = Rect2(Vector2(7,164), Vector2(254, 274+(_side_menu_res.size.y*0.10)))
+	_inspector_res = Rect2(Vector2(7,_selection_res.size.y+5), Vector2(254, _side_menu_res.size.y-20))
 
 
 func set_inspector_res(value):
