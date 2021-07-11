@@ -10,3 +10,4 @@ data_*/
 .vscode/launch.json
 .vscode/tasks.json
 Godot_v3.3.2-stable_win64.exe
+.vscode/settings.json
