@@ -18,7 +18,8 @@ __meta__ = {
 anchor_left = 0.02
 anchor_top = 0.03
 anchor_right = 0.98
-anchor_bottom = 0.97
+anchor_bottom = 0.94
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

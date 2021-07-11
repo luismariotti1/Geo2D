@@ -19,7 +19,6 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.02
-anchor_top = 0.03
 anchor_right = 0.98
 anchor_bottom = 0.97
 margin_left = 1.23978e-05
@@ -58,7 +57,7 @@ align = 1
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 32.0
 margin_right = 297.0
-margin_bottom = 443.0
+margin_bottom = 457.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -66,11 +65,11 @@ size_flags_vertical = 3
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 290.0
-margin_bottom = 404.0
+margin_bottom = 418.0
 
 [node name="ShowProperties" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
 margin_right = 283.0
-margin_bottom = 397.0
+margin_bottom = 411.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
