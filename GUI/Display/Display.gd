@@ -59,6 +59,8 @@ func _input(event):
 					new_figure = load("res://Figures/Square/Square.tscn").instance()
 				elif PN.get_button_selected() == "Triangle":
 					new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
+				elif PN.get_button_selected() == "Hexagon":
+					new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
 				add_child(new_figure)
 				figures.append(new_figure)
 				figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
