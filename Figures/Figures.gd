@@ -1,4 +1,4 @@
-extends Control
+extends Control 
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
@@ -20,7 +20,26 @@ var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
 var is_select = false
 var set_inspector = false
+var new_pivot = Vector2(0, 0)
+var edge = 0
 
+func init(id):
+	_id = id
+	create_dic_to_properties()
+	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
+	set_properties_in_inspector()
+
+
+func set_edge(value):
+	edge = value
+
+
+func _draw():
+	draw_set_transform_matrix(t)
+	if ! filled:
+		custom_draw_polygon(vertex, color, float(line_width))
+	else:
+		custom_draw_polygon_filled(vertex, color)
 
 func create_dic_to_properties():
 	info = [
@@ -46,10 +65,12 @@ func create_dic_to_properties():
 		},
 	]
 
+
 func set_coord(value):
 	coord_x = value.x
 	coord_y = value.y
 	translate = Vector2(coord_x,coord_y)
+
 
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
@@ -72,6 +93,7 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
