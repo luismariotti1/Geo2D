@@ -23,15 +23,16 @@ func _process(_delta):
 
 
 func is_in_display(Position):
-	if (
-		Res.get_display_res().size.y > Position.y
-		and Position.y > Res.get_menu_bar_res().size.y
-		and Res.get_display_res().size.x > Position.x
-		and Position.x > Res.get_display_res().position.x
-	):
-		return true
-	else:
-		return false
+	if Position:
+		if (
+			Res.get_display_res().size.y > Position.y
+			and Position.y > Res.get_menu_bar_res().size.y
+			and Res.get_display_res().size.x > Position.x
+			and Position.x > Res.get_display_res().position.x
+		):
+			return true
+		else:
+			return false
 
 
 func create_object():

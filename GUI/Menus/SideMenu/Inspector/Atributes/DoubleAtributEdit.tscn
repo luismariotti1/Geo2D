@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/DoubleAtributEdit.gd" type="Script" id=1]
 
 [node name="DoubleAtributEdit" type="HBoxContainer"]
 margin_right = 224.0

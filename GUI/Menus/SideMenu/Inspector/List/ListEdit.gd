@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 var AtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.tscn")
-var list = []
+var _list = [] setget , get_list
 var _infos = []
 var _label: String
 var is_visible = false
@@ -16,9 +16,9 @@ func init(data):
 
 func instance_atributes():
 	for i in range(_infos.size()):
-		list.append(AtributEdit.instance())
-		list[list.size() - 1].init(_infos[i])
-		add_child(list[list.size() - 1])
+		_list.append(AtributEdit.instance())
+		_list[_list.size() - 1].init(_infos[i])
+		add_child(_list[_list.size() - 1])
 
 
 func set_visibility():
@@ -34,3 +34,6 @@ func _on_Button_toggled(button_pressed):
 	else:
 		is_visible = false
 		set_visibility()
+
+func get_list():
+	return _list

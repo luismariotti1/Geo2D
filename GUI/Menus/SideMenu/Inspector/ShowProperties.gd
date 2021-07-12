@@ -7,6 +7,10 @@ var DoubleAtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/Doubl
 var ListEdit = load("res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn")
 
 
+func init_atribute(scene, data, type = "atribute"):
+	atributes.append({"type":type, "scene":scene})
+	atributes[atributes.size() - 1]["scene"].init(data)
+
 func _process(_delta):
 	if get_parent().get_v_scrollbar().visible:
 		rect_min_size.x = 210
@@ -18,19 +22,19 @@ func _process(_delta):
 		for atribute in Insp.get_properties():
 			if atribute.has("type"):
 				if atribute["type"] == "list":
-					atributes.append(ListEdit.instance())
+					init_atribute(ListEdit.instance(), atribute, "list")
 				if atribute["type"] == "double_atribute":
-					atributes.append(DoubleAtributEdit.instance())
+					init_atribute(DoubleAtributEdit.instance(), atribute, "double_atribute")
 			else:
-				atributes.append(AtributEdit.instance())
-				atributes[atributes.size() - 1].initi()
-			add_child(atributes[atributes.size() - 1])
+				init_atribute(AtributEdit.instance(), atribute)
+			add_child(atributes[atributes.size() - 1]["scene"])
 	Insp.reload_atributes = false
 
-	# for i in range(atributes.size()):
-	# 	if atributes[i] is HBoxContainer:
-	# 		Insp.set_properties_by_id(atributes[i].get_id(), atributes[i].get_node("Value").text)
-	# 	else:
-	# 		for atr in atributes[i].get_children():
-	# 			if atr is HBoxContainer:
-	# 				Insp.set_properties_by_id(atr.get_id(), atr.get_node("Value").text)
+	for i in range(atributes.size()):
+		if atributes[i]["type"] == "double_atribute":
+			Insp.set_properties_by_id(atributes[i]["scene"].get_id(), [atributes[i]["scene"].get_node("Value1").text,atributes[i]["scene"].get_node("Value2").text])
+		elif atributes[i]["type"] == "list":
+			for atr in atributes[i]["scene"].get_list():
+				Insp.set_properties_by_id(atr.get_id(), atr.get_node("Value").text)
+		else:
+			Insp.set_properties_by_id(atributes[i]["scene"].get_id(), atributes[i]["scene"].get_node("Value").text)

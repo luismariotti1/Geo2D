@@ -2,16 +2,15 @@ extends HBoxContainer
 
 var _id: String
 var _type: String
-var _value1: float
-var _value2: float
+var _value1
+var _value2
 
 
 func init(data):
-    print("teu cu")
-	_id = infos["id"]
-	get_node("AtributeName").text = String(data["label"])
-	get_node("Value1").text = "test1"
-	get_node("Value2").text = "test2"
+	_id = data["id"]
+	get_node("AtributeName").text = data["label"]
+	get_node("Value1").text = String(data["value"][0])
+	get_node("Value2").text = String(data["value"][1])
 
 
 func get_id():
