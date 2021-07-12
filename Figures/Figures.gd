@@ -25,6 +25,7 @@ var edge = 0
 var vertice = Vector2(1, 1)
 var ready = false
 var inital_pos : Vector2
+var mirror_vertex : Vector2
 
 
 func set_edge(value):
@@ -75,17 +76,13 @@ func set_coord(value):
 
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
-		x_axis = Vector2(-1, 0)
-		y_axis = Vector2(0, 1)
-	if angle > 90:
-		x_axis = Vector2(1, 0)
-		y_axis = Vector2(0, 1)
-	if angle < 0 and angle >= -90:
-		x_axis = Vector2(-1, 0)
-		y_axis = Vector2(0, -1)
-	if angle < -90 and angle >= -180:
-		x_axis = Vector2(1, 0)
-		y_axis = Vector2(0, -1)
+		mirror_vertex = Vector2(-1,1)
+	elif angle < 0 and angle >= -90:
+		mirror_vertex = Vector2(-1,-1)
+	elif angle < -90 and angle >= -180:
+		mirror_vertex = Vector2(1,-1)
+	else:
+		mirror_vertex = Vector2(1,1)
 
 
 func set_properties_in_inspector():
