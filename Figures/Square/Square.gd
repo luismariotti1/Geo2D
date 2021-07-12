@@ -11,10 +11,10 @@ func init(id):
 		"type": "list",
 		"infos":[]
 	}
-	for vex in vertex:
-		list_of_vertices_insp["infos"].append({"type": "double_atribute", "id": "vertice", "label": "vertices", 
-		"value": [vex.x, vex.y]})
-	info.append(list_of_vertices_insp)	
+	for i in range(vertex.size()):
+		list_of_vertices_insp["infos"].insert(i,{"type": "double_atribute", "id": "vertice", "label": "vertices", 
+		"value": [vertex[i].x+inital_pos.x, vertex[i].y+inital_pos.y]})
+	info.append(list_of_vertices_insp)
 	set_properties_in_inspector()
 	ready = true
 
