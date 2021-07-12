@@ -24,10 +24,14 @@ var new_pivot = Vector2(0, 0)
 var edge = 0
 var vertice = Vector2(1, 1)
 var ready = false
+var inital_pos : Vector2
 
 
 func set_edge(value):
 	edge = value
+
+func save_inital_position(clicked_position):
+	inital_pos = CP.mouse_position_to_cartesian(clicked_position)
 
 
 func _draw():
@@ -111,22 +115,29 @@ func _physics_process(_delta):
 	t.origin = CP.convert_cartesian_to_pos(translate)
 	update()
 
+func convert_vertex_to_distance():
+	var vertex_to_draw = []
+	for i in range(vertex.size()):
+		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
+	return vertex_to_draw
 
 func custom_draw_polygon(
 	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
 ):
-	for i in range(vertex.size()):
-		if i == vertex.size() - 1:
-			draw_line(vertex[i], vertex[0], color, line_width)
+	var vertex_mod = convert_vertex_to_distance()
+	for i in range(vertex_mod.size()):
+		if i == vertex_mod.size() - 1:
+			draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
 		else:
-			draw_line(vertex[i], vertex[i + 1], color, line_width)
-	for i in range(vertex.size()):
-		draw_circle(vertex[i], 4, Color(0, 0, 0, 1))
+			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
+	for i in range(vertex_mod.size()):
+		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
 
 
 func custom_draw_polygon_filled(
 	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
 ):
+	var vertex_mod = convert_vertex_to_distance()
 	draw_colored_polygon(vertex, color)
-	for i in range(vertex.size()):
-		draw_circle(vertex[i], 4, Color(0, 0, 0, 1))
+	for i in range(vertex_mod.size()):
+		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))

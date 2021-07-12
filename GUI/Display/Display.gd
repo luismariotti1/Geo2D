@@ -37,6 +37,7 @@ func is_in_display(Position):
 
 func create_object():
 	var new_object = figures[figures.size() - 1]
+	new_object.save_inital_position(clicked_position)
 	new_object.set_quadrant(rad2deg(clicked_position.angle_to_point(get_global_mouse_position())))
 	new_object.set_edge(
 		(
