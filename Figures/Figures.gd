@@ -48,25 +48,25 @@ func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
 		{"id": "line_width", "label": "line width", "value": line_width},
-		{"type": "double_atribute", "id": "vertice", "label": "vertices", "values": vertice},
-		{
-			"listLabel": "Translate",
-			"type": "list",
-			"infos":
-			[
-				{"id": "coord_x", "label": "X", "value": coord_x},
-				{"id": "coord_y", "label": "Y", "value": coord_y},
-			]
-		},
-		{
-			"listLabel": "Scales",
-			"type": "list",
-			"infos":
-			[
-				{"id": "scaleX", "label": "X", "value": scaleX},
-				{"id": "scaleY", "label": "Y", "value": scaleY},
-			]
-		},
+		{"type": "double_atribute", "id": "vertice", "label": "vertices", "value": vertice},
+		# {
+		# 	"listLabel": "Translate",
+		# 	"type": "list",
+		# 	"infos":
+		# 	[
+		# 		{"id": "coord_x", "label": "X", "value": coord_x},
+		# 		{"id": "coord_y", "label": "Y", "value": coord_y},
+		# 	]
+		# },
+		# {
+		# 	"listLabel": "Scales",
+		# 	"type": "list",
+		# 	"infos":
+		# 	[
+		# 		{"id": "scaleX", "label": "X", "value": scaleX},
+		# 		{"id": "scaleY", "label": "Y", "value": scaleY},
+		# 	]
+		# },
 	]
 
 

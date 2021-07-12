@@ -7,9 +7,9 @@ var _label: String
 var is_visible = false
 
 
-func init(label, infos):
-	get_node("ShowList").text = label
-	_infos = infos
+func init(data):
+	get_node("ShowList").text = data["listLabel"]
+	_infos = data["infos"]
 	instance_atributes()
 	set_visibility()
 

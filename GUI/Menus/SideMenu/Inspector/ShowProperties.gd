@@ -12,20 +12,18 @@ func _process(_delta):
 		rect_min_size.x = 210
 	else:
 		rect_min_size.x = 226
-
 	if Insp.reload_atributes:
 		for n in get_children():
 			remove_child(n)
 		for atribute in Insp.get_properties():
-			if atribute.has("type") and atribute["type"] == "list":
-				atributes.append(ListEdit.instance())
-				atributes[atributes.size() - 1].init(atribute["listLabel"], atribute["infos"])
-			elif atribute.has("type") and atribute["type"] == "double_atribute":
-				atributes.append(DoubleAtributEdit.instance())
-				atributes[atributes.size() - 1].init(atribute)
+			if atribute.has("type"):
+				if atribute["type"] == "list":
+					atributes.append(ListEdit.instance())
+				if atribute["type"] == "double_atribute":
+					atributes.append(DoubleAtributEdit.instance())
 			else:
 				atributes.append(AtributEdit.instance())
-				atributes[atributes.size() - 1].init(atribute)
+				atributes[atributes.size() - 1].initi()
 			add_child(atributes[atributes.size() - 1])
 	Insp.reload_atributes = false
 

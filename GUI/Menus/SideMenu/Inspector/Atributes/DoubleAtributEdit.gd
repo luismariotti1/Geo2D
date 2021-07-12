@@ -7,6 +7,7 @@ var _value2: float
 
 
 func init(data):
+    print("teu cu")
 	_id = infos["id"]
 	get_node("AtributeName").text = String(data["label"])
 	get_node("Value1").text = "test1"
