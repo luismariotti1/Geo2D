@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 var AtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.tscn")
+var DoubleAtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/DoubleAtributEdit.tscn")
 var _list = [] setget , get_list
 var _infos = []
 var _label: String
@@ -16,8 +17,12 @@ func init(data):
 
 func instance_atributes():
 	for i in range(_infos.size()):
-		_list.append(AtributEdit.instance())
-		_list[_list.size() - 1].init(_infos[i])
+		if _infos[i].has("type") and _infos[i]["type"] == "double_atribute":
+			_list.append(DoubleAtributEdit.instance())
+			_list[_list.size() - 1].init(_infos[i])
+		else:
+			_list.append(AtributEdit.instance())
+			_list[_list.size() - 1].init(_infos[i])
 		add_child(_list[_list.size() - 1])
 
 

@@ -23,13 +23,7 @@ var set_inspector = false
 var new_pivot = Vector2(0, 0)
 var edge = 0
 var vertice = Vector2(1, 1)
-
-
-func init(id):
-	_id = id
-	create_dic_to_properties()
-	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
-	set_properties_in_inspector()
+var ready = false
 
 
 func set_edge(value):
@@ -48,7 +42,6 @@ func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
 		{"id": "line_width", "label": "line width", "value": line_width},
-		{"type": "double_atribute", "id": "vertice", "label": "vertices", "value": [vertice.x, vertice.y]},
 		{
 			"listLabel": "Translate",
 			"type": "list",
