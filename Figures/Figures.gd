@@ -48,7 +48,7 @@ func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
 		{"id": "line_width", "label": "line width", "value": line_width},
-		#		{"type": "double_atribute", "id": "vertice", "label": "vertices", "values": vertice},
+		{"type": "double_atribute", "id": "vertice", "label": "vertices", "values": vertice},
 		{
 			"listLabel": "Translate",
 			"type": "list",

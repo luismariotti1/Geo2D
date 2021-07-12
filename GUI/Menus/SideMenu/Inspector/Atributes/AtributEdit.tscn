@@ -3,7 +3,7 @@
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.gd" type="Script" id=1]
 
 [node name="AtributEdit" type="HBoxContainer"]
-margin_right = 226.0
+margin_right = 162.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 0, 31 )
 script = ExtResource( 1 )
@@ -12,9 +12,9 @@ __meta__ = {
 }
 
 [node name="AtributeName" type="Label" parent="."]
-margin_right = 100.0
+margin_right = 86.0
 margin_bottom = 31.0
-rect_min_size = Vector2( 100, 0 )
+rect_min_size = Vector2( 86, 0 )
 text = "
 "
 valign = 1
@@ -23,8 +23,7 @@ __meta__ = {
 }
 
 [node name="Value" type="LineEdit" parent="."]
-margin_left = 104.0
-margin_right = 226.0
+margin_right = 58.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 caret_blink = true
