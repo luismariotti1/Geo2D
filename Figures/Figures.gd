@@ -48,10 +48,7 @@ func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
 		{"id": "line_width", "label": "line width", "value": line_width},
-		{"id": "line_width", "label": "line width", "value": line_width},
-		{"id": "line_width", "label": "line width", "value": line_width},
-		{"id": "line_width", "label": "line width", "value": line_width},
-#		{"type": "double_atribute", "id": "vertice", "label": "vertices", "values": vertice},
+		#		{"type": "double_atribute", "id": "vertice", "label": "vertices", "values": vertice},
 		{
 			"listLabel": "Translate",
 			"type": "list",
@@ -105,8 +102,8 @@ func update_values():
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
 	line_width = Insp.get_properties_by_id("line_width")
-	coord_x = float(Insp.get_properties_by_id("coord_x"))
-	coord_y = float(Insp.get_properties_by_id("coord_y"))
+#	coord_x = float(Insp.get_properties_by_id("coord_x"))
+#	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
 
 
@@ -115,7 +112,7 @@ func _physics_process(_delta):
 		update_values()
 	t = Transform2D(x_axis, y_axis, origin)
 	t = t.rotated(deg2rad(float(rotation)))
-	t = t.scaled(Vector2(scaleX, scaleY))
+#	t = t.scaled(Vector2(scaleX, scaleY))
 #	Cisalhamento
 #	t.y = Vector2(1,1)
 	t.origin = CP.convert_cartesian_to_pos(translate)

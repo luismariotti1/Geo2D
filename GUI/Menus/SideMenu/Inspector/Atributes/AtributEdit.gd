@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Control
 
 var _id: String
 var _type: String

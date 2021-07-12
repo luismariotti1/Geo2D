@@ -8,6 +8,11 @@ var ListEdit = load("res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn")
 
 
 func _process(_delta):
+	if get_parent().get_v_scrollbar().visible:
+		rect_min_size.x = 210
+	else:
+		rect_min_size.x = 226
+
 	if Insp.reload_atributes:
 		for n in get_children():
 			remove_child(n)
