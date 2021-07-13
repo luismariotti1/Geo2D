@@ -1,8 +1,8 @@
 extends Control
 
 var _id: String
-var _type
 var _value
+var _type = "atribute"
 
 
 func init(data):

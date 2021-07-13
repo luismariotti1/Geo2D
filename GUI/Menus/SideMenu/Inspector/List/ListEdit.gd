@@ -3,7 +3,7 @@ extends VBoxContainer
 var AtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.tscn")
 var DoubleAtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/DoubleAtributEdit.tscn")
 var _list = [] setget , get_list
-var _infos = []
+var _infos = [] setget , get_infos
 var _label: String
 var is_visible = false
 
@@ -42,3 +42,6 @@ func _on_Button_toggled(button_pressed):
 
 func get_list():
 	return _list
+
+func get_infos():
+	return _infos	

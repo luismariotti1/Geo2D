@@ -91,6 +91,10 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	print(Insp.get_properties_by_id("v0"))
+	print(Insp.get_properties_by_id("v1"))
+	print(Insp.get_properties_by_id("v2"))
+	print(Insp.get_properties_by_id("v3"))
 	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
