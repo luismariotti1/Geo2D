@@ -24,12 +24,13 @@ var new_pivot = Vector2(0, 0)
 var edge = 0
 var vertice = Vector2(1, 1)
 var ready = false
-var inital_pos : Vector2
-var mirror_vertex : Vector2
+var inital_pos: Vector2
+var mirror_vertex: Vector2
 
 
 func set_edge(value):
 	edge = value
+
 
 func save_inital_position(clicked_position):
 	inital_pos = CP.mouse_position_to_cartesian(clicked_position)
@@ -76,13 +77,13 @@ func set_coord(value):
 
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
-		mirror_vertex = Vector2(-1,1)
+		mirror_vertex = Vector2(-1, 1)
 	elif angle < 0 and angle >= -90:
-		mirror_vertex = Vector2(-1,-1)
+		mirror_vertex = Vector2(-1, -1)
 	elif angle < -90 and angle >= -180:
-		mirror_vertex = Vector2(1,-1)
+		mirror_vertex = Vector2(1, -1)
 	else:
-		mirror_vertex = Vector2(1,1)
+		mirror_vertex = Vector2(1, 1)
 
 
 func set_properties_in_inspector():
@@ -91,10 +92,6 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
-	print(Insp.get_properties_by_id("v0"))
-	print(Insp.get_properties_by_id("v1"))
-	print(Insp.get_properties_by_id("v2"))
-	print(Insp.get_properties_by_id("v3"))
 	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
@@ -116,11 +113,13 @@ func _physics_process(_delta):
 	t.origin = CP.convert_cartesian_to_pos(translate)
 	update()
 
+
 func convert_vertex_to_distance():
 	var vertex_to_draw = []
 	for i in range(vertex.size()):
 		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
 	return vertex_to_draw
+
 
 func custom_draw_polygon(
 	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
