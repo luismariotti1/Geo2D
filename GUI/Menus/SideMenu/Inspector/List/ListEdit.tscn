@@ -2,6 +2,8 @@
 
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/List/ListEdit.gd" type="Script" id=1]
 
+
+
 [node name="ListEdit" type="VBoxContainer"]
 margin_right = 283.0
 margin_bottom = 14.0

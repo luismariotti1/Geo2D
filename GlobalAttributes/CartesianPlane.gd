@@ -9,6 +9,7 @@ var center_plan = Vector2.ZERO
 func get_cartesian_distance():
 	return cartesian_distance
 
+
 func set_center_plane(center):
 	center_plan = center
 

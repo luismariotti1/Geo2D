@@ -2,7 +2,7 @@ extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
-var _id : int
+var _id: int
 var line_width = 2
 var color = ColorN("red")
 var t: Transform2D
@@ -20,6 +20,27 @@ var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
 var is_select = false
 var set_inspector = false
+var new_pivot = Vector2(0, 0)
+var edge = 0
+var vertice = Vector2(1, 1)
+var ready = false
+var inital_pos : Vector2
+var mirror_vertex : Vector2
+
+
+func set_edge(value):
+	edge = value
+
+func save_inital_position(clicked_position):
+	inital_pos = CP.mouse_position_to_cartesian(clicked_position)
+
+
+func _draw():
+	draw_set_transform_matrix(t)
+	if ! filled:
+		custom_draw_polygon(vertex, color, float(line_width))
+	else:
+		custom_draw_polygon_filled(vertex, color)
 
 
 func create_dic_to_properties():
@@ -46,24 +67,22 @@ func create_dic_to_properties():
 		},
 	]
 
+
 func set_coord(value):
 	coord_x = value.x
 	coord_y = value.y
-	translate = Vector2(coord_x,coord_y)
+	translate = Vector2(coord_x, coord_y)
+
 
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
-		x_axis = Vector2(-1, 0)
-		y_axis = Vector2(0, 1)
-	if angle > 90:
-		x_axis = Vector2(1, 0)
-		y_axis = Vector2(0, 1)
-	if angle < 0 and angle >= -90:
-		x_axis = Vector2(-1, 0)
-		y_axis = Vector2(0, -1)
-	if angle < -90 and angle >= -180:
-		x_axis = Vector2(1, 0)
-		y_axis = Vector2(0, -1)
+		mirror_vertex = Vector2(-1,1)
+	elif angle < 0 and angle >= -90:
+		mirror_vertex = Vector2(-1,-1)
+	elif angle < -90 and angle >= -180:
+		mirror_vertex = Vector2(1,-1)
+	else:
+		mirror_vertex = Vector2(1,1)
 
 
 func set_properties_in_inspector():
@@ -72,6 +91,11 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	print(Insp.get_properties_by_id("v0"))
+	print(Insp.get_properties_by_id("v1"))
+	print(Insp.get_properties_by_id("v2"))
+	print(Insp.get_properties_by_id("v3"))
+	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
@@ -92,22 +116,29 @@ func _physics_process(_delta):
 	t.origin = CP.convert_cartesian_to_pos(translate)
 	update()
 
+func convert_vertex_to_distance():
+	var vertex_to_draw = []
+	for i in range(vertex.size()):
+		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
+	return vertex_to_draw
 
 func custom_draw_polygon(
 	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
 ):
-	for i in range(vertex.size()):
-		if i == vertex.size() - 1:
-			draw_line(vertex[i], vertex[0], color, line_width)
+	var vertex_mod = convert_vertex_to_distance()
+	for i in range(vertex_mod.size()):
+		if i == vertex_mod.size() - 1:
+			draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
 		else:
-			draw_line(vertex[i], vertex[i + 1], color, line_width)
-	for i in range(vertex.size()):
-		draw_circle(vertex[i], 4, Color(0, 0, 0, 1))
+			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
+	for i in range(vertex_mod.size()):
+		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
 
 
 func custom_draw_polygon_filled(
 	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
 ):
+	var vertex_mod = convert_vertex_to_distance()
 	draw_colored_polygon(vertex, color)
-	for i in range(vertex.size()):
-		draw_circle(vertex[i], 4, Color(0, 0, 0, 1))
+	for i in range(vertex_mod.size()):
+		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))

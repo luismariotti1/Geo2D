@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/DoubleAtributEdit.gd" type="Script" id=1]
+
+[node name="DoubleAtributEdit" type="HBoxContainer"]
+margin_right = 224.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="."]
+margin_right = 86.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 86, 0 )
+text = "
+"
+valign = 1
+
+[node name="Value1" type="LineEdit" parent="."]
+margin_left = 90.0
+margin_right = 155.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 58, 0 )
+size_flags_horizontal = 3
+
+[node name="Value2" type="LineEdit" parent="."]
+margin_left = 159.0
+margin_right = 224.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
