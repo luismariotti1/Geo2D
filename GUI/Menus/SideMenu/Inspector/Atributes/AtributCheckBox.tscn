@@ -13,8 +13,8 @@ __meta__ = {
 
 [node name="AtributeName" type="Label" parent="."]
 margin_top = 8.0
-margin_right = 86.0
+margin_right = 87.0
 margin_bottom = 22.0
-rect_min_size = Vector2( 86, 0 )
+rect_min_size = Vector2( 87, 0 )
 text = "Flip"
 valign = 2

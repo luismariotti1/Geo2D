@@ -34,22 +34,3 @@ func _process(_delta):
 				init_atribute(AtributEdit.instance(), atribute)
 			add_child(atributes[atributes.size() - 1]["scene"])
 	Insp.reload_atributes = false
-
-	for i in range(atributes.size()):
-		match atributes[i]["type"]:
-			"double_atribute":
-				Insp.set_properties_by_id(
-					atributes[i]["scene"].get_id(),
-					[
-						atributes[i]["scene"].get_node("Value1").text,
-						atributes[i]["scene"].get_node("Value2").text
-					]
-				)
-			"list":
-				for atr in atributes[i]["scene"].get_list():
-					if atr._type == "double_atribute":
-						Insp.set_properties_by_id(
-							atr.get_id(), [atr.get_node("Value1").text, atr.get_node("Value2").text]
-						)
-					if atr._type == "atribute":
-						Insp.set_properties_by_id(atr.get_id(), atr.get_node("Value").text)
