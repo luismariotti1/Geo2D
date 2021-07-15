@@ -136,6 +136,8 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	flip_x = bool(Insp.get_properties_by_id("flip")["X"])
+	flip_y = bool(Insp.get_properties_by_id("flip")["Y"])
 	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
@@ -145,6 +147,10 @@ func update_values():
 	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
 
+func flip():
+	x_axis = Vector2(-1,0) if flip_x else Vector2(1,0) 
+	y_axis = Vector2(0,-1) if flip_y else Vector2(0,1) 
+
 
 func _physics_process(_delta):
 	if is_select:
@@ -152,6 +158,7 @@ func _physics_process(_delta):
 		update_values()
 	else:
 		selection_button.pressed = false
+	flip()
 	t = Transform2D(x_axis, y_axis, origin)
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))
