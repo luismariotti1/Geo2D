@@ -30,6 +30,8 @@ CartesianPlane="*res://GlobalAttributes/CartesianPlane.gd"
 SetInspector="*res://GlobalAttributes/SetInspector.gd"
 MenusResolutions="*res://GlobalAttributes/MenusResolutions.gd"
 PanelInfo="*res://GlobalAttributes/PanelInfo.gd"
+Window="*res://Configs/Window/Window.gd"
+SelectionMenu="*res://GlobalAttributes/SelectionMenu.gd"
 
 [display]
 
