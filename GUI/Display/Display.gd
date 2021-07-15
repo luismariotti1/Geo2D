@@ -60,12 +60,13 @@ func _input(event):
 			clicked_position = event.position
 			if is_in_display(clicked_position):
 				var new_figure
-				if PN.get_button_selected() == "Square":
-					new_figure = load("res://Figures/Square/Square.tscn").instance()
-				elif PN.get_button_selected() == "Triangle":
-					new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
-				elif PN.get_button_selected() == "Hexagon":
-					new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
+				match PN.get_button_selected():
+					"Square":
+						new_figure = load("res://Figures/Square/Square.tscn").instance()
+					"Triangle":
+						new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
+					"Hexagon":
+						new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
 				add_child(new_figure)
 				figures.append(new_figure)
 				figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
