@@ -80,9 +80,9 @@ func _input(event):
 					figures[figures.size() - 1].init(figures.size() - 1)
 					for i in range(figures.size()):
 						if figures[i]._id == (figures.size() - 1):
-							figures[i].is_select = true
+							figures[i].set_is_selected(true)
 						else:
-							figures[i].is_select = false
+							figures[i].set_is_selected(false)
 					if is_in_display(clicked_position):
 						SM.new_object = true
 						Insp.reload_atributes = true

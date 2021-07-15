@@ -2,7 +2,12 @@ extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
-var _id: int
+var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
+var _id: int setget , get_id
+var _figure_name = "" setget set_figure_name, get_figure_name
+var is_select = false setget set_is_selected, get_is_selected
+var edge = 0 setget set_edge
+var selection_button: Button setget , get_selection_button
 var line_width = 2
 var color = ColorN("red")
 var t: Transform2D
@@ -18,22 +23,48 @@ var vertex = PoolVector2Array()
 var x_axis = Vector2(1, 0)
 var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
-var is_select = false
 var set_inspector = false
 var new_pivot = Vector2(0, 0)
-var edge = 0
 var vertice = Vector2(1, 1)
 var ready = false
 var inital_pos: Vector2
 var mirror_vertex: Vector2
 
 
+func set_is_selected(boolean):
+	is_select = boolean
+
+
+func get_is_selected():
+	return is_select
+
+
+func get_id():
+	return _id
+
+
 func set_edge(value):
 	edge = value
 
 
+func set_figure_name(new_name):
+	_figure_name = new_name
+
+
+func get_figure_name():
+	return _figure_name
+
+
+func get_selection_button():
+	return selection_button
+
+
 func save_inital_position(clicked_position):
 	inital_pos = CP.mouse_position_to_cartesian(clicked_position)
+
+
+func _ready():
+	selection_button = button.instance()
 
 
 func _draw():
@@ -104,7 +135,10 @@ func update_values():
 
 func _physics_process(_delta):
 	if is_select:
+		selection_button.pressed = true
 		update_values()
+	else:
+		selection_button.pressed = false
 	t = Transform2D(x_axis, y_axis, origin)
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))

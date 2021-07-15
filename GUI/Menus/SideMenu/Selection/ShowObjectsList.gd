@@ -1,12 +1,14 @@
 extends VBoxContainer
 
-var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
-var buttons = []
+var figures = []
 onready var SM = get_node("/root/SelectionMenu")
+
+
+func _ready():
+	figures = SM.get_figures()
+
 
 func _physics_process(_delta):
 	if SM.new_object:
-		var but = button.instance()
-		but.init("Square")
-		add_child(but)
+		add_child(figures[figures.size()-1].get_selection_button())
 		SM.new_object = false
