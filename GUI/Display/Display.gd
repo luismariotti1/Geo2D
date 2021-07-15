@@ -72,17 +72,13 @@ func _input(event):
 
 		if event.is_action_released("move_vertex"):
 			is_clicking = false
-			if figures.size() > 0:
-				if figures[figures.size() - 1].edge <= 0.2:
-					figures[figures.size() - 1].queue_free()
-					figures.remove(figures.size() - 1)
-				else:
-					figures[figures.size() - 1].init(figures.size() - 1)
-					for i in range(figures.size()):
-						if figures[i]._id == (figures.size() - 1):
-							figures[i].set_is_selected(true)
-						else:
-							figures[i].set_is_selected(false)
-					if is_in_display(clicked_position):
+			if is_in_display(clicked_position):
+				if figures.size() > 0:
+					if figures[figures.size() - 1].edge <= 0.2:
+						figures[figures.size() - 1].queue_free()
+						figures.remove(figures.size() - 1)
+					else:
+						figures[figures.size() - 1].init(figures.size() - 1)
+						figures[figures.size() - 1].select_figure()
 						SM.new_object = true
 						Insp.reload_atributes = true

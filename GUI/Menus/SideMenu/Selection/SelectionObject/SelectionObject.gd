@@ -1,10 +1,12 @@
 extends Button
 
 var _text: String
+var _figure
 
 
-func init(FigureName):
+func init(FigureName, figure):
 	text = FigureName
+	_figure = figure
 
 
 func _on_SelectionObject_toggled(button_pressed):
@@ -13,4 +15,5 @@ func _on_SelectionObject_toggled(button_pressed):
 
 
 func _on_Button_toggled(button_pressed):
-	pass  # Replace with function body.
+	if button_pressed:
+		_figure.select_figure()

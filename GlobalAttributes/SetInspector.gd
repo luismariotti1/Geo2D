@@ -8,6 +8,10 @@ func init_properties(info):
 	_properties = info
 
 
+func set_properties(info):
+	_properties = info
+
+
 func get_properties():
 	return _properties
 
@@ -34,4 +38,3 @@ func get_properties_by_id(id):
 					return _properties[i]["infos"][j]["value"]
 		elif _properties[i]["id"] == id:
 			return _properties[i]["value"]
-

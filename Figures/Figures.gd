@@ -2,6 +2,8 @@ extends Control
 
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
+onready var SM = get_node("/root/SelectionMenu")
+
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
@@ -31,16 +33,23 @@ var inital_pos: Vector2
 var mirror_vertex: Vector2
 
 
+func select_figure():	
+	SM.set_selected()
+	Insp.set_properties(info)
+	is_select = true
+	Insp.reload_atributes = true
+
+
+func get_id():
+	return _id
+
+
 func set_is_selected(boolean):
 	is_select = boolean
 
 
 func get_is_selected():
 	return is_select
-
-
-func get_id():
-	return _id
 
 
 func set_edge(value):
