@@ -11,7 +11,7 @@ var is_select = false setget set_is_selected, get_is_selected
 var edge = 0 setget set_edge
 var selection_button: Button setget , get_selection_button
 var line_width = 2
-var color = ColorN("red")
+var color = ColorN("blue")
 var t: Transform2D
 var rotation = 0
 var scaleX = 1
