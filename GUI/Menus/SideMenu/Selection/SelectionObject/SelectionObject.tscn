@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.gd" type="Script" id=1]
+[ext_resource path="res://assets/StyleBox/Buttons/SelectionButtonColor.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/StyleBox/Buttons/CubeIcon.png" type="Texture" id=3]
+[ext_resource path="res://assets/StyleBox/Buttons/SelectionButtonHover.tres" type="StyleBox" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="Button" type="Button"]
+margin_right = 296.0
+margin_bottom = 14.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_constants/hseparation = 4
+toggle_mode = true
+icon = ExtResource( 3 )
+align = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="." to="." method="_on_Button_toggled"]

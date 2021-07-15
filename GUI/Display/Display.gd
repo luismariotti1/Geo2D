@@ -4,6 +4,7 @@ onready var Res = get_node("/root/MenusResolutions")
 onready var CP = get_node("/root/CartesianPlane")
 onready var PN = get_node("/root/PanelInfo")
 onready var Insp = get_node("/root/SetInspector")
+onready var SM = get_node("/root/SelectionMenu")
 
 var clicked_position = null
 var is_clicking = false
@@ -12,6 +13,8 @@ var selection_tool = load("res://GUI/Display/Tools/SelectionTool/SelectionTool.t
 var selection_area
 var figures = []
 
+func _ready():
+	SM.set_figures(figures)
 
 func _process(_delta):
 	update()
@@ -69,16 +72,13 @@ func _input(event):
 
 		if event.is_action_released("move_vertex"):
 			is_clicking = false
-			if figures.size() > 0:
-				if figures[figures.size() - 1].edge <= 0.2:
-					figures[figures.size() - 1].queue_free()
-					figures.remove(figures.size() - 1)
-				else:
-					figures[figures.size() - 1].init(figures.size() - 1)
-					for i in range(figures.size()):
-						if figures[i]._id == (figures.size() - 1):
-							figures[i].is_select = true
-						else:
-							figures[i].is_select = false
-					if is_in_display(clicked_position):
+			if is_in_display(clicked_position):
+				if figures.size() > 0:
+					if figures[figures.size() - 1].edge <= 0.2:
+						figures[figures.size() - 1].queue_free()
+						figures.remove(figures.size() - 1)
+					else:
+						figures[figures.size() - 1].init(figures.size() - 1)
+						figures[figures.size() - 1].select_figure()
+						SM.new_object = true
 						Insp.reload_atributes = true
