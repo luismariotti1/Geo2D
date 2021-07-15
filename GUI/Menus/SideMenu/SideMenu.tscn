@@ -4,11 +4,22 @@
 [ext_resource path="res://GUI/Menus/SideMenu/Inspector/Inspector.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/Menus/SideMenu/SideMenu.gd" type="Script" id=3]
 [ext_resource path="res://GUI/Menus/SideMenu/Selection/Selection.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GUI/Menus/SideMenu/Selection/Selection.gd" type="Script" id=5]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.stex"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+onready var Res = get_node(\"/root/MenusResolutions\")
+
+func _process(_delta):
+	set_margin(MARGIN_TOP, Res.get_selection_res().position.y)
+	set_margin(MARGIN_LEFT, Res.get_selection_res().position.x)
+	set_margin(MARGIN_RIGHT, Res.get_selection_res().size.x)
+	set_margin(MARGIN_BOTTOM, Res.get_selection_res().size.y)
+"
 
 [node name="SideMenu" type="Control"]
 margin_left = 768.0
@@ -57,4 +68,4 @@ margin_bottom = 305.0
 rect_min_size = Vector2( 0, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource( 5 )
+script = SubResource( 2 )

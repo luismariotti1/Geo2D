@@ -4,6 +4,7 @@ onready var Res = get_node("/root/MenusResolutions")
 onready var CP = get_node("/root/CartesianPlane")
 onready var PN = get_node("/root/PanelInfo")
 onready var Insp = get_node("/root/SetInspector")
+onready var SM = get_node("/root/SelectionMenu")
 
 var clicked_position = null
 var is_clicking = false
@@ -12,6 +13,8 @@ var selection_tool = load("res://GUI/Display/Tools/SelectionTool/SelectionTool.t
 var selection_area
 var figures = []
 
+func _ready():
+	SM.set_figures(figures)
 
 func _process(_delta):
 	update()
@@ -81,4 +84,5 @@ func _input(event):
 						else:
 							figures[i].is_select = false
 					if is_in_display(clicked_position):
+						SM.new_object = true
 						Insp.reload_atributes = true
