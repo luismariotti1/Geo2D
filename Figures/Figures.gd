@@ -31,6 +31,7 @@ var vertice = Vector2(1, 1)
 var ready = false
 var inital_pos: Vector2
 var mirror_vertex: Vector2
+var selected_color = ColorN("green")
 
 
 func select_figure():	
@@ -174,7 +175,10 @@ func custom_draw_polygon(
 		else:
 			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
 	for i in range(vertex_mod.size()):
-		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+		if is_select:
+			draw_circle(vertex_mod[i], 4, selected_color)
+		else:
+			draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
 
 
 func custom_draw_polygon_filled(
