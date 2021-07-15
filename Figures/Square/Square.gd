@@ -18,7 +18,7 @@ func init(id):
 	# 			"id": "v" + String(i),
 	# 			"label": "vertices",
 	# 			"value": [vertex[i].x + inital_pos.x, vertex[i].y + inital_pos.y]
-	# 		}
+	# 		}	
 	# 	)
 	# info.append(list_of_vertices_insp)
 	set_properties_in_inspector()

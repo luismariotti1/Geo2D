@@ -32,9 +32,11 @@ var ready = false
 var inital_pos: Vector2
 var mirror_vertex: Vector2
 var selected_color = ColorN("green")
+var flip_x = false
+var flip_y = false
 
 
-func select_figure():	
+func select_figure():
 	SM.set_selected()
 	Insp.set_properties(info)
 	is_select = true
@@ -88,6 +90,7 @@ func _draw():
 func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
+		{"type": "checkbox", "id": "flip", "label": "Flip", "value": {"X":flip_x, "Y":flip_y}},
 		{"id": "line_width", "label": "line width", "value": line_width},
 		{
 			"listLabel": "Translate",
@@ -133,6 +136,7 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	print(Insp.get_properties_by_id("flip"))
 	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")

@@ -18,38 +18,3 @@ margin_bottom = 22.0
 rect_min_size = Vector2( 86, 0 )
 text = "Flip"
 valign = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 90.0
-margin_right = 126.0
-margin_bottom = 31.0
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 22.0
-text = "X"
-
-[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
-margin_left = 12.0
-margin_right = 36.0
-margin_bottom = 31.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_left = 130.0
-margin_right = 165.0
-margin_bottom = 31.0
-
-[node name="Label" type="Label" parent="HBoxContainer2"]
-margin_top = 8.0
-margin_right = 7.0
-margin_bottom = 22.0
-text = "Y"
-
-[node name="CheckBox2" type="CheckBox" parent="HBoxContainer2"]
-margin_left = 11.0
-margin_right = 35.0
-margin_bottom = 31.0
-__meta__ = {
-"_edit_use_anchors_": false
-}

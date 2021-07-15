@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/CheckBox.gd" type="Script" id=1]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_left = 90.0
+margin_right = 126.0
+margin_bottom = 31.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="."]
+margin_top = 8.0
+margin_bottom = 22.0
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 4.0
+margin_right = 28.0
+margin_bottom = 31.0
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]
