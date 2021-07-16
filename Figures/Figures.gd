@@ -83,10 +83,14 @@ func _ready():
 func _draw():
 	draw_set_transform_matrix(t)
 	if ! filled:
-		custom_draw_polygon(vertex, color, float(line_width))
+		custom_draw_polygon()
 	else:
-		custom_draw_polygon_filled(vertex, color)
+		custom_draw_polygon_filled()
 
+
+func delete():
+	selection_button._remove = true
+	SM.remove_object = true
 
 func create_dic_to_properties():
 	info = [
@@ -143,7 +147,7 @@ func update_values():
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
-	line_width = Insp.get_properties_by_id("line_width")
+	line_width = float(Insp.get_properties_by_id("line_width"))
 	coord_x = float(Insp.get_properties_by_id("coord_x"))
 	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
@@ -176,9 +180,7 @@ func convert_vertex_to_distance():
 	return vertex_to_draw
 
 
-func custom_draw_polygon(
-	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
-):
+func custom_draw_polygon():
 	var vertex_mod = convert_vertex_to_distance()
 	for i in range(vertex_mod.size()):
 		if i == vertex_mod.size() - 1:
@@ -192,14 +194,8 @@ func custom_draw_polygon(
 			draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
 
 
-func custom_draw_polygon_filled(
-	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
-):
+func custom_draw_polygon_filled():
 	var vertex_mod = convert_vertex_to_distance()
 	draw_colored_polygon(vertex, color)
 	for i in range(vertex_mod.size()):
 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
-
-# func remove_objetc():
-# 	if selection_button:
-# 		print(teste)

@@ -3,7 +3,7 @@ extends Node
 var figures = [] setget set_figures, get_figures
 var new_object = false
 var position_list 
-var remove_objetc = false
+var remove_object = false
 
 func set_figures(Figurelist):
 	figures = Figurelist
