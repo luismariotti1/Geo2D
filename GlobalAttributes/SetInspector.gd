@@ -28,3 +28,6 @@ func get_properties_by_id(id):
 					return _properties[i]["infos"][j]["value"]
 		elif _properties[i]["id"] == id:
 			return _properties[i]["value"]
+
+func clear():
+	_properties = []

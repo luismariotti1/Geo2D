@@ -92,6 +92,7 @@ func delete():
 	selection_button._remove = true
 	SM.remove_object = true
 
+
 func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
@@ -151,6 +152,7 @@ func update_values():
 	coord_x = float(Insp.get_properties_by_id("coord_x"))
 	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
+
 
 func flip():
 	x_axis = Vector2(-1,0) if flip_x else Vector2(1,0) 
