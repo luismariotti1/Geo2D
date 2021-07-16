@@ -12,17 +12,20 @@ var is_selecting = false
 var selection_tool = load("res://GUI/Display/Tools/SelectionTool/SelectionTool.tscn")
 var selection_area
 var figures = []
+var creating = false
+
 
 func _ready():
 	SM.set_figures(figures)
+
 
 func _process(_delta):
 	update()
 	set_margin(MARGIN_TOP, Res.get_menu_bar_res().position.y)
 	set_margin(MARGIN_RIGHT, Res.get_display_res().size.x)
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
-	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
-		create_object()
+	# if is_clicking and is_in_display(clicked_position) and clicked_position != null:
+		# create_object()
 
 
 func is_in_display(Position):
@@ -40,17 +43,24 @@ func is_in_display(Position):
 
 func create_object():
 	var new_object = figures[figures.size() - 1]
-	new_object.save_inital_position(clicked_position)
-	new_object.set_quadrant(rad2deg(clicked_position.angle_to_point(get_global_mouse_position())))
-	new_object.set_edge(
-		(
-			(
-				clicked_position.distance_to(get_global_mouse_position())
-				/ CP.get_cartesian_distance()
-			)
-			* 0.75
+	if new_object.get_type() == "Regular":
+		new_object.save_inital_position(clicked_position)
+		new_object.set_quadrant(
+			rad2deg(clicked_position.angle_to_point(get_global_mouse_position()))
 		)
-	)
+		new_object.set_edge(
+			(
+				(
+					clicked_position.distance_to(get_global_mouse_position())
+					/ CP.get_cartesian_distance()
+				)
+				* 0.75
+			)
+		)
+	# elif new_object.get_type() == "Irregular":
+		# if creating:
+		# 	new_object.create_next_vertex(clicked_position)
+		# pass
 
 
 func _input(event):
@@ -67,14 +77,24 @@ func _input(event):
 						new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
 					"Hexagon":
 						new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
-				add_child(new_figure)
-				figures.append(new_figure)
-				figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
+					"Vertex":
+						if creating == false:
+							new_figure = load("res://Figures/Irregular.tscn").instance()
+							add_child(new_figure)
+							figures.append(new_figure)
+							creating = true
+						if creating:
+							figures[figures.size() - 1].create_next_vertex(CP.mouse_position_to_cartesian(clicked_position))
+				# add_child(new_figure)
+				# figures.append(new_figure)
+				# figures[figures.size() - 1].start_coord(
+				# 	CP.mouse_position_to_cartesian(clicked_position)
+				# )
 
 		if event.is_action_released("move_vertex"):
 			is_clicking = false
 			if is_in_display(clicked_position):
-				if figures.size() > 0:
+				if figures.size() > 0 and figures[figures.size() - 1].get_type() == "Regular":
 					if figures[figures.size() - 1].edge <= 0.2:
 						figures[figures.size() - 1].queue_free()
 						figures.remove(figures.size() - 1)
@@ -83,3 +103,6 @@ func _input(event):
 						figures[figures.size() - 1].select_figure()
 						SM.new_object = true
 						Insp.reload_atributes = true
+				else:
+					pass
+			

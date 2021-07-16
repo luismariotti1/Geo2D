@@ -1,4 +1,4 @@
-extends "res://Figures/Figures.gd"
+extends "res://Figures/Regular.gd"
 
 # new_pivot = Vector2(float(l)/2, float(l)/2)
 
@@ -22,7 +22,6 @@ func init(id):
 	# 	)
 	# info.append(list_of_vertices_insp)
 	set_properties_in_inspector()
-	ready = true
 
 
 func _physics_process(_delta):
