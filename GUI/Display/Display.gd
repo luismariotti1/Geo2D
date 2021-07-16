@@ -93,6 +93,7 @@ func _input(event):
 	
 	if event.is_action_pressed("delete_figure") and figures.size()>0:
 		var position_list = SM.get_position()
+		print(position_list)
 		ids_avaiable.append(figures[position_list].get_id())
 		figures[position_list].delete()
 		figures[position_list].queue_free()
