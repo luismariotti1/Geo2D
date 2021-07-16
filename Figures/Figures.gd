@@ -7,11 +7,11 @@ onready var SM = get_node("/root/SelectionMenu")
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
-var is_select = false setget set_is_selected, get_is_selected
+var is_select = false setget set_is_selected, get_is_selected 
 var edge = 0 setget set_edge
 var selection_button: Button setget , get_selection_button
 var line_width = 2
-var color = ColorN("red")
+var color = ColorN("blue")
 var t: Transform2D
 var rotation = 0
 var scaleX = 1
@@ -32,12 +32,15 @@ var ready = false
 var inital_pos: Vector2
 var mirror_vertex: Vector2
 var selected_color = ColorN("green")
+var flip_x = false
+var flip_y = false
 
 
-func select_figure():	
+func select_figure():
 	SM.set_selected()
 	Insp.set_properties(info)
 	is_select = true
+	SM.set_position()
 	Insp.reload_atributes = true
 
 
@@ -80,14 +83,20 @@ func _ready():
 func _draw():
 	draw_set_transform_matrix(t)
 	if ! filled:
-		custom_draw_polygon(vertex, color, float(line_width))
+		custom_draw_polygon()
 	else:
-		custom_draw_polygon_filled(vertex, color)
+		custom_draw_polygon_filled()
+
+
+func delete():
+	selection_button._remove = true
+	SM.remove_object = true
 
 
 func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
+		{"type": "checkbox", "id": "flip", "label": "Flip", "value": {"X":flip_x, "Y":flip_y}},
 		{"id": "line_width", "label": "line width", "value": line_width},
 		{
 			"listLabel": "Translate",
@@ -133,14 +142,21 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	flip_x = bool(Insp.get_properties_by_id("flip")["X"])
+	flip_y = bool(Insp.get_properties_by_id("flip")["Y"])
 	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
-	line_width = Insp.get_properties_by_id("line_width")
+	line_width = float(Insp.get_properties_by_id("line_width"))
 	coord_x = float(Insp.get_properties_by_id("coord_x"))
 	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
+
+
+func flip():
+	x_axis = Vector2(-1,0) if flip_x else Vector2(1,0) 
+	y_axis = Vector2(0,-1) if flip_y else Vector2(0,1) 
 
 
 func _physics_process(_delta):
@@ -149,6 +165,7 @@ func _physics_process(_delta):
 		update_values()
 	else:
 		selection_button.pressed = false
+	flip()
 	t = Transform2D(x_axis, y_axis, origin)
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))
@@ -165,9 +182,7 @@ func convert_vertex_to_distance():
 	return vertex_to_draw
 
 
-func custom_draw_polygon(
-	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
-):
+func custom_draw_polygon():
 	var vertex_mod = convert_vertex_to_distance()
 	for i in range(vertex_mod.size()):
 		if i == vertex_mod.size() - 1:
@@ -181,9 +196,7 @@ func custom_draw_polygon(
 			draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
 
 
-func custom_draw_polygon_filled(
-	vertex: PoolVector2Array, color: Color = Color(0, 0, 0, 1), line_width: float = 1.0
-):
+func custom_draw_polygon_filled():
 	var vertex_mod = convert_vertex_to_distance()
 	draw_colored_polygon(vertex, color)
 	for i in range(vertex_mod.size()):

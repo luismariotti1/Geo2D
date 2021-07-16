@@ -12,6 +12,7 @@ var is_selecting = false
 var selection_tool = load("res://GUI/Display/Tools/SelectionTool/SelectionTool.tscn")
 var selection_area
 var figures = []
+var ids_avaiable = []
 
 func _ready():
 	SM.set_figures(figures)
@@ -23,7 +24,7 @@ func _process(_delta):
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
 	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
 		create_object()
-
+	
 
 func is_in_display(Position):
 	if Position:
@@ -60,12 +61,13 @@ func _input(event):
 			clicked_position = event.position
 			if is_in_display(clicked_position):
 				var new_figure
-				if PN.get_button_selected() == "Square":
-					new_figure = load("res://Figures/Square/Square.tscn").instance()
-				elif PN.get_button_selected() == "Triangle":
-					new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
-				elif PN.get_button_selected() == "Hexagon":
-					new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
+				match PN.get_button_selected():
+					"Square":
+						new_figure = load("res://Figures/Square/Square.tscn").instance()
+					"Triangle":
+						new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
+					"Hexagon":
+						new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
 				add_child(new_figure)
 				figures.append(new_figure)
 				figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
@@ -78,7 +80,26 @@ func _input(event):
 						figures[figures.size() - 1].queue_free()
 						figures.remove(figures.size() - 1)
 					else:
-						figures[figures.size() - 1].init(figures.size() - 1)
+						if ids_avaiable.size() > 0:
+							ids_avaiable.sort()
+							figures[figures.size() - 1].init(ids_avaiable[0])
+							ids_avaiable.remove(0)
+						else:
+							figures[figures.size() - 1].init(figures.size() - 1)
 						figures[figures.size() - 1].select_figure()
 						SM.new_object = true
+						SM.set_position()
 						Insp.reload_atributes = true
+	
+	if event.is_action_pressed("delete_figure") and figures.size()>0:
+		var position_list = SM.get_position()
+		ids_avaiable.append(figures[position_list].get_id())
+		figures[position_list].delete()
+		figures[figures.size()-1].set_is_selected(false)
+		figures[position_list].queue_free()
+		figures.remove(position_list)
+		if figures.size() != 0:
+			figures[figures.size()-1].select_figure()
+		else:
+			Insp.clear()
+			Insp.reload_atributes = true

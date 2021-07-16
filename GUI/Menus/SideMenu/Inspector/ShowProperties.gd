@@ -4,12 +4,14 @@ onready var Insp = get_node("/root/SetInspector")
 var atributes = []
 var AtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.tscn")
 var DoubleAtributEdit = load("res://GUI/Menus/SideMenu/Inspector/Atributes/DoubleAtributEdit.tscn")
+var CheckboxAtribute = load("res://GUI/Menus/SideMenu/Inspector/Atributes/AtributCheckBox.tscn")
 var ListEdit = load("res://GUI/Menus/SideMenu/Inspector/List/ListEdit.tscn")
 
 
 func init_atribute(scene, data, type = "atribute"):
-	atributes.append({"type":type, "scene":scene})
+	atributes.append({"type": type, "scene": scene})
 	atributes[atributes.size() - 1]["scene"].init(data)
+
 
 func _process(_delta):
 	if get_parent().get_v_scrollbar().visible:
@@ -21,23 +23,15 @@ func _process(_delta):
 			remove_child(n)
 		for atribute in Insp.get_properties():
 			if atribute.has("type"):
-				if atribute["type"] == "list":
-					init_atribute(ListEdit.instance(), atribute, "list")
-				if atribute["type"] == "double_atribute":
-					init_atribute(DoubleAtributEdit.instance(), atribute, "double_atribute")
+				match atribute["type"]:
+					"list":
+						init_atribute(ListEdit.instance(), atribute, "list")
+					"double_atribute":
+						init_atribute(DoubleAtributEdit.instance(), atribute, "double_atribute")
+					"checkbox":
+						init_atribute(CheckboxAtribute.instance(), atribute, "checkbox")
 			else:
 				init_atribute(AtributEdit.instance(), atribute)
 			add_child(atributes[atributes.size() - 1]["scene"])
+	
 	Insp.reload_atributes = false
-
-	for i in range(atributes.size()):
-		if atributes[i]["type"] == "double_atribute":
-			Insp.set_properties_by_id(atributes[i]["scene"].get_id(), [atributes[i]["scene"].get_node("Value1").text,atributes[i]["scene"].get_node("Value2").text])
-		elif atributes[i]["type"] == "list":
-			for atr in atributes[i]["scene"].get_list():
-				if atr._type == "double_atribute":
-					Insp.set_properties_by_id(atr.get_id(), [atr.get_node("Value1").text, atr.get_node("Value2").text])
-				if atr._type == "atribute":
-					Insp.set_properties_by_id(atr.get_id(), atr.get_node("Value").text)
-		else:
-			Insp.set_properties_by_id(atributes[i]["scene"].get_id(), atributes[i]["scene"].get_node("Value").text)

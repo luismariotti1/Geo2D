@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/AtributCheckBox.gd" type="Script" id=1]
+
+[node name="AtributCheckBox" type="HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="."]
+margin_top = 8.0
+margin_right = 87.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 87, 0 )
+text = "Flip"
+valign = 2
