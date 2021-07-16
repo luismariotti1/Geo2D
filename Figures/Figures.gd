@@ -7,7 +7,7 @@ onready var SM = get_node("/root/SelectionMenu")
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
-var is_select = false setget set_is_selected, get_is_selected
+var is_select = false setget set_is_selected, get_is_selected 
 var edge = 0 setget set_edge
 var selection_button: Button setget , get_selection_button
 var line_width = 2
@@ -40,6 +40,7 @@ func select_figure():
 	SM.set_selected()
 	Insp.set_properties(info)
 	is_select = true
+	SM.set_position()
 	Insp.reload_atributes = true
 
 
@@ -198,3 +199,7 @@ func custom_draw_polygon_filled(
 	draw_colored_polygon(vertex, color)
 	for i in range(vertex_mod.size()):
 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+
+# func remove_objetc():
+# 	if selection_button:
+# 		print(teste)

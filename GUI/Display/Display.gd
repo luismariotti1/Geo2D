@@ -82,4 +82,11 @@ func _input(event):
 						figures[figures.size() - 1].init(figures.size() - 1)
 						figures[figures.size() - 1].select_figure()
 						SM.new_object = true
+						SM.set_position()
 						Insp.reload_atributes = true
+	
+	if event.is_action_pressed("delete_figure"):
+		var position_list = SM.get_position()
+		figures[position_list].queue_free()
+		figures.remove(position_list)
+		SM.remove_objetc = true
