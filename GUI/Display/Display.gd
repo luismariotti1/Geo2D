@@ -73,7 +73,7 @@ func _input(event):
 				figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
 
 		if event.is_action_released("move_vertex"):
-			is_clicking = false
+			is_clicking = false 
 			if is_in_display(clicked_position):
 				if figures.size() > 0:
 					if figures[figures.size() - 1].edge <= 0.2:
