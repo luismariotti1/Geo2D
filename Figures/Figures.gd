@@ -36,7 +36,7 @@ var flip_x = false
 var flip_y = false
 var shear_x = false
 var shear_y = false
-var shear_value = 50
+var shear_value = 0
 
 
 func select_figure():
@@ -178,11 +178,12 @@ func flip():
 	x_axis = Vector2(-1, 0) if flip_x else Vector2(1, 0)
 	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
 
+
 func shear():
-	if shear_x:
-		t.x = Vector2(1,1)
-	elif shear_y:
-		t.y = Vector2(1,1)
+	if shear_x and shear_value != 0:
+		t.x = Vector2(1, shear_value/100)
+	elif shear_y and shear_value != 0:
+		t.y = Vector2(shear_value/100, 1)
 
 
 func _physics_process(_delta):

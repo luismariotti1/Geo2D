@@ -68,6 +68,7 @@ margin_right = 214.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+min_value = -100.0
 value = 50.0
 scrollable = false
 
