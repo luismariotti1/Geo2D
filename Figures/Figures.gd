@@ -7,7 +7,7 @@ onready var SM = get_node("/root/SelectionMenu")
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
-var is_select = false setget set_is_selected, get_is_selected 
+var is_select = false setget set_is_selected, get_is_selected
 var edge = 0 setget set_edge
 var selection_button: Button setget , get_selection_button
 var line_width = 2
@@ -34,6 +34,9 @@ var mirror_vertex: Vector2
 var selected_color = ColorN("green")
 var flip_x = false
 var flip_y = false
+var shear_x = false
+var shear_y = false
+var shear_value = 50
 
 
 func select_figure():
@@ -92,10 +95,11 @@ func delete():
 	selection_button._remove = true
 	SM.remove_object = true
 
+
 func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},
-		{"type": "checkbox", "id": "flip", "label": "Flip", "value": {"X":flip_x, "Y":flip_y}},
+		{"type": "checkbox", "id": "flip", "label": "Flip", "value": {"X": flip_x, "Y": flip_y}},
 		{"id": "line_width", "label": "line width", "value": line_width},
 		{
 			"listLabel": "Translate",
@@ -113,6 +117,19 @@ func create_dic_to_properties():
 			[
 				{"id": "scaleX", "label": "X", "value": scaleX},
 				{"id": "scaleY", "label": "Y", "value": scaleY},
+			]
+		},
+		{
+			"listLabel": "Shear",
+			"type": "list",
+			"infos":
+			[
+				{
+					"type": "shear",
+					"id": "shear",
+					"label": "Shear",
+					"value": {"X": shear_x, "Y": shear_y, "Porcent": shear_value}
+				}
 			]
 		},
 	]
@@ -141,6 +158,10 @@ func set_properties_in_inspector():
 
 func update_values():
 	filled = false
+	var shear_var = Insp.get_properties_by_id("shear")
+	shear_x = shear_var["X"]
+	shear_y = shear_var["Y"]
+	shear_value = shear_var["Porcent"]
 	flip_x = bool(Insp.get_properties_by_id("flip")["X"])
 	flip_y = bool(Insp.get_properties_by_id("flip")["Y"])
 	edge = float(Insp.get_properties_by_id("edge"))
@@ -152,9 +173,16 @@ func update_values():
 	coord_y = float(Insp.get_properties_by_id("coord_y"))
 	translate = Vector2(coord_x, coord_y)
 
+
 func flip():
-	x_axis = Vector2(-1,0) if flip_x else Vector2(1,0) 
-	y_axis = Vector2(0,-1) if flip_y else Vector2(0,1) 
+	x_axis = Vector2(-1, 0) if flip_x else Vector2(1, 0)
+	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
+
+func shear():
+	if shear_x:
+		t.x = Vector2(1,1)
+	elif shear_y:
+		t.y = Vector2(1,1)
 
 
 func _physics_process(_delta):
@@ -165,10 +193,9 @@ func _physics_process(_delta):
 		selection_button.pressed = false
 	flip()
 	t = Transform2D(x_axis, y_axis, origin)
+	shear()
 	t = t.rotated(deg2rad(float(rotation)))
 	t = t.scaled(Vector2(scaleX, scaleY))
-#	Cisalhamento
-#	t.y = Vector2(1,1)
 	t.origin = CP.convert_cartesian_to_pos(translate)
 	update()
 
