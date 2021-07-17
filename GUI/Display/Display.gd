@@ -80,13 +80,19 @@ func _input(event):
 						figures[figures.size() - 1].queue_free()
 						figures.remove(figures.size() - 1)
 					else:
-						figures[figures.size() - 1].init(figures.size() - 1)
+						if ids_avaiable.size() > 0:
+							ids_avaiable.sort()
+							figures[figures.size() - 1].init(ids_avaiable[0])
+							ids_avaiable.remove(0)
+						else:
+							figures[figures.size() - 1].init(figures.size() - 1)
+							
 						figures[figures.size() - 1].select_figure()
 						SM.new_object = true
 						SM.set_position()
 						Insp.reload_atributes = true
 	
-	if event.is_action_pressed("delete_figure"):
+	if event.is_action_pressed("delete_figure") and figures.size() > 0:
 		var position_list = SM.get_position()
 		ids_avaiable.append(figures[position_list].get_id())
 		figures[position_list].delete()
