@@ -94,3 +94,4 @@ project.godot
 >>>>>>> 1f0e75a (gitignore)
 .vscode/settings.json
 .vscode/settings.json
+.vscode/**

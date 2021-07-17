@@ -12,6 +12,7 @@ var is_selecting = false
 var selection_tool = load("res://GUI/Display/Tools/SelectionTool/SelectionTool.tscn")
 var selection_area
 var figures = []
+var ids_avaiable = []
 
 func _ready():
 	SM.set_figures(figures)
@@ -23,7 +24,7 @@ func _process(_delta):
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
 	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
 		create_object()
-
+	
 
 func is_in_display(Position):
 	if Position:
@@ -87,6 +88,13 @@ func _input(event):
 	
 	if event.is_action_pressed("delete_figure"):
 		var position_list = SM.get_position()
+		ids_avaiable.append(figures[position_list].get_id())
+		figures[position_list].delete()
+		figures[figures.size()-1].set_is_selected(false)
 		figures[position_list].queue_free()
 		figures.remove(position_list)
-		SM.remove_objetc = true
+		if figures.size() != 0:
+			figures[figures.size()-1].select_figure()
+		else:
+			Insp.clear()
+			Insp.reload_atributes = true
