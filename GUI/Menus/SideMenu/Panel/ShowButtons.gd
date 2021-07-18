@@ -27,6 +27,7 @@ var button = load("res://GUI/Menus/SideMenu/Panel/FigureButton/FigureButton.tscn
 var buttons = []
 var has_one_clicked = false
 var button_clicked = -1
+onready var PN = get_node("/root/PanelInfo")
 
 
 func _ready():
@@ -38,5 +39,8 @@ func _ready():
 
 func _process(_delta):
 	for i in len(buttons):
-		if buttons[i]._id != button_clicked:
+		if buttons[i]._figure == PN.get_button_selected():
+			buttons[i].pressed = true
+		else:
 			buttons[i].pressed = false
+		
