@@ -73,7 +73,7 @@ func _input(event):
 				figures[figures.size() - 1].set_coord(CP.mouse_position_to_cartesian(clicked_position))
 
 		if event.is_action_released("move_vertex"):
-			is_clicking = false
+			is_clicking = false 
 			if is_in_display(clicked_position):
 				if figures.size() > 0:
 					if figures[figures.size() - 1].edge <= 0.2:
@@ -86,12 +86,13 @@ func _input(event):
 							ids_avaiable.remove(0)
 						else:
 							figures[figures.size() - 1].init(figures.size() - 1)
+							
 						figures[figures.size() - 1].select_figure()
 						SM.new_object = true
 						SM.set_position()
 						Insp.reload_atributes = true
 	
-	if event.is_action_pressed("delete_figure") and figures.size()>0:
+	if event.is_action_pressed("delete_figure") and figures.size() > 0:
 		var position_list = SM.get_position()
 		ids_avaiable.append(figures[position_list].get_id())
 		figures[position_list].delete()

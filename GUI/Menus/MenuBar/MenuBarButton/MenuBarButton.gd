@@ -1,6 +1,6 @@
 extends MenuButton
 
-
+onready var PN = get_node("/root/PanelInfo")
 var _title
 var _id: int
 
@@ -27,11 +27,19 @@ func set_shortcut(key):
 	return shortcut
 	
 
+
 func _on_MenuBarButton_pressed(id):
-	var item_name = get_popup().get_item_text(id)
+	var item_name = get_popup().get_item_text(id) 	
+	# print("btton clicked parent in menuBarButton >> ", get_parent().button_clicked)
 	if item_name == "About":
 		var popup = load("res://GUI/PopUp/About/About.tscn").instance()
 		get_tree().get_root().get_node("Main/Layout").add_child(popup)
 		popup.popup()
 	elif item_name == "Quit":
 		get_tree().quit()
+	elif item_name == "Triangle":
+		PN.set_button_selected(item_name)
+	elif item_name == "Square":
+		PN.set_button_selected(item_name)
+	elif item_name == "Hexagon":
+		PN.set_button_selected(item_name)

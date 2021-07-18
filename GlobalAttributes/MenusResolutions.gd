@@ -5,6 +5,7 @@ var _side_menu_res: Rect2
 var _display_res: Rect2
 var _inspector_res: Rect2 setget set_inspector_res, get_inspector_res
 var _selection_res: Rect2 setget set_selection_res, get_selection_res
+var _home_button : Rect2 setget set_home_button, get_home_button
 
 
 func _physics_process(_delta):
@@ -19,10 +20,20 @@ func _physics_process(_delta):
 	)
 	_selection_res = Rect2(Vector2(9, 162), Vector2(249, 280 + (_side_menu_res.size.y) * 0.1))
 	_inspector_res = Rect2(
-		Vector2(9, _selection_res.size.y + 2), Vector2(250, _side_menu_res.size.y - 40)
-	)
+		Vector2(9, _selection_res.size.y + 2), Vector2(250, _side_menu_res.size.y - 40))
+		
+	_home_button = Rect2(
+		Vector2(_side_menu_res.size.x, _side_menu_res.size.y),
+		Vector2(get_viewport().size.x, get_viewport().size.y))
+
+func set_home_button(value):
+	_home_button = value
 
 
+func get_home_button():
+	return _home_button
+	
+	
 func set_inspector_res(value):
 	_inspector_res = value
 

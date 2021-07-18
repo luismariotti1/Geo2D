@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/ShearEdit.gd" type="Script" id=1]
+
+[node name="ShearEdit" type="VBoxContainer"]
+margin_right = 226.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 226.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="HBoxContainer" parent="HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="HBoxContainer/X"]
+margin_top = 5.0
+margin_right = 8.0
+margin_bottom = 19.0
+text = "X"
+
+[node name="CheckBox1" type="CheckBox" parent="HBoxContainer/X"]
+margin_left = 12.0
+margin_right = 36.0
+margin_bottom = 24.0
+
+[node name="Y" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 40.0
+margin_right = 75.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="HBoxContainer/Y"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "Y"
+
+[node name="CheckBox2" type="CheckBox" parent="HBoxContainer/Y"]
+margin_left = 11.0
+margin_right = 35.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 79.0
+margin_top = 5.0
+margin_right = 92.0
+margin_bottom = 19.0
+text = "-1"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+margin_left = 96.0
+margin_right = 214.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -100.0
+value = 50.0
+scrollable = false
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+margin_left = 218.0
+margin_top = 5.0
+margin_right = 226.0
+margin_bottom = 19.0
+text = "1"
+[connection signal="toggled" from="HBoxContainer/X/CheckBox1" to="." method="_on_CheckBox1_toggled"]
+[connection signal="toggled" from="HBoxContainer/Y/CheckBox2" to="." method="_on_CheckBox2_toggled"]
