@@ -6,6 +6,15 @@ var geometry = Geometry
 var new_line: PoolVector2Array
 var can_create_vertex = true
 
+func init(id):
+	_id = id
+	coord_x = inital_pos.x
+	coord_y = inital_pos.y
+	_figure_name = "irregular (" + String(_id) + ")"
+	selection_button.init(_figure_name, self)
+	create_dic_to_properties()
+	set_properties_in_inspector()
+
 func get_type():
 	return _type
 
@@ -107,11 +116,5 @@ func custom_draw_polygon():
 	if vertex_mod.size() > 1:
 		for i in range(vertex_mod.size() - 1):
 			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
-		# if i == vertex_mod.size() - 1:
-		# 	draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
-		# else:
 	for i in range(vertex_mod.size()):
 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
-		# if is_select:
-		# 	draw_circle(vertex_mod[i], 4, selected_color)
-		# else:

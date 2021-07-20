@@ -124,6 +124,10 @@ func create_dic_to_properties():
 		},
 	]
 
+func set_coord(value):
+	coord_x = value.x
+	coord_y = value.y
+	translate = Vector2(coord_x, coord_y)
 
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
@@ -162,16 +166,18 @@ func update_values():
 	translate = Vector2(coord_x, coord_y)
 
 
-func flip():
-	x_axis = Vector2(-1, 0) if flip_x else Vector2(1, 0)
-	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
-
-
 func shear():
 	if shear_x and shear_value != 0:
-		t.x = Vector2(1, shear_value / 100)
+		t.x = Vector2(0, shear_value / 100) + x_axis
 	elif shear_y and shear_value != 0:
-		t.y = Vector2(shear_value / 100, 1)
+		t.y = Vector2(shear_value / 100, 0) + y_axis
+
+
+func convert_vertex_to_distance():
+	var vertex_to_draw = []
+	for i in range(vertex.size()):
+		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
+	return vertex_to_draw
 
 
 func _physics_process(_delta):
@@ -189,30 +195,3 @@ func _physics_process(_delta):
 	t = t.scaled(Vector2(scaleX, scaleY))
 	t.origin = CP.convert_cartesian_to_pos(translate)
 	update()
-
-# func _draw():
-# 	draw_set_transform_matrix(t)
-# 	if ! filled:
-# 		custom_draw_polygon()
-# 	else:
-# 		custom_draw_polygon_filled()
-
-# func custom_draw_polygon():
-# 	var vertex_mod = convert_vertex_to_distance()
-# 	if vertex_mod.size() > 1:
-# 		for i in range(vertex_mod.size()-1):
-# 			draw_line(vertex_mod[i], vertex_mod[i+1], color, line_width)
-# 		# if i == vertex_mod.size() - 1:
-# 		# 	draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
-# 		# else:
-# 	for i in range(vertex_mod.size()):
-# 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
-# 		# if is_select:
-# 		# 	draw_circle(vertex_mod[i], 4, selected_color)
-# 		# else:
-
-# func custom_draw_polygon_filled():
-# 	var vertex_mod = convert_vertex_to_distance()
-# 	draw_colored_polygon(vertex, color)
-# 	for i in range(vertex_mod.size()):
-# 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
