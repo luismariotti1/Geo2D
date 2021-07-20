@@ -86,6 +86,13 @@ func delete():
 	SM.remove_object = true
 
 
+#Methods
+func start_coord(start):
+	coord_x = start.x
+	coord_y = start.y
+	translate = Vector2(coord_x, coord_y)
+
+
 func create_dic_to_properties():
 	info = [
 		{"id": "rotation", "label": "rotation", "value": rotation},

@@ -25,8 +25,8 @@ func _process(_delta):
 	set_margin(MARGIN_TOP, Res.get_menu_bar_res().position.y)
 	set_margin(MARGIN_RIGHT, Res.get_display_res().size.x)
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
-	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
-		create_object()
+	# if is_clicking and is_in_display(clicked_position) and clicked_position != null:
+	# create_object()
 
 
 func is_in_display(Position):
@@ -59,6 +59,7 @@ func create_object():
 			)
 		)
 
+
 func _input(event):
 	if PN.get_button_selected() != "":
 		if event.is_action_pressed("move_vertex"):
@@ -80,7 +81,9 @@ func _input(event):
 							figures.append(new_figure)
 							creating = true
 						if creating:
-							figures[figures.size() - 1].create_next_vertex(CP.mouse_position_to_cartesian(clicked_position))
+							figures[figures.size() - 1].create_next_vertex(
+								CP.mouse_position_to_cartesian(clicked_position)
+							)
 							if figures[figures.size() - 1]._is_ready == true:
 								if ids_avaiable.size() > 0:
 									figures[figures.size() - 1].init(ids_avaiable[0])
@@ -88,8 +91,8 @@ func _input(event):
 									figures[figures.size() - 1].init(figures.size() - 1)
 								figures[figures.size() - 1].select_figure()
 								creating = false
-								
-				if PN.get_button_selected()!="Vertex":
+
+				if PN.get_button_selected() != "Vertex":
 					add_child(new_figure)
 					figures.append(new_figure)
 					figures[figures.size() - 1].set_coord(
