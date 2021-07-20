@@ -73,7 +73,7 @@ func valid_angle(new_point):
 	var theta2 = new_point[0].angle_to_point(vertex[vertex.size()-2])
 	theta1 = rad2deg(theta1)
 	theta2 = rad2deg(theta2)
-	if abs((theta1 - theta2)) < 8:
+	if abs((theta1 - theta2)) < 4:
 		return false
 	else:
 		return true
@@ -81,18 +81,20 @@ func valid_angle(new_point):
 func pre_render(vertex_mod):
 	var next_position = CP.mouse_position_to_cartesian(get_global_mouse_position()) - inital_pos
 	new_line = PoolVector2Array([vertex_mod[vertex_mod.size()-1], CP.convert_catersian_to_dist(next_position)])
-	draw_line(new_line[0], new_line[1], color, line_width)
-	draw_circle(new_line[1], 4, Color(0, 0, 0, 1))
 	if vertex.size() > 1:
-		return valid_angle(PoolVector2Array([vertex[vertex.size()-1], next_position])) and valid_position(new_line)
-	else:
-		return true
-	
+		if valid_angle(PoolVector2Array([vertex[vertex.size()-1], next_position])) and valid_position(new_line):
+			color = ColorN("blue")
+		else:
+			color = ColorN("red")
+	draw_line(new_line[0], new_line[1], color, line_width)
+	draw_circle(new_line[1], 4, Color(0, 0, 0, 1))		
+
+
 func custom_draw_polygon():
 	var vertex_mod = convert_vertex_to_distance()
+	var can_create = true
 	if !_is_ready:
-#		pre_render(vertex_mod)
-		print(pre_render(vertex_mod))
+		pre_render(vertex_mod)
 	if vertex_mod.size() > 1:
 		for i in range(vertex_mod.size() - 1):
 			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
