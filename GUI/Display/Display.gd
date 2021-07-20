@@ -85,6 +85,8 @@ func _input(event):
 							creating = true
 						if creating:
 							figures[figures.size() - 1].create_next_vertex(CP.mouse_position_to_cartesian(clicked_position))
+							if figures[figures.size() - 1]._is_ready == true:
+								creating = false
 				# add_child(new_figure)
 				# figures.append(new_figure)
 				# figures[figures.size() - 1].start_coord(
