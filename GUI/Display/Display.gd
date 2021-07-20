@@ -90,7 +90,11 @@ func _input(event):
 								else:
 									figures[figures.size() - 1].init(figures.size() - 1)
 								figures[figures.size() - 1].select_figure()
+								SM.new_object = true
+								SM.set_position()
+								Insp.reload_atributes = true
 								creating = false
+								
 
 				if PN.get_button_selected() != "Vertex":
 					add_child(new_figure)

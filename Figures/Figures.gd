@@ -47,6 +47,7 @@ func select_figure():
 	is_select = true
 	SM.set_position()
 	Insp.reload_atributes = true
+	print(is_select)
 
 
 func get_id():
@@ -84,13 +85,6 @@ func _ready():
 func delete():
 	selection_button._remove = true
 	SM.remove_object = true
-
-
-#Methods
-func start_coord(start):
-	coord_x = start.x
-	coord_y = start.y
-	translate = Vector2(coord_x, coord_y)
 
 
 func create_dic_to_properties():
@@ -131,10 +125,12 @@ func create_dic_to_properties():
 		},
 	]
 
+
 func set_coord(value):
 	coord_x = value.x
 	coord_y = value.y
 	translate = Vector2(coord_x, coord_y)
+
 
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
