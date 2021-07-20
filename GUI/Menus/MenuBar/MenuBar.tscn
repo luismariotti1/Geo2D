@@ -14,7 +14,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.223529, 0.227451, 0.223529, 1 )
+color = Color( 0, 0.0862745, 0.2, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

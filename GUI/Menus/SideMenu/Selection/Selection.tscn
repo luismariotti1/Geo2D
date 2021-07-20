@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Selection/ShowObjectsList.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0862745, 0.2, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.678431, 0.25098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.0862745, 0.2, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.678431, 0.25098, 1 )
 
 [node name="Selection" type="Control"]
 anchor_left = 0.5
@@ -26,37 +42,39 @@ __meta__ = {
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 margin_right = 310.0
-margin_bottom = 28.0
+margin_bottom = 18.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 303.0
-margin_bottom = 21.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 308.0
+margin_bottom = 16.0
 
 [node name="Title" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer"]
-margin_right = 296.0
+margin_right = 306.0
 margin_bottom = 14.0
 text = "Selection Pane"
 align = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 32.0
+margin_top = 22.0
 margin_right = 310.0
-margin_bottom = 82.0
+margin_bottom = 80.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer2"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 303.0
-margin_bottom = 43.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 308.0
+margin_bottom = 56.0
 
 [node name="ShowObjectsList" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
-margin_right = 296.0
-margin_bottom = 36.0
+margin_right = 306.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )

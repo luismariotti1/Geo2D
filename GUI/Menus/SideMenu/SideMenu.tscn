@@ -7,7 +7,7 @@
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
-load_path = "res://.import/logo.png-cca8726399059c8d4f806e28e356b14d.stex"
+load_path = "res://.import/NOVASCORES.png-6b08658b61afbb40cc347dc6ee6efa1e.stex"
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Control
@@ -40,9 +40,9 @@ __meta__ = {
 
 [node name="logo" type="TextureRect" parent="."]
 margin_left = 90.0
-margin_top = 10.318
-margin_right = 164.0
-margin_bottom = 57.318
+margin_top = 10.0
+margin_right = 428.0
+margin_bottom = 219.0
 texture = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

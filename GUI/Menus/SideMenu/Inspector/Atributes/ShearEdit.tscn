@@ -78,5 +78,6 @@ margin_top = 5.0
 margin_right = 226.0
 margin_bottom = 19.0
 text = "1"
+
 [connection signal="toggled" from="HBoxContainer/X/CheckBox1" to="." method="_on_CheckBox1_toggled"]
 [connection signal="toggled" from="HBoxContainer/Y/CheckBox2" to="." method="_on_CheckBox2_toggled"]

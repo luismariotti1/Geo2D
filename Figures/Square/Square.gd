@@ -8,7 +8,7 @@ func init(id):
 	_figure_name = "square (" + String(_id) + ")"
 	selection_button.init(_figure_name, self)
 	create_dic_to_properties()
-	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
+	info.insert(0, {"id": "edge", "label": "Edge", "value": edge})
 	# var list_of_vertices_insp = {"listLabel": "vertex", "type": "list", "infos": []}
 	# for i in range(vertex.size()):
 	# 	list_of_vertices_insp["infos"].insert(

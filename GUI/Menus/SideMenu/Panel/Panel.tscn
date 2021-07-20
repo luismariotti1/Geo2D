@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/ShowButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_name = "Figuras"
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.0862745, 0.2, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.0862745, 0.2, 1 )
 
 [node name="Panel" type="Control"]
 margin_left = 16.0
@@ -12,18 +29,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = -1.2337
-margin_top = -9.66517
-margin_right = 44.7663
-margin_bottom = 4.33483
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Figures"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 margin_left = -11.4368
 margin_top = -9.33303
 margin_right = 259.563
@@ -33,16 +40,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_right = 7.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 2.30182
+margin_top = -8.95806
+margin_right = 52.3018
+margin_bottom = 9.04194
+custom_styles/normal = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Figures"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ShowButtons" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -113.5
-margin_top = -22.5
-margin_right = 115.5
-margin_bottom = 23.5
-custom_constants/separation = 15
+margin_left = -110.5
+margin_top = -23.0
+margin_right = 110.5
+margin_bottom = 23.0
+rect_min_size = Vector2( 0, 46 )
+custom_constants/separation = 12
+alignment = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
