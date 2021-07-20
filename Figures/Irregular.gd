@@ -4,6 +4,7 @@ var _type = "Irregular" setget , get_type
 var _is_ready = false
 var geometry = Geometry
 var new_line: PoolVector2Array
+var can_create_vertex = true
 
 func get_type():
 	return _type
@@ -21,9 +22,10 @@ func create_next_vertex(pos):
 		inital_pos = pos
 		translate = inital_pos
 	else:
-		vertex.append(pos - inital_pos)
-		if inital_pos.distance_to(pos) <= 0.2 and vertex.size() > 2:
-			set_ready()
+		if can_create_vertex:
+			vertex.append(pos - inital_pos)
+			if inital_pos.distance_to(pos) <= 0.2 and vertex.size() > 2:
+				set_ready()
 
 
 func _physics_process(_delta):
@@ -32,6 +34,7 @@ func _physics_process(_delta):
 		update_values()
 	else:
 		selection_button.pressed = false
+	can_create_new_vertex()
 	#transformations
 	flip()
 	t = Transform2D(x_axis, y_axis, origin)
@@ -81,18 +84,24 @@ func valid_angle(new_point):
 func pre_render(vertex_mod):
 	var next_position = CP.mouse_position_to_cartesian(get_global_mouse_position()) - inital_pos
 	new_line = PoolVector2Array([vertex_mod[vertex_mod.size()-1], CP.convert_catersian_to_dist(next_position)])
-	if vertex.size() > 1:
-		if valid_angle(PoolVector2Array([vertex[vertex.size()-1], next_position])) and valid_position(new_line):
-			color = ColorN("blue")
-		else:
-			color = ColorN("red")
+	if can_create_vertex:	
+		color = ColorN("blue")
+	else:
+		color = ColorN("red")
 	draw_line(new_line[0], new_line[1], color, line_width)
 	draw_circle(new_line[1], 4, Color(0, 0, 0, 1))		
+
+func can_create_new_vertex():
+	var next_position = CP.mouse_position_to_cartesian(get_global_mouse_position()) - inital_pos
+	if vertex.size() > 1:
+		if valid_angle(PoolVector2Array([vertex[vertex.size()-1], next_position])) and valid_position(new_line):
+			can_create_vertex = true
+		else:
+			can_create_vertex = false
 
 
 func custom_draw_polygon():
 	var vertex_mod = convert_vertex_to_distance()
-	var can_create = true
 	if !_is_ready:
 		pre_render(vertex_mod)
 	if vertex_mod.size() > 1:
