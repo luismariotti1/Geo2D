@@ -1,14 +1,17 @@
 extends Control
 
+# Singletons
 onready var CP = get_node("/root/CartesianPlane")
 onready var Insp = get_node("/root/SetInspector")
 onready var SM = get_node("/root/SelectionMenu")
 
+# Load Scenes
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
+
+#Properties
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
 var is_select = false setget set_is_selected, get_is_selected
-var edge = 0 setget set_edge
 var selection_button: Button setget , get_selection_button
 var line_width = 2
 var color = ColorN("blue")
@@ -28,7 +31,6 @@ var origin = Vector2(0, 0)
 var set_inspector = false
 var new_pivot = Vector2(0, 0)
 var vertice = Vector2(1, 1)
-var ready = false
 var inital_pos: Vector2
 var mirror_vertex: Vector2
 var selected_color = ColorN("green")
@@ -59,10 +61,6 @@ func get_is_selected():
 	return is_select
 
 
-func set_edge(value):
-	edge = value
-
-
 func set_figure_name(new_name):
 	_figure_name = new_name
 
@@ -83,12 +81,12 @@ func _ready():
 	selection_button = button.instance()
 
 
-func _draw():
-	draw_set_transform_matrix(t)
-	if ! filled:
-		custom_draw_polygon()
-	else:
-		custom_draw_polygon_filled()
+# func _draw():
+# 	draw_set_transform_matrix(t)
+# 	if ! filled:
+# 		custom_draw_polygon()
+# 	else:
+# 		custom_draw_polygon_filled()
 
 
 func delete():
@@ -135,12 +133,6 @@ func create_dic_to_properties():
 	]
 
 
-func set_coord(value):
-	coord_x = value.x
-	coord_y = value.y
-	translate = Vector2(coord_x, coord_y)
-
-
 func set_quadrant(angle):
 	if angle >= 0 and angle <= 90:
 		mirror_vertex = Vector2(-1, 1)
@@ -156,6 +148,18 @@ func set_properties_in_inspector():
 	Insp.init_properties(info)
 
 
+func flip():
+	x_axis = Vector2(-1, 0) if flip_x else Vector2(1, 0)
+	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
+
+
+func convert_vertex_to_distance():
+	var vertex_to_draw = []
+	for i in range(vertex.size()):
+		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
+	return vertex_to_draw
+
+
 func update_values():
 	filled = false
 	var shear_var = Insp.get_properties_by_id("shear")
@@ -164,7 +168,6 @@ func update_values():
 	shear_value = shear_var["Porcent"]
 	flip_x = bool(Insp.get_properties_by_id("flip")["X"])
 	flip_y = bool(Insp.get_properties_by_id("flip")["Y"])
-	edge = float(Insp.get_properties_by_id("edge"))
 	scaleX = Insp.get_properties_by_id("scaleX")
 	scaleY = Insp.get_properties_by_id("scaleY")
 	rotation = Insp.get_properties_by_id("rotation")
@@ -181,9 +184,9 @@ func flip():
 
 func shear():
 	if shear_x and shear_value != 0:
-		t.x = Vector2(1, shear_value/100)
+		t.x = Vector2(1, shear_value / 100)
 	elif shear_y and shear_value != 0:
-		t.y = Vector2(shear_value/100, 1)
+		t.y = Vector2(shear_value / 100, 1)
 
 
 func _physics_process(_delta):
@@ -192,6 +195,8 @@ func _physics_process(_delta):
 		update_values()
 	else:
 		selection_button.pressed = false
+
+	#transformations
 	flip()
 	t = Transform2D(x_axis, y_axis, origin)
 	shear()
@@ -201,25 +206,27 @@ func _physics_process(_delta):
 	update()
 
 
-func convert_vertex_to_distance():
-	var vertex_to_draw = []
-	for i in range(vertex.size()):
-		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
-	return vertex_to_draw
+func _draw():
+	draw_set_transform_matrix(t)
+	if ! filled:
+		custom_draw_polygon()
+	else:
+		custom_draw_polygon_filled()
 
 
 func custom_draw_polygon():
 	var vertex_mod = convert_vertex_to_distance()
-	for i in range(vertex_mod.size()):
-		if i == vertex_mod.size() - 1:
-			draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
-		else:
+	if vertex_mod.size() > 1:
+		for i in range(vertex_mod.size() - 1):
 			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
+		# if i == vertex_mod.size() - 1:
+		# 	draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
+		# else:
 	for i in range(vertex_mod.size()):
-		if is_select:
-			draw_circle(vertex_mod[i], 4, selected_color)
-		else:
-			draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+		# if is_select:
+		# 	draw_circle(vertex_mod[i], 4, selected_color)
+		# else:
 
 
 func custom_draw_polygon_filled():
