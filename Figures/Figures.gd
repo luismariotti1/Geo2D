@@ -81,14 +81,6 @@ func _ready():
 	selection_button = button.instance()
 
 
-# func _draw():
-# 	draw_set_transform_matrix(t)
-# 	if ! filled:
-# 		custom_draw_polygon()
-# 	else:
-# 		custom_draw_polygon_filled()
-
-
 func delete():
 	selection_button._remove = true
 	SM.remove_object = true
@@ -153,13 +145,6 @@ func flip():
 	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
 
 
-func convert_vertex_to_distance():
-	var vertex_to_draw = []
-	for i in range(vertex.size()):
-		vertex_to_draw.append(CP.convert_catersian_to_dist(vertex[i]))
-	return vertex_to_draw
-
-
 func update_values():
 	filled = false
 	var shear_var = Insp.get_properties_by_id("shear")
@@ -205,32 +190,29 @@ func _physics_process(_delta):
 	t.origin = CP.convert_cartesian_to_pos(translate)
 	update()
 
+# func _draw():
+# 	draw_set_transform_matrix(t)
+# 	if ! filled:
+# 		custom_draw_polygon()
+# 	else:
+# 		custom_draw_polygon_filled()
 
-func _draw():
-	draw_set_transform_matrix(t)
-	if ! filled:
-		custom_draw_polygon()
-	else:
-		custom_draw_polygon_filled()
+# func custom_draw_polygon():
+# 	var vertex_mod = convert_vertex_to_distance()
+# 	if vertex_mod.size() > 1:
+# 		for i in range(vertex_mod.size()-1):
+# 			draw_line(vertex_mod[i], vertex_mod[i+1], color, line_width)
+# 		# if i == vertex_mod.size() - 1:
+# 		# 	draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
+# 		# else:
+# 	for i in range(vertex_mod.size()):
+# 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+# 		# if is_select:
+# 		# 	draw_circle(vertex_mod[i], 4, selected_color)
+# 		# else:
 
-
-func custom_draw_polygon():
-	var vertex_mod = convert_vertex_to_distance()
-	if vertex_mod.size() > 1:
-		for i in range(vertex_mod.size() - 1):
-			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
-		# if i == vertex_mod.size() - 1:
-		# 	draw_line(vertex_mod[i], vertex_mod[0], color, line_width)
-		# else:
-	for i in range(vertex_mod.size()):
-		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
-		# if is_select:
-		# 	draw_circle(vertex_mod[i], 4, selected_color)
-		# else:
-
-
-func custom_draw_polygon_filled():
-	var vertex_mod = convert_vertex_to_distance()
-	draw_colored_polygon(vertex, color)
-	for i in range(vertex_mod.size()):
-		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+# func custom_draw_polygon_filled():
+# 	var vertex_mod = convert_vertex_to_distance()
+# 	draw_colored_polygon(vertex, color)
+# 	for i in range(vertex_mod.size()):
+# 		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
