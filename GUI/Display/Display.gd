@@ -25,8 +25,8 @@ func _process(_delta):
 	set_margin(MARGIN_TOP, Res.get_menu_bar_res().position.y)
 	set_margin(MARGIN_RIGHT, Res.get_display_res().size.x)
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
-	# if is_clicking and is_in_display(clicked_position) and clicked_position != null:
-	# create_object()
+	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
+		create_object()
 
 
 func is_in_display(Position):
