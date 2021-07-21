@@ -27,6 +27,10 @@ func _process(_delta):
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
 	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
 		create_object()
+	if creating and PN.get_button_selected() != "Vertex":
+		figures[figures.size() - 1].queue_free()
+		figures.remove(figures.size() - 1)
+		creating = false
 
 
 func is_in_display(Position):
@@ -58,6 +62,19 @@ func create_object():
 				* 0.75
 			)
 		)
+
+func delete_object():
+	var position_list = SM.get_position()
+	ids_avaiable.append(figures[position_list].get_id())
+	figures[position_list].delete()
+	figures[figures.size() - 1].set_is_selected(false)
+	figures[position_list].queue_free()
+	figures.remove(position_list)
+	if figures.size() != 0:
+		figures[figures.size() - 1].select_figure()
+	else:
+		Insp.clear()
+		Insp.reload_atributes = true
 
 
 func _input(event):
@@ -97,7 +114,6 @@ func _input(event):
 								Insp.reload_atributes = true
 								creating = false
 								
-
 				if PN.get_button_selected() != "Vertex":
 					add_child(new_figure)
 					figures.append(new_figure)
@@ -126,14 +142,4 @@ func _input(event):
 					Insp.reload_atributes = true
 
 	if event.is_action_pressed("delete_figure") and figures.size() > 0:
-		var position_list = SM.get_position()
-		ids_avaiable.append(figures[position_list].get_id())
-		figures[position_list].delete()
-		figures[figures.size() - 1].set_is_selected(false)
-		figures[position_list].queue_free()
-		figures.remove(position_list)
-		if figures.size() != 0:
-			figures[figures.size() - 1].select_figure()
-		else:
-			Insp.clear()
-			Insp.reload_atributes = true
+		delete_object()
