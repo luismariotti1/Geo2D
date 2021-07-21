@@ -1,4 +1,4 @@
-extends "res://Figures/Figures.gd"
+extends "res://Figures/Regular.gd"
 
 
 func init(id):
@@ -8,7 +8,7 @@ func init(id):
 	create_dic_to_properties()
 	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
 	set_properties_in_inspector()
-	ready = true
+
 
 func _physics_process(_delta):
 	var new_vertex = []
