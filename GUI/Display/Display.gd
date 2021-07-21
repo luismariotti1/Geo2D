@@ -143,3 +143,8 @@ func _input(event):
 
 	if event.is_action_pressed("delete_figure") and figures.size() > 0:
 		delete_object()
+
+	if event.is_action_pressed("cancel") and creating:
+		figures[figures.size() - 1].queue_free()
+		figures.remove(figures.size() - 1)
+		creating = false

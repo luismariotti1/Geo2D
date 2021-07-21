@@ -6,7 +6,7 @@ func init(id):
 	_figure_name = "hexagon (" + String(_id) + ")"
 	selection_button.init(_figure_name, self)
 	create_dic_to_properties()
-	info.insert(0, {"id": "edge", "label": "edge", "value": edge})
+	info.insert(0, {"id": "edge", "label": "Edge", "value": edge})
 	set_properties_in_inspector()
 
 
