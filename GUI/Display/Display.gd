@@ -86,7 +86,9 @@ func _input(event):
 							)
 							if figures[figures.size() - 1]._is_ready == true:
 								if ids_avaiable.size() > 0:
+									ids_avaiable.sort()
 									figures[figures.size() - 1].init(ids_avaiable[0])
+									ids_avaiable.remove(0)
 								else:
 									figures[figures.size() - 1].init(figures.size() - 1)
 								figures[figures.size() - 1].select_figure()

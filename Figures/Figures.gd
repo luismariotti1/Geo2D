@@ -47,7 +47,6 @@ func select_figure():
 	is_select = true
 	SM.set_position()
 	Insp.reload_atributes = true
-	print(is_select)
 
 
 func get_id():
