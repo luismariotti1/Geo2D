@@ -13,7 +13,8 @@ func set_edge(value):
 
 
 func update_local_values():
-	edge = float(Insp.get_properties_by_id("edge"))
+	if Insp.get_properties_by_id("edge"):
+		edge = float(Insp.get_properties_by_id("edge"))
 
 
 func _physics_process(_delta):
