@@ -5,6 +5,8 @@ var _is_ready = false
 var geometry = Geometry
 var new_line: PoolVector2Array
 var can_create_vertex = true
+var last_position
+var vertex_color = ColorN("black")
 
 
 func init(id):
@@ -29,11 +31,13 @@ func set_ready():
 
 func create_next_vertex(pos):
 	if vertex.size() == 0:
+		last_position = pos
 		vertex.append(Vector2(0, 0))
 		inital_pos = pos
 		translate = inital_pos
 	else:
 		if can_create_vertex:
+			last_position = pos
 			vertex.append(pos - inital_pos)
 			if inital_pos.distance_to(pos) <= 0.2 and vertex.size() > 2:
 				set_ready()
@@ -42,8 +46,10 @@ func create_next_vertex(pos):
 func _physics_process(_delta):
 	if is_select:
 		selection_button.pressed = true
+		vertex_color = ColorN("green")
 		update_values()
 	else:
+		vertex_color = ColorN("black")
 		selection_button.pressed = false
 	can_create_new_vertex()
 	#transformations
@@ -113,12 +119,21 @@ func pre_render(vertex_mod):
 	draw_circle(new_line[1], 4, Color(0, 0, 0, 1))
 
 
+func min_dist():
+	var next_position = CP.mouse_position_to_cartesian(get_global_mouse_position())
+	if last_position.distance_to(next_position) < 0.02:
+		return false
+	else:
+		return true
+
+
 func can_create_new_vertex():
 	var next_position = CP.mouse_position_to_cartesian(get_global_mouse_position()) - inital_pos
+	min_dist()
 	if vertex.size() > 1:
 		if (
 			valid_angle(PoolVector2Array([vertex[vertex.size() - 1], next_position]))
-			and valid_position(new_line)
+			and valid_position(new_line) and min_dist()
 		):
 			can_create_vertex = true
 		else:
@@ -133,4 +148,4 @@ func custom_draw_polygon():
 		for i in range(vertex_mod.size() - 1):
 			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)
 	for i in range(vertex_mod.size()):
-		draw_circle(vertex_mod[i], 4, Color(0, 0, 0, 1))
+		draw_circle(vertex_mod[i], 4, vertex_color)

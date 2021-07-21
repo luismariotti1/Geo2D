@@ -47,7 +47,6 @@ func select_figure():
 	is_select = true
 	SM.set_position()
 	Insp.reload_atributes = true
-	print(is_select)
 
 
 func get_id():
@@ -89,9 +88,9 @@ func delete():
 
 func create_dic_to_properties():
 	info = [
-		{"id": "rotation", "label": "rotation", "value": rotation},
+		{"id": "rotation", "label": "Rotation", "value": rotation},
 		{"type": "checkbox", "id": "flip", "label": "Flip", "value": {"X": flip_x, "Y": flip_y}},
-		{"id": "line_width", "label": "line width", "value": line_width},
+		{"id": "line_width", "label": "Line Width", "value": line_width},
 		{
 			"listLabel": "Translate",
 			"type": "list",
