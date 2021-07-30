@@ -5,7 +5,6 @@ onready var CP = get_node("/root/CartesianPlane")
 onready var PN = get_node("/root/PanelInfo")
 onready var Insp = get_node("/root/SetInspector")
 onready var SM = get_node("/root/SelectionMenu")
-onready var GF = get_node("/root/GenerateFigures")
 
 var clicked_position = null
 var is_clicking = false
@@ -13,12 +12,12 @@ var is_selecting = false
 var selection_tool = load("res://GUI/Display/Tools/SelectionTool/SelectionTool.tscn")
 var selection_area
 var figures = []
-var creating_irregular = false
-var creating_regular = false
+var ids_avaiable = []
+var creating = false
 
 
 func _ready():
-	figures = SM.get_figures()
+	SM.set_figures(figures)
 
 
 func _process(_delta):
@@ -28,10 +27,10 @@ func _process(_delta):
 	set_margin(MARGIN_BOTTOM, Res.get_display_res().size.y)
 	if is_clicking and is_in_display(clicked_position) and clicked_position != null:
 		create_object()
-	if creating_irregular and PN.get_button_selected() != "Vertex":
+	if creating and PN.get_button_selected() != "Vertex":
 		figures[figures.size() - 1].queue_free()
 		figures.remove(figures.size() - 1)
-		creating_irregular = false
+		creating = false
 
 
 func is_in_display(Position):
@@ -48,9 +47,34 @@ func is_in_display(Position):
 
 
 func create_object():
-	if creating_regular:
-		var new_object = figures[figures.size() - 1]
-		new_object.preview(get_global_mouse_position())
+	var new_object = figures[figures.size() - 1]
+	if new_object.get_type() == "Regular":
+		new_object.save_inital_position(clicked_position)
+		new_object.set_quadrant(
+			rad2deg(clicked_position.angle_to_point(get_global_mouse_position()))
+		)
+		new_object.set_edge(
+			(
+				(
+					clicked_position.distance_to(get_global_mouse_position())
+					/ CP.get_cartesian_distance()
+				)
+				* 0.75
+			)
+		)
+
+func delete_object():
+	var position_list = SM.get_position()
+	ids_avaiable.append(figures[position_list].get_id())
+	figures[position_list].delete()
+	figures[figures.size() - 1].set_is_selected(false)
+	figures[position_list].queue_free()
+	figures.remove(position_list)
+	if figures.size() != 0:
+		figures[figures.size() - 1].select_figure()
+	else:
+		Insp.clear()
+		Insp.reload_atributes = true
 
 
 func _input(event):
@@ -59,43 +83,68 @@ func _input(event):
 			is_clicking = true
 			clicked_position = event.position
 			if is_in_display(clicked_position):
+				var new_figure
 				match PN.get_button_selected():
 					"Square":
-						GF.start_create_regular_by_mouse("Square", clicked_position)
-						creating_regular = true
+						new_figure = load("res://Figures/Square/Square.tscn").instance()
 					"Triangle":
-						GF.start_create_regular_by_mouse("Triangle", clicked_position)
-						creating_regular = true
+						new_figure = load("res://Figures/Triangle/Triangle.tscn").instance()
 					"Hexagon":
-						GF.start_create_regular_by_mouse("Hexagon", clicked_position)
-						creating_regular = true
+						new_figure = load("res://Figures/Hexagon/Hexagon.tscn").instance()
 					"Vertex":
-						if creating_irregular == false:
-							GF.start_create_irregular_by_mouse()
-							creating_irregular = true
-						if creating_irregular:
-							var new_object = figures[figures.size() - 1]
-							new_object.create_next_vertex(
+						if creating == false:
+							new_figure = load("res://Figures/Irregular.tscn").instance()
+							add_child(new_figure)
+							figures.append(new_figure)
+							creating = true
+						if creating:
+							figures[figures.size() - 1].create_next_vertex(
 								CP.mouse_position_to_cartesian(clicked_position)
 							)
 							if figures[figures.size() - 1]._is_ready == true:
-								new_object.init(GF.choose_id())
-								new_object.select_figure()
+								if ids_avaiable.size() > 0:
+									ids_avaiable.sort()
+									figures[figures.size() - 1].init(ids_avaiable[0])
+									ids_avaiable.remove(0)
+								else:
+									figures[figures.size() - 1].init(figures.size() - 1)
+								figures[figures.size() - 1].select_figure()
 								SM.new_object = true
 								SM.set_position()
 								Insp.reload_atributes = true
-								creating_irregular = false
+								creating = false
+								
+				if PN.get_button_selected() != "Vertex":
+					add_child(new_figure)
+					figures.append(new_figure)
+					figures[figures.size() - 1].set_coord(
+						CP.mouse_position_to_cartesian(clicked_position)
+					)
 
 	if event.is_action_released("move_vertex"):
 		is_clicking = false
-		if is_in_display(clicked_position) and creating_regular:
-			GF.finish_create_regular_by_mouse()
-			creating_regular = false
+		if is_in_display(clicked_position):
+			if figures.size() > 0 and figures[figures.size() - 1].get_type() == "Regular":
+				if figures[figures.size() - 1].edge <= 0.2:
+					figures[figures.size() - 1].queue_free()
+					figures.remove(figures.size() - 1)
+				else:
+					if ids_avaiable.size() > 0:
+						ids_avaiable.sort()
+						figures[figures.size() - 1].init(ids_avaiable[0])
+						ids_avaiable.remove(0)
+					else:
+						figures[figures.size() - 1].init(figures.size() - 1)
+
+					figures[figures.size() - 1].select_figure()
+					SM.new_object = true
+					SM.set_position()
+					Insp.reload_atributes = true
 
 	if event.is_action_pressed("delete_figure") and figures.size() > 0:
-		GF.delete_object()
+		delete_object()
 
-	if event.is_action_pressed("cancel") and creating_irregular:
+	if event.is_action_pressed("cancel") and creating:
 		figures[figures.size() - 1].queue_free()
 		figures.remove(figures.size() - 1)
-		creating_irregular = false
+		creating = false

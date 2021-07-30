@@ -3,7 +3,6 @@ extends MenuButton
 onready var PN = get_node("/root/PanelInfo")
 var _title
 var _id: int
-var _popup_open = ""
 
 
 func init(id, title, tamanho, sub_title, scuts):
@@ -43,5 +42,3 @@ func _on_MenuBarButton_pressed(id):
 			create_popup(load("res://GUI/PopUp/About/About.tscn").instance())
 		"Regular":
 			create_popup(load("res://GUI/CreateMenus/CreateRegularFigure.tscn").instance())
-		"Irregular":
-			create_popup(load("res://GUI/CreateMenus/CreateIrregularFigure.tscn").instance())
