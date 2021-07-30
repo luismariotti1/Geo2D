@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/DoubleAtributEdit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/Menus/SideMenu/Inspector/Atributes/AtributEdit.tscn" type="PackedScene" id=4]
+
+[node name="WindowDialog" type="WindowDialog"]
+margin_right = 284.0
+margin_bottom = 179.0
+rect_rotation = 0.00462609
+window_title = "Regular figure"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 264.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Control"]
+margin_right = 264.0
+margin_bottom = 14.0
+text = "Figura"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Control"]
+margin_top = 18.0
+margin_right = 264.0
+margin_bottom = 38.0
+text = "Quadrado"
+items = [ "Quadrado", null, false, 0, null, "Triangulo", null, false, 1, null, "Hexagono", null, false, 2, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 264.0
+margin_bottom = 81.0
+
+[node name="DoubleAtributEdit" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 264.0
+
+[node name="AtributEdit" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 93.0
+margin_right = 264.0
+margin_bottom = 124.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 136.0
+margin_right = 264.0
+margin_bottom = 156.0
+text = "CREATE"

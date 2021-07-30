@@ -28,17 +28,17 @@ func set_shortcut(key):
 	return shortcut
 
 
+func create_popup(popup):
+	var layout = get_tree().get_root().get_node("Main/Layout")
+	layout.add_child(popup)
+	layout.center_pop_up(popup)
+	popup.popup()
+
+
 func _on_MenuBarButton_pressed(id):
 	var item_name = get_popup().get_item_text(id)
-	if item_name == "About":
-		var popup = load("res://GUI/PopUp/About/About.tscn").instance()
-		get_tree().get_root().get_node("Main/Layout").add_child(popup)
-		popup.popup()
-	elif item_name == "Quit":
-		get_tree().quit()
-	elif item_name == "Triangle":
-		PN.set_button_selected(item_name)
-	elif item_name == "Square":
-		PN.set_button_selected(item_name)
-	elif item_name == "Hexagon":
-		PN.set_button_selected(item_name)
+	match item_name:
+		"About":
+			create_popup(load("res://GUI/PopUp/About/About.tscn").instance())
+		"Regular":
+			create_popup(load("res://GUI/CreateMenus/CreateRegularFigure.tscn").instance())
