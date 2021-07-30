@@ -17,6 +17,7 @@ var creating = false
 
 
 func _ready():
+	get_node("WindowDialog").popup()
 	SM.set_figures(figures)
 
 

@@ -24,7 +24,42 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
+margin_left = -0.33371
 margin_top = 0.0
-margin_right = 768.0
+margin_right = 767.666
 margin_bottom = 570.0
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
+margin_right = 277.0
+margin_bottom = 153.0
+window_title = "Generate Regular figure"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WindowDialog/VBoxContainer"]
+margin_right = 257.0
+margin_bottom = 14.0
+text = "Regular"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="MenuButton" parent="WindowDialog/VBoxContainer"]
+margin_top = 18.0
+margin_right = 257.0
+margin_bottom = 38.0
+text = "Selecione um opção"
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false ]
