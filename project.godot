@@ -32,6 +32,7 @@ MenusResolutions="*res://GlobalAttributes/MenusResolutions.gd"
 PanelInfo="*res://GlobalAttributes/PanelInfo.gd"
 Window="*res://Configs/Window/Window.gd"
 SelectionMenu="*res://GlobalAttributes/SelectionMenu.gd"
+GenerateFigures="*res://GlobalAttributes/GenerateFigures.gd"
 
 [display]
 
