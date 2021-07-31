@@ -4,22 +4,14 @@ var _type = "Regular" setget , get_type
 var edge = 0 setget set_edge
 var created_by_center = false setget set_created_by_center
 
-
 func get_type():
 	return _type
-
 
 func set_created_by_center(boolean):
 	created_by_center = boolean
 
-
 func set_edge(value):
 	edge = value
-
-
-func preview(current_position):
-	set_quadrant(rad2deg(inital_pos.angle_to_point(current_position)))
-	set_edge((inital_pos.distance_to(current_position) / CP.get_cartesian_distance()) * 0.75)
 
 
 func update_local_values():
