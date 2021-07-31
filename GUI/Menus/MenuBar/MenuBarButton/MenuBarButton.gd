@@ -3,6 +3,7 @@ extends MenuButton
 onready var PN = get_node("/root/PanelInfo")
 var _title
 var _id: int
+var _popup_open = ""
 
 
 func init(id, title, tamanho, sub_title, scuts):
