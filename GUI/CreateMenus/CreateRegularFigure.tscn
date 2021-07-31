@@ -65,7 +65,7 @@ margin_top = 8.0
 margin_right = 86.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 86, 0 )
-text = "Coords"
+text = "Center"
 valign = 1
 
 [node name="Value1" type="LineEdit" parent="VBoxContainer/Coords/Coords"]
@@ -108,7 +108,7 @@ margin_left = 90.0
 margin_right = 264.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
-text = "0.2"
+text = "1"
 placeholder_text = "Value"
 caret_blink = true
 caret_blink_speed = 0.5

@@ -5,12 +5,11 @@ var coord: Vector2
 var edge: float
 onready var PN = get_node("/root/PanelInfo")
 onready var GF = get_node("/root/GenerateFigures")
-var Square = load("res://Figures/Square/Square.tscn")
-var Triangle = load("res://Figures/Triangle/Triangle.tscn")
-var Hexagon = load("res://Figures/Hexagon/Hexagon.tscn")
+
 
 func _ready():
 	PN._button_selected = ""
+
 
 func _on_Button_button_down():
 	type = get_node("VBoxContainer/FigureType/OptionButton").get_selected_id()
@@ -22,8 +21,8 @@ func _on_Button_button_down():
 	else:
 		match type:
 			0:
-				GF.create_regular(Square.instance(),coord,edge)
+				GF.create_regular_by_menu("Square", coord, edge)
 			1:
-				GF.create_regular(Triangle.instance(),coord,edge)
+				GF.create_regular_by_menu("Triangle", coord, edge)
 			2:
-				GF.create_regular(Hexagon.instance(),coord,edge)
+				GF.create_regular_by_menu("Hexagon", coord, edge)

@@ -17,7 +17,7 @@ var creating = false
 
 
 func _ready():
-	SM.set_figures(figures)
+	figures = SM.get_figures()
 
 
 func _process(_delta):

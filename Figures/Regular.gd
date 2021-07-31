@@ -2,11 +2,13 @@ extends "res://Figures/Figures.gd"
 
 var _type = "Regular" setget , get_type
 var edge = 0 setget set_edge
-
+var created_by_center = false setget set_created_by_center
 
 func get_type():
 	return _type
 
+func set_created_by_center(boolean):
+	created_by_center = boolean
 
 func set_edge(value):
 	edge = value

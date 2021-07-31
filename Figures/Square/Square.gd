@@ -1,10 +1,11 @@
 extends "res://Figures/Regular.gd"
 
-# new_pivot = Vector2(float(l)/2, float(l)/2)
+
+func set_center(edge):
+	new_pivot = Vector2(float(edge) / 2, float(edge) / 2)
 
 
 func init(id):
-	print(edge)
 	_id = id
 	_figure_name = "square (" + String(_id) + ")"
 	selection_button.init(_figure_name, self)
@@ -14,6 +15,8 @@ func init(id):
 
 
 func _physics_process(_delta):
+	if is_select and created_by_center:
+		set_center(edge)
 	var new_vertex = []
 	new_vertex.append(Vector2(0, 0) * mirror_vertex - new_pivot)
 	new_vertex.append(Vector2(0, edge) * mirror_vertex - new_pivot)
