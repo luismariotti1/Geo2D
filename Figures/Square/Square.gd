@@ -4,6 +4,7 @@ extends "res://Figures/Regular.gd"
 
 
 func init(id):
+	print(edge)
 	_id = id
 	_figure_name = "square (" + String(_id) + ")"
 	selection_button.init(_figure_name, self)
