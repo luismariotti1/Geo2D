@@ -32,7 +32,7 @@ var set_inspector = false
 var new_pivot = Vector2(0, 0)
 var vertice = Vector2(1, 1)
 var inital_pos: Vector2
-var mirror_vertex: Vector2
+var mirror_vertex: Vector2 setget set_mirror_vertex
 var selected_color = ColorN("green")
 var flip_x = false
 var flip_y = false
@@ -51,6 +51,10 @@ func select_figure():
 
 func get_id():
 	return _id
+
+
+func set_mirror_vertex(mirror):
+	mirror_vertex = mirror
 
 
 func set_is_selected(boolean):
