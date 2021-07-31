@@ -6,6 +6,8 @@ var edge: float
 onready var PN = get_node("/root/PanelInfo")
 onready var GF = get_node("/root/GenerateFigures")
 var Square = load("res://Figures/Square/Square.tscn")
+var Triangle = load("res://Figures/Triangle/Triangle.tscn")
+var Hexagon = load("res://Figures/Hexagon/Hexagon.tscn")
 
 func _ready():
 	PN._button_selected = ""
@@ -22,6 +24,6 @@ func _on_Button_button_down():
 			0:
 				GF.create_regular(Square.instance(),coord,edge)
 			1:
-				print("triangulo")
+				GF.create_regular(Triangle.instance(),coord,edge)
 			2:
-				print("hexagono")
+				GF.create_regular(Hexagon.instance(),coord,edge)
