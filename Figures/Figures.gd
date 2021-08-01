@@ -12,7 +12,7 @@ var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionO
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
 var is_select = false setget set_is_selected, get_is_selected
-var selection_button: Button setget , get_selection_button
+var selection_button = button.instance() setget , get_selection_button
 var line_width = 2
 var color = ColorN("blue")
 var t: Transform2D
@@ -24,7 +24,7 @@ var coord_y: float
 var translate = Vector2(0, 0)
 var info: Array
 var filled = false
-var vertex = PoolVector2Array()
+var vertex = PoolVector2Array() setget set_vertex
 var x_axis = Vector2(1, 0)
 var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
@@ -32,7 +32,7 @@ var set_inspector = false
 var new_pivot = Vector2(0, 0)
 var vertice = Vector2(1, 1)
 var inital_pos: Vector2
-var mirror_vertex: Vector2
+var mirror_vertex: Vector2 setget set_mirror_vertex
 var selected_color = ColorN("green")
 var flip_x = false
 var flip_y = false
@@ -41,16 +41,25 @@ var shear_y = false
 var shear_value = 0
 
 
+func set_vertex(vertices: PoolVector2Array):
+	vertex = vertices
+
+
 func select_figure():
-	SM.set_selected()
+	SM.deselect()
 	Insp.set_properties(info)
+	Insp.reload_atributes = true
+	selection_button.pressed = true
 	is_select = true
 	SM.set_position()
-	Insp.reload_atributes = true
 
 
 func get_id():
 	return _id
+
+
+func set_mirror_vertex(mirror):
+	mirror_vertex = mirror
 
 
 func set_is_selected(boolean):
@@ -74,11 +83,8 @@ func get_selection_button():
 
 
 func save_inital_position(clicked_position):
-	inital_pos = CP.mouse_position_to_cartesian(clicked_position)
-
-
-func _ready():
-	selection_button = button.instance()
+	inital_pos = clicked_position
+	set_coord_clicked()
 
 
 func delete():
@@ -123,6 +129,13 @@ func create_dic_to_properties():
 			]
 		},
 	]
+
+
+func set_coord_clicked():
+	var new_coord = CP.mouse_position_to_cartesian(inital_pos)
+	coord_x = new_coord.x
+	coord_y = new_coord.y
+	translate = Vector2(coord_x, coord_y)
 
 
 func set_coord(value):
@@ -184,10 +197,10 @@ func convert_vertex_to_distance():
 
 func _physics_process(_delta):
 	if is_select:
-		selection_button.pressed = true
 		update_values()
 	else:
-		selection_button.pressed = false
+		if selection_button:
+			selection_button.pressed = false
 
 	#transformations
 	flip()

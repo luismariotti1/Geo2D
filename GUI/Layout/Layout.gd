@@ -1,9 +1,10 @@
 extends Control
 
-func _ready():
-	$MenuButtonHelp.get_popup().connect("id_pressed", self, "_on_item_help_pressed")
 
-func _on_item_help_pressed(id):
-	var item_name = $MenuButtonHelp.get_popup().get_item_text(id)
-	if item_name == "About":
-		$WindowDialogAbout.popup()
+func center_pop_up(popup):
+	var popupSizeX = popup.get_margin(MARGIN_RIGHT) - popup.get_margin(MARGIN_LEFT)
+	var popupSizeY = popup.get_margin(MARGIN_BOTTOM) - popup.get_margin(MARGIN_TOP)
+	popup.margin_left = get_viewport().size.x / 2 - popupSizeX / 2
+	popup.margin_right = popup.margin_left + popupSizeX
+	popup.margin_top = get_viewport().size.y / 2 - popupSizeY / 2
+	popup.margin_bottom = popup.margin_top + popupSizeY

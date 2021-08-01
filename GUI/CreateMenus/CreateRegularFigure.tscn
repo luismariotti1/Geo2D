@@ -1,0 +1,121 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/CreateMenus/CreateRegularFigure.gd" type="Script" id=1]
+
+[node name="CreateRegularFigure" type="WindowDialog"]
+margin_right = 284.0
+margin_bottom = 179.0
+rect_rotation = 0.00462609
+window_title = "Regular figure"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FigureType" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 264.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="VBoxContainer/FigureType"]
+margin_right = 264.0
+margin_bottom = 14.0
+text = "Figura"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/FigureType"]
+margin_top = 18.0
+margin_right = 264.0
+margin_bottom = 38.0
+text = "Quadrado"
+items = [ "Quadrado", null, false, 0, null, "Triangulo", null, false, 1, null, "Hexagono", null, false, 2, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coords" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 264.0
+margin_bottom = 81.0
+
+[node name="Coords" type="HBoxContainer" parent="VBoxContainer/Coords"]
+margin_right = 264.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="VBoxContainer/Coords/Coords"]
+margin_top = 8.0
+margin_right = 86.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 86, 0 )
+text = "Center"
+valign = 1
+
+[node name="Value1" type="LineEdit" parent="VBoxContainer/Coords/Coords"]
+margin_left = 90.0
+margin_right = 175.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 58, 0 )
+size_flags_horizontal = 3
+placeholder_text = "X = 0"
+
+[node name="Value2" type="LineEdit" parent="VBoxContainer/Coords/Coords"]
+margin_left = 179.0
+margin_right = 264.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+placeholder_text = "Y = 0"
+
+[node name="Edge" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 93.0
+margin_right = 264.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 0, 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributeName" type="Label" parent="VBoxContainer/Edge"]
+margin_top = 8.0
+margin_right = 86.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 86, 0 )
+text = "Edge"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="LineEdit" parent="VBoxContainer/Edge"]
+margin_left = 90.0
+margin_right = 264.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "1"
+placeholder_text = "Value"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 136.0
+margin_right = 264.0
+margin_bottom = 156.0
+text = "CREATE"
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_Button_button_down"]

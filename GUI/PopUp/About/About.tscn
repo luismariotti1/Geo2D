@@ -6,14 +6,8 @@
 
 [node name="About" type="WindowDialog"]
 visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -133.5
-margin_top = -112.5
-margin_right = 133.5
-margin_bottom = 112.5
+margin_right = 400.0
+margin_bottom = 200.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource( 1 )
@@ -26,9 +20,20 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="LabelDescriptions" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelDescriptions" type="Label" parent="VBoxContainer"]
+margin_right = 380.0
+margin_bottom = 99.0
 text = "Descrição: Geo2D é um programa para criar e manipular figuras planas regulares e irregulares. 
 
 Versão: Geo2D 1.0
@@ -39,10 +44,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelGithub" type="Label" parent="LabelDescriptions"]
-margin_top = 157.0
-margin_right = 188.0
-margin_bottom = 175.0
+[node name="LabelGithub" type="Label" parent="VBoxContainer"]
+margin_top = 103.0
+margin_right = 380.0
+margin_bottom = 117.0
 text = "Github:"
 valign = 1
 autowrap = true
@@ -50,7 +55,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LabelDescriptions/LabelGithub"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LabelGithub"]
 margin_left = 50.0
 margin_right = 190.0
 margin_bottom = 18.0
@@ -58,7 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinkLuis" type="LinkButton" parent="LabelDescriptions/LabelGithub/HBoxContainer"]
+[node name="LinkLuis" type="LinkButton" parent="VBoxContainer/LabelGithub/HBoxContainer"]
 margin_right = 26.0
 margin_bottom = 18.0
 action_mode = 0
@@ -67,7 +72,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinkDiego" type="LinkButton" parent="LabelDescriptions/LabelGithub/HBoxContainer"]
+[node name="LinkDiego" type="LinkButton" parent="VBoxContainer/LabelGithub/HBoxContainer"]
 margin_left = 30.0
 margin_right = 67.0
 margin_bottom = 18.0
@@ -77,7 +82,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LinkEberson" type="LinkButton" parent="LabelDescriptions/LabelGithub/HBoxContainer"]
+[node name="LinkEberson" type="LinkButton" parent="VBoxContainer/LabelGithub/HBoxContainer"]
 margin_left = 71.0
 margin_right = 122.0
 margin_bottom = 18.0
@@ -86,8 +91,8 @@ text = "Eberson"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="LabelDescriptions/LabelGithub/HBoxContainer/LinkLuis" to="." method="_on_LinkButton_pressed"]
-[connection signal="pressed" from="LabelDescriptions/LabelGithub/HBoxContainer/LinkLuis" to="." method="_on_LinkLuis_pressed"]
-[connection signal="pressed" from="LabelDescriptions/LabelGithub/HBoxContainer/LinkDiego" to="." method="_on_LinkDiego_pressed"]
-[connection signal="pressed" from="LabelDescriptions/LabelGithub/HBoxContainer/LinkEberson" to="." method="_on_LinkButton3_pressed"]
-[connection signal="pressed" from="LabelDescriptions/LabelGithub/HBoxContainer/LinkEberson" to="." method="_on_LinkEberson_pressed"]
+[connection signal="pressed" from="VBoxContainer/LabelGithub/HBoxContainer/LinkLuis" to="." method="_on_LinkLuis_pressed"]
+[connection signal="pressed" from="VBoxContainer/LabelGithub/HBoxContainer/LinkLuis" to="." method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/LabelGithub/HBoxContainer/LinkDiego" to="." method="_on_LinkDiego_pressed"]
+[connection signal="pressed" from="VBoxContainer/LabelGithub/HBoxContainer/LinkEberson" to="." method="_on_LinkEberson_pressed"]
+[connection signal="pressed" from="VBoxContainer/LabelGithub/HBoxContainer/LinkEberson" to="." method="_on_LinkButton3_pressed"]

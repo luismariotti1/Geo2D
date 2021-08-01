@@ -1,6 +1,10 @@
 extends "res://Figures/Regular.gd"
 
 
+func set_center(edge):
+	pass
+
+
 func init(id):
 	_id = id
 	_figure_name = "hexagon (" + String(_id) + ")"

@@ -15,5 +15,4 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
-
 [connection signal="pressed" from="." to="." method="_on_MenuBarButton_pressed"]
