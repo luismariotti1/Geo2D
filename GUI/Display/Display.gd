@@ -48,22 +48,9 @@ func is_in_display(Position):
 
 
 func create_object():
-	var new_object = figures[figures.size() - 1]
-	new_object.preview(get_global_mouse_position())
-
-
-# func delete_object():
-# 	var position_list = SM.get_position()
-# 	GF.ids_avaiable.append(figures[position_list].get_id())
-# 	figures[position_list].delete()
-# 	figures[figures.size() - 1].set_is_selected(false)
-# 	figures[position_list].queue_free()
-# 	figures.remove(position_list)
-# 	if figures.size() != 0:
-# 		figures[figures.size() - 1].select_figure()
-# 	else:
-# 		Insp.clear()
-# 		Insp.reload_atributes = true
+	if creating_regular:
+		var new_object = figures[figures.size() - 1]
+		new_object.preview(get_global_mouse_position())
 
 
 func _input(event):
@@ -111,8 +98,9 @@ func _input(event):
 		if is_in_display(clicked_position) and creating_regular:
 			GF.finish_create_regular_by_mouse()
 			creating_regular = false
-	# if event.is_action_pressed("delete_figure") and figures.size() > 0:
-	# 	delete_object()
+
+	if event.is_action_pressed("delete_figure") and figures.size() > 0:
+		GF.delete_object()
 
 	if event.is_action_pressed("cancel") and creating:
 		figures[figures.size() - 1].queue_free()
