@@ -15,7 +15,6 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [node name="CreateIrregularFigure" type="WindowDialog"]
-visible = true
 margin_right = 284.0
 margin_bottom = 179.0
 rect_rotation = 0.00462609
