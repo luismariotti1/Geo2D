@@ -24,7 +24,7 @@ var coord_y: float
 var translate = Vector2(0, 0)
 var info: Array
 var filled = false
-var vertex = PoolVector2Array()
+var vertex = PoolVector2Array() setget set_vertex
 var x_axis = Vector2(1, 0)
 var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
@@ -39,6 +39,10 @@ var flip_y = false
 var shear_x = false
 var shear_y = false
 var shear_value = 0
+
+
+func set_vertex(vertices: PoolVector2Array):
+	vertex = vertices
 
 
 func select_figure():
