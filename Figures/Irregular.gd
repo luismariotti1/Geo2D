@@ -51,7 +51,8 @@ func _physics_process(_delta):
 	else:
 		vertex_color = ColorN("black")
 		selection_button.pressed = false
-	can_create_new_vertex()
+	if !_is_ready:
+		can_create_new_vertex()
 	#transformations
 	flip()
 	t = Transform2D(x_axis, y_axis, origin)
@@ -133,7 +134,8 @@ func can_create_new_vertex():
 	if vertex.size() > 1:
 		if (
 			valid_angle(PoolVector2Array([vertex[vertex.size() - 1], next_position]))
-			and valid_position(new_line) and min_dist()
+			and valid_position(new_line)
+			and min_dist()
 		):
 			can_create_vertex = true
 		else:

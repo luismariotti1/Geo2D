@@ -6,6 +6,7 @@ var figures: Array
 var Square = load("res://Figures/Square/Square.tscn")
 var Triangle = load("res://Figures/Triangle/Triangle.tscn")
 var Hexagon = load("res://Figures/Hexagon/Hexagon.tscn")
+var Irregular = load("res://Figures/Irregular.tscn")
 var ids_avaiable = []
 
 
@@ -17,6 +18,8 @@ func get_figure(figure_name):
 			return Triangle.instance()
 		"Hexagon":
 			return Hexagon.instance()
+		"Irregular":
+			return Irregular.instance()
 
 
 func choose_id():
@@ -30,6 +33,12 @@ func choose_id():
 		return figures.size() - 1
 
 
+func finish_figure(figure):
+	figure.init(choose_id())
+	SM.new_object = true
+	figure.select_figure()
+
+
 func create_regular_by_menu(figure_name, coord, edge):
 	var figure = get_figure(figure_name)
 	figures = SM.get_figures()
@@ -41,9 +50,7 @@ func create_regular_by_menu(figure_name, coord, edge):
 	new_figure.set_center(edge)
 	new_figure.set_edge(edge)
 	new_figure.set_mirror_vertex(Vector2(1, 1))
-	new_figure.init(choose_id())
-	SM.new_object = true
-	new_figure.select_figure()
+	finish_figure(new_figure)
 
 
 func start_create_regular_by_mouse(figure_name, coord):
@@ -62,9 +69,33 @@ func finish_create_regular_by_mouse():
 			new_figure.queue_free()
 			figures.remove(figures.size() - 1)
 		else:
-			new_figure.init(choose_id())
-			SM.new_object = true
-			new_figure.select_figure()
+			finish_figure(new_figure)
+
+
+func create_irregular_by_menu(vertices: PoolVector2Array):
+	var figure = get_figure("Irregular")
+	figures = SM.get_figures()
+	figures.append(figure)
+	get_node("/root/Main/Layout/Display").add_child(figure)
+	var new_figure = figures[figures.size() - 1]
+	new_figure._is_ready = true
+	new_figure.set_vertex(vertices)
+	finish_figure(new_figure)
+
+
+func start_create_irregular_by_mouse():
+	var figure = get_figure("Irregular")
+	figures = SM.get_figures()
+	get_node("/root/Main/Layout/Display").add_child(figure)
+	figures.append(figure)
+
+
+func finish_create_irregular_by_mouse():
+	var new_figure = figures[figures.size() - 1]
+	new_figure.select_figure()
+	SM.new_object = true
+	SM.set_position()
+	Insp.reload_atributes = true
 
 
 func delete_object():
