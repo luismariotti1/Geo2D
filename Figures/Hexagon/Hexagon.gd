@@ -1,7 +1,9 @@
 extends "res://Figures/Regular.gd"
 
+
 func set_center(edge):
 	pass
+
 
 func init(id):
 	_id = id

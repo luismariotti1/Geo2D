@@ -27,5 +27,4 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="toggled" from="." to="." method="_on_Button_toggled"]

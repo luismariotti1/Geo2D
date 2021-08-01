@@ -9,7 +9,7 @@ func get_figures():
 	return figures
 
 
-func set_selected():
+func deselect():
 	for i in range(figures.size()):
 		figures[i].set_is_selected(false)
 
