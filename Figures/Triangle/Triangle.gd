@@ -2,9 +2,9 @@ extends "res://Figures/Regular.gd"
 
 
 func set_center(edge):
-	var x_pivot = float(edge/2)
-	var y_pivot = float(sqrt(3)/6*edge)
-	new_pivot = Vector2(x_pivot,y_pivot)
+	var x_pivot = float(edge / 2)
+	var y_pivot = float(sqrt(3) / 6 * edge)
+	new_pivot = Vector2(x_pivot, y_pivot)
 
 
 func init(id):

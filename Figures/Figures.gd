@@ -24,7 +24,7 @@ var coord_y: float
 var translate = Vector2(0, 0)
 var info: Array
 var filled = false
-var vertex = PoolVector2Array() setget set_vertex
+var vertex = PoolVector2Array()
 var x_axis = Vector2(1, 0)
 var y_axis = Vector2(0, 1)
 var origin = Vector2(0, 0)
@@ -41,17 +41,13 @@ var shear_y = false
 var shear_value = 0
 
 
-func set_vertex(vertices: PoolVector2Array):
-	vertex = vertices
-
-
 func select_figure():
 	SM.deselect()
 	Insp.set_properties(info)
-	Insp.reload_atributes = true
-	selection_button.pressed = true
 	is_select = true
 	SM.set_position()
+	Insp.reload_atributes = true
+	selection_button.pressed = true
 
 
 func get_id():
