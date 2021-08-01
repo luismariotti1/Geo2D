@@ -44,10 +44,10 @@ var shear_value = 0
 func select_figure():
 	SM.deselect()
 	Insp.set_properties(info)
-	is_select = true
-	SM.set_position()
 	Insp.reload_atributes = true
 	selection_button.pressed = true
+	is_select = true
+	SM.set_position()
 
 
 func get_id():

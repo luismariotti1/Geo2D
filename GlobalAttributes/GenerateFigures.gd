@@ -19,6 +19,17 @@ func get_figure(figure_name):
 			return Hexagon.instance()
 
 
+func choose_id():
+	var id
+	if ids_avaiable.size() > 0:
+		ids_avaiable.sort()
+		id = ids_avaiable[0]
+		ids_avaiable.remove(0)
+		return id
+	else:
+		return figures.size() - 1
+
+
 func create_regular_by_menu(figure_name, coord, edge):
 	var figure = get_figure(figure_name)
 	figures = SM.get_figures()
@@ -43,16 +54,6 @@ func start_create_regular_by_mouse(figure_name, coord):
 	var new_figure = figures[figures.size() - 1]
 	new_figure.save_inital_position(coord)
 
-func choose_id():
-	var id 
-	if ids_avaiable.size() > 0:
-		ids_avaiable.sort()
-		id = ids_avaiable[0]
-		ids_avaiable.remove(0)
-		return id
-	else:
-		return figures.size() - 1
-
 
 func finish_create_regular_by_mouse():
 	var new_figure = figures[figures.size() - 1]
@@ -62,6 +63,19 @@ func finish_create_regular_by_mouse():
 			figures.remove(figures.size() - 1)
 		else:
 			new_figure.init(choose_id())
+			SM.new_object = true
+			new_figure.select_figure()
 
-	SM.new_object = true
-	new_figure.select_figure()
+
+func delete_object():
+	var position_list = SM.get_position()
+	ids_avaiable.append(figures[position_list].get_id())
+	figures[position_list].delete()
+	figures[figures.size() - 1].set_is_selected(false)
+	figures[position_list].queue_free()
+	figures.remove(position_list)
+	if figures.size() != 0:
+		figures[figures.size() - 1].select_figure()
+	else:
+		Insp.clear()
+		Insp.reload_atributes = true
