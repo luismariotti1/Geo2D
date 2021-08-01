@@ -15,6 +15,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [node name="CreateIrregularFigure" type="WindowDialog"]
+visible = true
 margin_right = 284.0
 margin_bottom = 179.0
 rect_rotation = 0.00462609
@@ -53,9 +54,7 @@ __meta__ = {
 margin_left = 91.0
 margin_right = 165.0
 margin_bottom = 24.0
-min_value = 3.0
 max_value = 50.0
-value = 3.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 36.0
