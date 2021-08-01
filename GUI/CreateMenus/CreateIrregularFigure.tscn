@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/CreateMenus/CreateIrregularFigure.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.25098, 0.243137, 0.282353, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.168627, 0.137255, 0.137255, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="CreateIrregularFigure" type="WindowDialog"]
+visible = true
+margin_right = 284.0
+margin_bottom = 179.0
+rect_rotation = 0.00462609
+window_title = "Irregular figure"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumVertices" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 264.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/NumVertices"]
+margin_top = 5.0
+margin_right = 87.0
+margin_bottom = 19.0
+text = "Num Vertices"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/NumVertices"]
+margin_left = 91.0
+margin_right = 165.0
+margin_bottom = 24.0
+max_value = 50.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 264.0
+margin_bottom = 127.0
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 262.0
+margin_bottom = 2.0
+size_flags_horizontal = 3
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 139.0
+margin_right = 264.0
+margin_bottom = 159.0
+text = "CREATE"
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_Button_button_down"]
