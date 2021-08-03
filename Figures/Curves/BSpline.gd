@@ -13,16 +13,22 @@ var num_controls = 4
 
 func create_knots():
 	var knot_remaining = num_knots
-	for i in range(degree+1):
+	for i in range(degree + 1):
 		knots.append(0)
-	knot_remaining -= degree+1
-	var medium_knots = knot_remaining-(degree+1)
-	for i in range(knot_remaining-(degree+1)):
-		knots.append(float(i+1)/(medium_knots+1))
-	for i in range(degree+1):
+	knot_remaining -= degree + 1
+	var medium_knots = knot_remaining - (degree + 1)
+	for i in range(knot_remaining - (degree + 1)):
+		knots.append(float(i + 1) / (medium_knots + 1))
+	for i in range(degree + 1):
 		knots.append(1)
 
+
+func init():
+	pass
+
+
 func _ready():
+	print("test")
 	num_controls_min = degree + 1
 	num_knots = num_controls + degree + 1
 	print(num_knots)
@@ -30,9 +36,9 @@ func _ready():
 	controllers = [Vector2(-4, -4), Vector2(-2, 4), Vector2(2, -4), Vector2(4, 4)]
 	points = PoolVector2Array()
 	var u = 0
-	for i in range(0, sub_division+1):
-		points.push_back(bspline(u, knots, controllers, degree)*50)
-		u += float(1)/sub_division
+	for i in range(0, sub_division + 1):
+		points.push_back(bspline(u, knots, controllers, degree) * 50)
+		u += float(1) / sub_division
 		if u >= 1:
 			u = 0.999
 
@@ -56,7 +62,7 @@ func bias(x, k, i, t):
 func bspline(x, t, controle, k):
 	var n = len(t) - k - 1
 	if (n >= k + 1) and (len(controle) >= n):
-		var sum = Vector2(0,0)
+		var sum = Vector2(0, 0)
 		for i in range(n):
 			var b = bias(x, k, i, t)
 			sum += controle[i] * b
@@ -72,5 +78,4 @@ func _draw():
 	draw_set_transform_matrix(transform)
 	draw_polyline(points, ColorN("red"), 4.0)
 	for control in controllers:
-		draw_circle(control*50, 5, ColorN("black"))
-
+		draw_circle(control * 50, 5, ColorN("black"))

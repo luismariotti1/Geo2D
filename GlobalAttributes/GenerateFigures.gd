@@ -7,6 +7,7 @@ var Square = load("res://Figures/Square/Square.tscn")
 var Triangle = load("res://Figures/Triangle/Triangle.tscn")
 var Hexagon = load("res://Figures/Hexagon/Hexagon.tscn")
 var Irregular = load("res://Figures/Irregular.tscn")
+var Curve = load("res://Figures/Curves/BSpline.tscn")
 var ids_avaiable = []
 
 
@@ -20,6 +21,8 @@ func get_figure(figure_name):
 			return Hexagon.instance()
 		"Irregular":
 			return Irregular.instance()
+		"Curve":
+			return Curve.instance()
 
 
 func choose_id():
@@ -96,6 +99,13 @@ func finish_create_irregular_by_mouse():
 	SM.new_object = true
 	SM.set_position()
 	Insp.reload_atributes = true
+
+
+func create_curve_by_menu(controls):
+	var figure = get_figure("Curve")
+	figures = SM.get_figures()
+	get_node("/root/Main/Layout/Display").add_child(figure)
+	figures.append(figure)
 
 
 func delete_object():
