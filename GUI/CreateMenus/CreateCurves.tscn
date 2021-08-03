@@ -15,62 +15,81 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [node name="CreateCurves" type="WindowDialog"]
-margin_right = 284.0
-margin_bottom = 179.0
+margin_right = 313.0
+margin_bottom = 234.0
 rect_rotation = 0.00462609
-window_title = "Irregular figure"
+window_title = "Curves"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 240.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 240, 0 )
 custom_constants/separation = 12
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="NumVertices" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 264.0
+[node name="Degree" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 240.0
 margin_bottom = 24.0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Label" type="Label" parent="VBoxContainer/NumVertices"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Degree"]
 margin_top = 5.0
-margin_right = 87.0
+margin_right = 46.0
 margin_bottom = 19.0
-text = "Num Controls"
+text = "Degree"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/NumVertices"]
-margin_left = 91.0
-margin_right = 165.0
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/Degree"]
+margin_left = 50.0
+margin_right = 124.0
 margin_bottom = 24.0
-min_value = 3.0
-max_value = 50.0
-value = 3.0
+min_value = 1.0
+max_value = 5.0
+value = 1.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 36.0
-margin_right = 264.0
-margin_bottom = 127.0
+margin_right = 240.0
+margin_bottom = 50.0
+text = "Controls"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 62.0
+margin_right = 240.0
+margin_bottom = 182.0
 size_flags_vertical = 3
 custom_styles/bg = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 262.0
+margin_right = 238.0
 margin_bottom = 2.0
 size_flags_horizontal = 3
 custom_constants/separation = 2
@@ -78,9 +97,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 139.0
-margin_right = 264.0
-margin_bottom = 159.0
+[node name="Create" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 194.0
+margin_right = 240.0
+margin_bottom = 214.0
 text = "CREATE"
-[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_Button_button_down"]
+
+[node name="ControlsButton" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 244.0
+margin_right = 296.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 50, 0 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer/ControlsButton"]
+margin_top = 67.0
+margin_right = 52.0
+margin_bottom = 81.0
+text = "Add"
+align = 1
+
+[node name="Add" type="Button" parent="HBoxContainer/ControlsButton"]
+margin_top = 85.0
+margin_right = 52.0
+margin_bottom = 105.0
+text = "+"
+
+[node name="Remove" type="Button" parent="HBoxContainer/ControlsButton"]
+margin_top = 109.0
+margin_right = 52.0
+margin_bottom = 129.0
+text = "-"
+
+[node name="Label" type="Label" parent="HBoxContainer/ControlsButton"]
+margin_top = 133.0
+margin_right = 52.0
+margin_bottom = 147.0
+text = "Remove"
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/Create" to="." method="_on_Create_button_down"]
+[connection signal="button_down" from="HBoxContainer/ControlsButton/Add" to="." method="_on_Add_button_down"]
+[connection signal="button_down" from="HBoxContainer/ControlsButton/Remove" to="." method="_on_Remove_button_down"]

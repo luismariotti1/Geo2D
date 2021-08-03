@@ -101,11 +101,15 @@ func finish_create_irregular_by_mouse():
 	Insp.reload_atributes = true
 
 
-func create_curve_by_menu(controls):
+func create_curve_by_menu(_controls):
 	var figure = get_figure("Curve")
 	figures = SM.get_figures()
-	get_node("/root/Main/Layout/Display").add_child(figure)
 	figures.append(figure)
+	get_node("/root/Main/Layout/Display").add_child(figure)
+	var new_figure = figures[figures.size() - 1]
+	new_figure.init(choose_id())
+	SM.new_object = true
+	new_figure.select_figure()
 
 
 func delete_object():
