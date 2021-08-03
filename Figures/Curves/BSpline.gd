@@ -3,6 +3,7 @@ extends Control
 # Singletons
 onready var SM = get_node("/root/SelectionMenu")
 onready var Insp = get_node("/root/SetInspector")
+onready var CP = get_node("/root/CartesianPlane")
 
 # Load Scenes
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
@@ -15,12 +16,13 @@ var degree = 1
 var knots = []
 var num_knots
 var sub_division = 100
-var num_controls_min = 0
-var num_controls = 4
+var num_controls
 var selection_button = button.instance() setget , get_selection_button
 var is_select = false setget set_is_selected, get_is_selected
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
+var vertex_to_draw
+var translate = Vector2(0, 0)
 
 
 #getters and setters
@@ -70,21 +72,18 @@ func create_knots():
 		knots.append(1)
 
 
-func init(id):
+func init(id, info):
 	_id = id
+	degree = info["degree"]
 	_figure_name = "Curve (" + String(_id) + ")"
 	selection_button.init(_figure_name, self)
-
-
-func _ready():
-	num_controls_min = degree + 1
+	controllers = info["controls"]
+	num_controls = controllers.size()
 	num_knots = num_controls + degree + 1
 	create_knots()
-	controllers = [Vector2(-4, -4), Vector2(-2, 4), Vector2(2, -4), Vector2(4, 4)]
-	points = PoolVector2Array()
 	var u = 0
 	for _i in range(0, sub_division + 1):
-		points.push_back(bspline(u, knots, controllers, degree) * 50)
+		points.push_back(bspline(u, knots, controllers, degree))
 		u += float(1) / sub_division
 		if u >= 1:
 			u = 0.999
@@ -124,11 +123,11 @@ func _physics_process(_delta):
 		if selection_button:
 			selection_button.pressed = false
 	transform = Transform2D.IDENTITY
-	transform = transform.translated(Vector2(500, 250))
+	transform.origin = CP.convert_cartesian_to_pos(translate)
 
 
 func _draw():
 	draw_set_transform_matrix(transform)
-	draw_polyline(points, ColorN("red"), 4.0)
-	for control in controllers:
-		draw_circle(control * 50, 5, ColorN("black"))
+	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("red"), 4.0)
+	# for control in controllers:
+	# 	draw_circle(control * 50, 5, ColorN("black"))

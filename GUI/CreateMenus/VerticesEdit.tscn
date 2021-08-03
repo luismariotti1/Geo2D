@@ -25,11 +25,11 @@ margin_right = 175.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 58, 0 )
 size_flags_horizontal = 3
-text = "X = 0"
+placeholder_text = "X = 0"
 
 [node name="Value2" type="LineEdit" parent="."]
 margin_left = 179.0
 margin_right = 264.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
-text = "Y = 0"
+placeholder_text = "Y = 0"

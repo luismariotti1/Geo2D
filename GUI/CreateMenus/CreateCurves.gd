@@ -28,7 +28,7 @@ func _physics_process(_delta):
 		line_edit.text = String(5)
 	else:
 		degree = int(line_edit.text)
-	min_controls = degree+1
+	min_controls = degree + 1
 	num_ControlPoints = min_controls
 	if num_ControlPoints > ControlPoints.size():
 		for _i in range(num_ControlPoints - ControlPoints.size()):
@@ -36,24 +36,21 @@ func _physics_process(_delta):
 
 
 func _on_Create_button_down():
-	print("test")
-#	var controls = PoolVector2Array()
-#	for vet in ControlPoints:
-#		var new_vet = Vector2(
-#			float(vet.get_node("Value1").text), float(vet.get_node("Value2").text)
-#		)
-#		controls.push_back(new_vet)
-#	controls.push_back(controls[0])
-#	GF.create_curve_by_menu(controls)
+	var controls = PoolVector2Array()
+	for vet in ControlPoints:
+		var new_vet = Vector2(
+			float(vet.get_node("Value1").text), float(vet.get_node("Value2").text)
+		)
+		controls.push_back(new_vet)
+	var info = {"degree": degree, "controls": controls}
+	GF.create_curve_by_menu(info)
 
 
 func _on_Add_button_down():
 	if ControlPoints.size() < max_controls:
 		create_control()
 
+
 func _on_Remove_button_down():
 	if ControlPoints.size() > min_controls:
 		ControlPoints.pop_back().queue_free()
-
-
-
