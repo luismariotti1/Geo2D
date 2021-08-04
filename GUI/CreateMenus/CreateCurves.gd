@@ -7,7 +7,7 @@ var line_edit
 onready var GF = get_node("/root/GenerateFigures")
 var degree
 var min_controls
-var max_controls = 15
+var max_controls = 10
 var max_degree = 5
 
 

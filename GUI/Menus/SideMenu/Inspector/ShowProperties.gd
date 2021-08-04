@@ -33,5 +33,5 @@ func _process(_delta):
 			else:
 				init_atribute(AtributEdit.instance(), atribute)
 			add_child(atributes[atributes.size() - 1]["scene"])
-	
+	Insp.atributes = atributes
 	Insp.reload_atributes = false

@@ -15,6 +15,7 @@ var selection_area
 var figures = []
 var creating_irregular = false
 var creating_regular = false
+var creating_curve = false
 
 
 func _ready():
@@ -85,6 +86,26 @@ func _input(event):
 								SM.set_position()
 								Insp.reload_atributes = true
 								creating_irregular = false
+					"Curve":
+						if creating_curve == false:
+							GF.start_create_curve_by_mouse()
+							creating_curve = true
+						if creating_curve:
+							var new_object = figures[figures.size() - 1]
+							new_object.set_creating_by_mouse(true)
+							new_object.create_next_control(
+								CP.mouse_position_to_cartesian(clicked_position)
+							)
+							if new_object.controllers.size() == 10:
+								GF.finish_create_curve_by_mouse()
+								creating_curve = false
+								PN.set_button_selected("")
+
+	if event.is_action_pressed("finish"):
+		if creating_curve:
+			GF.finish_create_curve_by_mouse()
+			creating_curve = false
+			PN.set_button_selected("")
 
 	if event.is_action_released("move_vertex"):
 		is_clicking = false

@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends VBoxContainer
 
 var buttons_configs = [
 	{
@@ -21,6 +21,11 @@ var buttons_configs = [
 		"img_default": "res://assets/Icons/Buttons/Vertex/buttonVertice.png",
 		"img_pressed": "res://assets/Icons/Buttons/Vertex/buttonVerticePressed.png",
 	},
+	{
+		"figure": "Curve",
+		"img_default": "res://assets/Icons/Buttons/Curve/buttonCurve.png",
+		"img_pressed": "res://assets/Icons/Buttons/Curve/buttonCurvePressed.png",
+	},
 ]
 
 var button = load("res://GUI/Menus/SideMenu/Panel/FigureButton/FigureButton.tscn")
@@ -34,7 +39,10 @@ func _ready():
 	for i in range(buttons_configs.size()):
 		buttons.append(button.instance())
 		buttons[buttons.size() - 1].init(i, buttons_configs[i])
-		add_child(buttons[buttons.size() - 1])
+		if i < 4:
+			get_node("Linha1").add_child(buttons[buttons.size() - 1])
+		else:
+			get_node("Linha2").add_child(buttons[buttons.size() - 1])
 
 
 func _process(_delta):

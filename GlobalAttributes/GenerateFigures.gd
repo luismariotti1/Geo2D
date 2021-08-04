@@ -52,6 +52,7 @@ func create_regular_by_menu(figure_name, coord, edge):
 	new_figure.set_coord(coord)
 	new_figure.set_center(edge)
 	new_figure.set_edge(edge)
+	new_figure.set_created_by_center(true)
 	new_figure.set_mirror_vertex(Vector2(1, 1))
 	finish_figure(new_figure)
 
@@ -110,6 +111,22 @@ func create_curve_by_menu(curve_info):
 	new_figure.init(choose_id(), curve_info)
 	SM.new_object = true
 	new_figure.select_figure()
+
+
+func start_create_curve_by_mouse():
+	var figure = get_figure("Curve")
+	figures = SM.get_figures()
+	figures.append(figure)
+	get_node("/root/Main/Layout/Display").add_child(figure)
+
+
+func finish_create_curve_by_mouse():
+	var new_figure = figures[figures.size() - 1]
+	new_figure.init(choose_id())
+	new_figure.select_figure()
+	SM.new_object = true
+	SM.set_position()
+	Insp.reload_atributes = true
 
 
 func delete_object():
