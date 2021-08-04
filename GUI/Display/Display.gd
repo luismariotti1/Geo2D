@@ -96,6 +96,10 @@ func _input(event):
 							new_object.create_next_control(
 								CP.mouse_position_to_cartesian(clicked_position)
 							)
+							if new_object.controllers.size() == 10:
+								GF.finish_create_curve_by_mouse()
+								creating_curve = false
+								PN.set_button_selected("")
 
 	if event.is_action_pressed("finish"):
 		if creating_curve:

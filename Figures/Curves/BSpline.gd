@@ -190,6 +190,8 @@ func bspline(x, t, controle, k):
 
 func update_values():
 	var new_degree = int(Insp.get_properties_by_id("degree"))
+	if new_degree > 5:
+		new_degree = 5
 	if new_degree >= controllers.size():
 		for _i in range(new_degree - controllers.size() + 1):
 			var new_control = controller.instance()
@@ -215,9 +217,9 @@ func update_values():
 					]
 				}
 			)
-			print(insp_info[1]["infos"])
 			add_child(new_control)
 			controllers.append(new_control)
+		Insp.reload_atributes = true
 	else:
 		degree = new_degree
 	for i in range(controllers.size()):
