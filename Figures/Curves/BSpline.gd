@@ -26,6 +26,7 @@ var _figure_name = "" setget set_figure_name, get_figure_name
 var vertex_to_draw
 var translate = Vector2(0, 0)
 var curve_ids
+var insp_info: Array
 
 
 #getters and setters
@@ -45,9 +46,19 @@ func get_figure_name():
 	return _figure_name
 
 
+func set_properties_in_inspector():
+	Insp.init_properties(insp_info)
+
+
+func create_dic_to_properties():
+	insp_info = [
+		{"id": "degree", "label": "Degree", "value": degree},
+	]
+
+
 func select_figure():
 	SM.deselect()
-	# Insp.set_properties(info)
+	Insp.set_properties(insp_info)
 	Insp.reload_atributes = true
 	selection_button.pressed = true
 	is_select = true
@@ -67,6 +78,7 @@ func get_is_selected():
 
 #methods 
 func create_knots():
+	knots.clear()
 	var knot_remaining = num_knots
 	for _i in range(degree + 1):
 		knots.append(0)
@@ -89,12 +101,14 @@ func init(id, info):
 		new_control.init(info["controls"][i])
 		add_child(new_control)
 		controllers.append(new_control)
-	num_knots = num_controls + degree + 1
-	create_knots()
 	calculate_points()
+	create_dic_to_properties()
+	set_properties_in_inspector()
 
 
 func calculate_points():
+	num_knots = num_controls + degree + 1
+	create_knots()
 	points = PoolVector2Array()
 	var u = 0
 	for _i in range(0, sub_division + 1):
@@ -130,6 +144,10 @@ func bspline(x, t, controle, k):
 		return sum
 
 
+func update_values():
+	degree = int(Insp.get_properties_by_id("degree"))
+
+
 func _physics_process(_delta):
 	var controls_to_move = []
 	if is_select:
@@ -144,10 +162,9 @@ func _physics_process(_delta):
 					change_priority = false
 			if change_priority:
 				controls_to_move[0].has_priority = true
-			for control in controllers:
-				if control.moving:
-					calculate_points()
 			controls_to_move.clear()
+		update_values()
+		calculate_points()
 	else:
 		if selection_button:
 			selection_button.pressed = false
