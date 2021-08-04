@@ -28,6 +28,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 script = ExtResource( 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -35,20 +36,24 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="logo" type="TextureRect" parent="."]
 margin_left = 90.0
-margin_top = 10.318
+margin_top = 3.57561
 margin_right = 164.0
-margin_bottom = 57.318
+margin_bottom = 50.5756
 texture = SubResource( 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" parent="." instance=ExtResource( 1 )]
+margin_top = 58.0
+margin_right = 248.0
 
 [node name="Inspector" parent="." instance=ExtResource( 2 )]
 margin_left = 10.0

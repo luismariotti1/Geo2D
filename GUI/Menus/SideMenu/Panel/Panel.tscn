@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://GUI/Menus/SideMenu/Panel/ShowButtons.gd" type="Script" id=1]
-[ext_resource path="res://assets/Icons/Border/dialogFigures.png" type="Texture" id=4]
 
 [node name="Panel" type="Control"]
-margin_left = 16.0
+margin_left = 12.0
 margin_top = 78.0
 margin_right = 241.0
 margin_bottom = 155.0
@@ -12,38 +11,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = -1.2337
-margin_top = -9.66517
-margin_right = 44.7663
-margin_bottom = 4.33483
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Figures"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -11.4368
-margin_top = -9.33303
-margin_right = 259.563
-margin_bottom = 84.667
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ShowButtons" type="HBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -113.5
-margin_top = -22.5
-margin_right = 115.5
-margin_bottom = 23.5
-custom_constants/separation = 15
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Linha1" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 229.0
+rect_min_size = Vector2( 33, 0 )
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Linha2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 8.0
+margin_right = 229.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 33, 0 )

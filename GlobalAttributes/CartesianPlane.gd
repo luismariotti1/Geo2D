@@ -31,3 +31,10 @@ func convert_cartesian_to_pos(coord):
 
 func convert_catersian_to_dist(coord):
 	return Vector2(coord.x * cartesian_distance, -1 * coord.y * cartesian_distance)
+
+
+func convert_array_of_coord_to_distance(array_coord):
+	var new_array = []
+	for coord in array_coord:
+		new_array.append(convert_catersian_to_dist(coord))
+	return new_array

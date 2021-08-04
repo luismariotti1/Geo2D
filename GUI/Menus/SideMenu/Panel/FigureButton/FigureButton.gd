@@ -26,14 +26,15 @@ func set_image(img):
 
 
 func _on_FigureButton_toggled(button_pressed):
+	var parent = get_parent().get_parent()
 	if button_pressed:
-		get_parent().button_clicked = _id
+		parent.button_clicked = _id
 		set_image(_img_pressed)
 		PN.set_button_selected(_figure)
 	else:
 		set_image(_img_default)
-		if _id == get_parent().button_clicked:
-			get_parent().button_clicked = -1
+		if _id == parent.button_clicked:
+			parent.button_clicked = -1
 			PN.set_button_selected("")
 
 

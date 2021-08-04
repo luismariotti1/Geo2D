@@ -45,3 +45,5 @@ func _on_MenuBarButton_pressed(id):
 			create_popup(load("res://GUI/CreateMenus/CreateRegularFigure.tscn").instance())
 		"Irregular":
 			create_popup(load("res://GUI/CreateMenus/CreateIrregularFigure.tscn").instance())
+		"Curves":
+			create_popup(load("res://GUI/CreateMenus/CreateCurves.tscn").instance())
