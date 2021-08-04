@@ -7,6 +7,7 @@ onready var CP = get_node("/root/CartesianPlane")
 
 # Load Scenes
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
+var controller = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
 
 #Properties
 var transform = Transform2D.IDENTITY
@@ -129,5 +130,5 @@ func _physics_process(_delta):
 func _draw():
 	draw_set_transform_matrix(transform)
 	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("red"), 4.0)
-	# for control in controllers:
-	# 	draw_circle(control * 50, 5, ColorN("black"))
+	for control in controllers:
+		draw_circle(CP.convert_array_of_coord_to_distance(points), 5, ColorN("black"))
