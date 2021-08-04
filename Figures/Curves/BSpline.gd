@@ -11,6 +11,7 @@ var controller = load("res://Figures/Curves/Controller.tscn")
 
 #Properties
 var transform = Transform2D.IDENTITY
+var transform1 = Transform2D.IDENTITY
 var points = PoolVector2Array()
 var controllers = []
 var degree = 1
@@ -88,6 +89,7 @@ func init(id, info):
 	create_knots()
 	calculate_points()
 
+
 func calculate_points():
 	points = PoolVector2Array()
 	var u = 0
@@ -137,8 +139,24 @@ func _physics_process(_delta):
 	update()
 	transform = Transform2D.IDENTITY
 	transform.origin = CP.convert_cartesian_to_pos(translate)
+	transform1 = transform
+
+
+func delete():
+	queue_free()
+	controllers.clear()
+	selection_button._remove = true
+	SM.remove_object = true
 
 
 func _draw():
 	draw_set_transform_matrix(transform)
-	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("red"), 4.0)
+	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("blue"), 2.0)
+	draw_set_transform_matrix(transform1)
+	for i in controllers.size() - 1:
+		draw_line(
+			CP.convert_catersian_to_dist(controllers[i].get_coord()),
+			CP.convert_catersian_to_dist(controllers[i + 1].get_coord()),
+			ColorN("black"),
+			1.0
+		)
