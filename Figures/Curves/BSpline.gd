@@ -103,6 +103,18 @@ func init(id, info):
 		controllers.append(new_control)
 	calculate_points()
 	create_dic_to_properties()
+	var list_of_controllers_insp = {"listLabel": "controllers", "type": "list", "infos": []}
+	for i in range(controllers.size()):
+		list_of_controllers_insp["infos"].insert(
+			i,
+			{
+				"type": "double_atribute",
+				"id": "controller" + String(i + 1),
+				"label": "controller " + String(i + 1),
+				"value": [controllers[i].get_coord().x, controllers[i].get_coord().y]
+			}
+		)
+	insp_info.append(list_of_controllers_insp)
 	set_properties_in_inspector()
 
 
@@ -146,6 +158,8 @@ func bspline(x, t, controle, k):
 
 func update_values():
 	degree = int(Insp.get_properties_by_id("degree"))
+	for i in range(controllers.size()):
+		controllers[i].set_coord(Insp.get_properties_by_id("controller" + String(i + 1)))
 
 
 func _physics_process(_delta):
@@ -163,7 +177,7 @@ func _physics_process(_delta):
 			if change_priority:
 				controls_to_move[0].has_priority = true
 			controls_to_move.clear()
-		update_values()
+		# update_values()
 		calculate_points()
 	else:
 		if selection_button:
