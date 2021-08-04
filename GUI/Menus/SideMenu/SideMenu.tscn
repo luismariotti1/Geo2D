@@ -53,6 +53,7 @@ __meta__ = {
 
 [node name="Panel" parent="." instance=ExtResource( 1 )]
 margin_top = 58.0
+margin_right = 248.0
 
 [node name="Inspector" parent="." instance=ExtResource( 2 )]
 margin_left = 10.0

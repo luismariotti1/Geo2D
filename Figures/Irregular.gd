@@ -119,7 +119,6 @@ func pre_render(vertex_mod):
 	draw_line(new_line[0], new_line[1], color, line_width)
 	draw_circle(new_line[1], 4, Color(0, 0, 0, 1))
 
-
 func min_dist():
 	var next_position = CP.mouse_position_to_cartesian(get_global_mouse_position())
 	if last_position.distance_to(next_position) < 0.02:
@@ -146,6 +145,7 @@ func custom_draw_polygon():
 	var vertex_mod = convert_vertex_to_distance()
 	if ! _is_ready:
 		pre_render(vertex_mod)
+		draw_arc(vertex_mod[0], 10, 0, 7, 360, ColorN("black"))
 	if vertex_mod.size() > 1:
 		for i in range(vertex_mod.size() - 1):
 			draw_line(vertex_mod[i], vertex_mod[i + 1], color, line_width)

@@ -52,6 +52,7 @@ func create_regular_by_menu(figure_name, coord, edge):
 	new_figure.set_coord(coord)
 	new_figure.set_center(edge)
 	new_figure.set_edge(edge)
+	new_figure.set_created_by_center(true)
 	new_figure.set_mirror_vertex(Vector2(1, 1))
 	finish_figure(new_figure)
 

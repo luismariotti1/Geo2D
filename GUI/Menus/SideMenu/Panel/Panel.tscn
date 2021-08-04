@@ -24,7 +24,7 @@ __meta__ = {
 [node name="Linha1" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 229.0
 rect_min_size = Vector2( 33, 0 )
-custom_constants/separation = 15
+custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
