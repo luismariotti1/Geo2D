@@ -39,7 +39,7 @@ var flip_y = false
 var shear_x = false
 var shear_y = false
 var shear_value = 0
-
+var flip = Vector2(1,1)
 
 func set_vertex(vertices: PoolVector2Array):
 	vertex = vertices
@@ -163,6 +163,14 @@ func set_properties_in_inspector():
 func flip():
 	x_axis = Vector2(-1, 0) if flip_x else Vector2(1, 0)
 	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
+	if flip_x: 
+		flip = Vector2(-1,1)
+	if flip_y:
+		flip = Vector2(1,-1)
+	if flip_x and flip_y:
+		flip = Vector2(-1,-1)
+	if !flip_x and !flip_y:
+		flip = Vector2(1,1)
 
 
 func update_values():
@@ -179,7 +187,7 @@ func update_values():
 	line_width = float(Insp.get_properties_by_id("line_width"))
 	coord_x = float(Insp.get_properties_by_id("coord_x"))
 	coord_y = float(Insp.get_properties_by_id("coord_y"))
-	translate = Vector2(coord_x, coord_y)
+	translate = Vector2(coord_x, coord_y) * flip
 
 
 func shear():
