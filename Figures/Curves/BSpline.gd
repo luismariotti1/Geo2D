@@ -28,6 +28,7 @@ var curve_ids
 var insp_info: Array
 var creating_by_mouse = false setget set_creating_by_mouse
 var figure_ready = false
+var rng = RandomNumberGenerator.new()
 
 
 #getters and setters
@@ -49,6 +50,7 @@ func set_figure_name(new_name):
 
 func get_figure_name():
 	return _figure_name
+
 
 func set_properties_in_inspector():
 	Insp.init_properties(insp_info)
@@ -187,7 +189,37 @@ func bspline(x, t, controle, k):
 
 
 func update_values():
-	degree = int(Insp.get_properties_by_id("degree"))
+	var new_degree = int(Insp.get_properties_by_id("degree"))
+	if new_degree >= controllers.size():
+		for _i in range(new_degree - controllers.size() + 1):
+			var new_control = controller.instance()
+			var new_rand_place_x = (
+				controllers[controllers.size() - 1].get_coord().x
+				+ rng.randf_range(-4, 4)
+			)
+			var new_rand_place_y = (
+				controllers[controllers.size() - 1].get_coord().y
+				+ rng.randf_range(-4, 4)
+			)
+			new_control.init(controllers.size() + 1, Vector2(new_rand_place_x, new_rand_place_y))
+			var new_id = controllers.size()
+			insp_info[1]["infos"].append(
+				{
+					"type": "double_atribute",
+					"id": "controller" + String(new_id + 1),
+					"label": "controller " + String(new_id + 1),
+					"value":
+					[
+						new_rand_place_x,
+						new_rand_place_y
+					]
+				}
+			)
+			print(insp_info[1]["infos"])
+			add_child(new_control)
+			controllers.append(new_control)
+	else:
+		degree = new_degree
 	for i in range(controllers.size()):
 		controllers[i].set_coord(Insp.get_properties_by_id("controller" + String(i + 1)))
 
@@ -234,6 +266,10 @@ func create_next_control(coord):
 	new_control.init(controllers.size() + 1, coord)
 	add_child(new_control)
 	controllers.append(new_control)
+
+
+func _ready():
+	rng.randomize()
 
 
 func _draw():
