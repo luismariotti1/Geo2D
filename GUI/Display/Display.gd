@@ -33,6 +33,10 @@ func _process(_delta):
 		figures[figures.size() - 1].queue_free()
 		figures.remove(figures.size() - 1)
 		creating_irregular = false
+	if creating_curve and PN.get_button_selected() != "Curve":
+		figures[figures.size()-1].queue_free()
+		figures.remove(figures.size() - 1)
+		creating_curve = false
 
 
 func is_in_display(Position):
@@ -116,7 +120,8 @@ func _input(event):
 	if event.is_action_pressed("delete_figure") and figures.size() > 0:
 		GF.delete_object()
 
-	if event.is_action_pressed("cancel") and creating_irregular:
+	if event.is_action_pressed("cancel") and (creating_irregular or creating_curve):
 		figures[figures.size() - 1].queue_free()
 		figures.remove(figures.size() - 1)
 		creating_irregular = false
+		creating_curve = false

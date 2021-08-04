@@ -119,7 +119,6 @@ func start_create_curve_by_mouse():
 	figures.append(figure)
 	get_node("/root/Main/Layout/Display").add_child(figure)
 
-
 func finish_create_curve_by_mouse():
 	var new_figure = figures[figures.size() - 1]
 	new_figure.init(choose_id())
