@@ -12,6 +12,11 @@ var trying_to_move = false
 var start
 var cartesian_coord = Vector2(0, 0) setget set_coord, get_coord
 var curve_selected
+var _id setget , get_id
+
+
+func get_id():
+	return _id
 
 
 func get_coord():
@@ -19,8 +24,8 @@ func get_coord():
 
 
 func set_coord(coord):
-	# print(coord)
 	cartesian_coord = Vector2(coord[0], coord[1])
+
 
 func check_collision(pos):
 	if pos.distance_to(get_global_mouse_position()) <= radius:
@@ -29,7 +34,8 @@ func check_collision(pos):
 		mouse_in = false
 
 
-func init(coord):
+func init(id, coord):
+	_id = id
 	cartesian_coord = coord
 
 

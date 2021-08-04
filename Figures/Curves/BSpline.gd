@@ -98,7 +98,7 @@ func init(id, info):
 	num_controls = info["controls"].size()
 	for i in range(num_controls):
 		var new_control = controller.instance()
-		new_control.init(info["controls"][i])
+		new_control.init(i + 1, info["controls"][i])
 		add_child(new_control)
 		controllers.append(new_control)
 	calculate_points()
@@ -176,8 +176,12 @@ func _physics_process(_delta):
 					change_priority = false
 			if change_priority:
 				controls_to_move[0].has_priority = true
-			controls_to_move.clear()
-		# update_values()
+			Insp.set_properties_by_id(
+				"controller" + String(controls_to_move[0].get_id()),
+				[controls_to_move[0].get_coord().x, controls_to_move[0].get_coord().y]
+			)
+		else:
+			update_values()
 		calculate_points()
 	else:
 		if selection_button:

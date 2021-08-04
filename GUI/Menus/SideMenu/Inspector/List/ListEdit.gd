@@ -9,6 +9,10 @@ var _label: String
 var is_visible = false
 
 
+func get_id():
+	return
+
+
 func init(data):
 	get_node("ShowList").text = data["listLabel"]
 	_infos = data["infos"]
@@ -48,8 +52,10 @@ func _on_Button_toggled(button_pressed):
 		is_visible = false
 		set_visibility()
 
+
 func get_list():
 	return _list
 
+
 func get_infos():
-	return _infos	
+	return _infos
