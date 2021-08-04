@@ -19,7 +19,7 @@ func _physics_process(_delta):
 			vertices.append(new_vertice)
 			get_node("VBoxContainer/ScrollContainer/VBoxContainer").add_child(new_vertice)
 			vertices[vertices.size() - 1].init(
-				"v" + String(vertices.size()), [vertices.size(), vertices.size()]
+				"v" + String(vertices.size())
 			)
 	if num_vertices < vertices.size() and num_vertices >= 3:
 		for _i in range(vertices.size() - num_vertices):
