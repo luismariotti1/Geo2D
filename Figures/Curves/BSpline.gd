@@ -23,15 +23,20 @@ var selection_button = button.instance() setget , get_selection_button
 var is_select = false setget set_is_selected, get_is_selected
 var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
-var vertex_to_draw
 var translate = Vector2(0, 0)
 var curve_ids
 var insp_info: Array
+var creating_by_mouse = false setget set_creating_by_mouse
+var figure_ready = false
 
 
 #getters and setters
 func get_selection_button():
 	return selection_button
+
+
+func set_creating_by_mouse(boolean):
+	creating_by_mouse = boolean
 
 
 func get_id():
@@ -44,7 +49,6 @@ func set_figure_name(new_name):
 
 func get_figure_name():
 	return _figure_name
-
 
 func set_properties_in_inspector():
 	Insp.init_properties(insp_info)
@@ -90,32 +94,58 @@ func create_knots():
 		knots.append(1)
 
 
-func init(id, info):
+func init(id, info = {}):
 	_id = id
-	degree = info["degree"]
-	_figure_name = "Curve (" + String(_id) + ")"
-	selection_button.init(_figure_name, self)
-	num_controls = info["controls"].size()
-	for i in range(num_controls):
-		var new_control = controller.instance()
-		new_control.init(i + 1, info["controls"][i])
-		add_child(new_control)
-		controllers.append(new_control)
-	calculate_points()
-	create_dic_to_properties()
-	var list_of_controllers_insp = {"listLabel": "controllers", "type": "list", "infos": []}
-	for i in range(controllers.size()):
-		list_of_controllers_insp["infos"].insert(
-			i,
-			{
-				"type": "double_atribute",
-				"id": "controller" + String(i + 1),
-				"label": "controller " + String(i + 1),
-				"value": [controllers[i].get_coord().x, controllers[i].get_coord().y]
-			}
-		)
-	insp_info.append(list_of_controllers_insp)
-	set_properties_in_inspector()
+	if creating_by_mouse:
+		num_controls = controllers.size()
+		if num_controls < 3:
+			degree = 0
+		else:
+			degree = 2
+		_figure_name = "Curve (" + String(_id) + ")"
+		selection_button.init(_figure_name, self)
+		calculate_points()
+		create_dic_to_properties()
+		var list_of_controllers_insp = {"listLabel": "controllers", "type": "list", "infos": []}
+		for i in range(controllers.size()):
+			list_of_controllers_insp["infos"].insert(
+				i,
+				{
+					"type": "double_atribute",
+					"id": "controller" + String(i + 1),
+					"label": "controller " + String(i + 1),
+					"value": [controllers[i].get_coord().x, controllers[i].get_coord().y]
+				}
+			)
+		insp_info.append(list_of_controllers_insp)
+		set_properties_in_inspector()
+		figure_ready = true
+	else:
+		degree = info["degree"]
+		_figure_name = "Curve (" + String(_id) + ")"
+		selection_button.init(_figure_name, self)
+		num_controls = info["controls"].size()
+		for i in range(num_controls):
+			var new_control = controller.instance()
+			new_control.init(i + 1, info["controls"][i])
+			add_child(new_control)
+			controllers.append(new_control)
+		calculate_points()
+		create_dic_to_properties()
+		var list_of_controllers_insp = {"listLabel": "controllers", "type": "list", "infos": []}
+		for i in range(controllers.size()):
+			list_of_controllers_insp["infos"].insert(
+				i,
+				{
+					"type": "double_atribute",
+					"id": "controller" + String(i + 1),
+					"label": "controller " + String(i + 1),
+					"value": [controllers[i].get_coord().x, controllers[i].get_coord().y]
+				}
+			)
+		insp_info.append(list_of_controllers_insp)
+		set_properties_in_inspector()
+		figure_ready = true
 
 
 func calculate_points():
@@ -199,9 +229,17 @@ func delete():
 	SM.remove_object = true
 
 
+func create_next_control(coord):
+	var new_control = controller.instance()
+	new_control.init(controllers.size() + 1, coord)
+	add_child(new_control)
+	controllers.append(new_control)
+
+
 func _draw():
-	draw_set_transform_matrix(transform)
-	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("blue"), 3.0)
+	if figure_ready:
+		draw_set_transform_matrix(transform)
+		draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("blue"), 3.0)
 	draw_set_transform_matrix(transform1)
 	for i in controllers.size() - 1:
 		draw_line(

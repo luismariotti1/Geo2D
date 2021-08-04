@@ -113,6 +113,22 @@ func create_curve_by_menu(curve_info):
 	new_figure.select_figure()
 
 
+func start_create_curve_by_mouse():
+	var figure = get_figure("Curve")
+	figures = SM.get_figures()
+	figures.append(figure)
+	get_node("/root/Main/Layout/Display").add_child(figure)
+
+
+func finish_create_curve_by_mouse():
+	var new_figure = figures[figures.size() - 1]
+	new_figure.init(choose_id())
+	new_figure.select_figure()
+	SM.new_object = true
+	SM.set_position()
+	Insp.reload_atributes = true
+
+
 func delete_object():
 	var position_list = SM.get_position()
 	ids_avaiable.append(figures[position_list].get_id())
