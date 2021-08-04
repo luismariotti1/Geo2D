@@ -161,6 +161,8 @@ func set_properties_in_inspector():
 
 
 func flip():
+	x_axis = Vector2(-1, 0) if flip_x else Vector2(1, 0)
+	y_axis = Vector2(0, -1) if flip_y else Vector2(0, 1)
 	if flip_x: 
 		flip = Vector2(-1,1)
 	if flip_y:
