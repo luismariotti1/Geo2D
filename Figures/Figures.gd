@@ -88,6 +88,7 @@ func save_inital_position(clicked_position):
 
 
 func delete():
+	queue_free()
 	selection_button._remove = true
 	SM.remove_object = true
 

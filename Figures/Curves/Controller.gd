@@ -9,6 +9,7 @@ var is_clicking = false
 var moving = false
 var start
 var cartesian_coord = Vector2(0, 0) setget , get_coord
+var curve_selected
 
 
 func get_coord():
@@ -29,7 +30,7 @@ func init(coord):
 func _process(_delta):
 	t = Transform2D.IDENTITY
 	var mouse_coord = CP.mouse_position_to_cartesian(get_global_mouse_position())
-	if is_clicking and mouse_in:
+	if is_clicking and mouse_in and curve_selected:
 		cartesian_coord = mouse_coord
 		moving = true
 	if ! mouse_in:
@@ -51,4 +52,7 @@ func _input(event):
 
 func _draw():
 	draw_set_transform_matrix(t)
-	draw_circle(Vector2(0, 0), radius, ColorN("black"))
+	if curve_selected:
+		draw_circle(Vector2(0, 0), radius, ColorN("green"))
+	else:
+		draw_circle(Vector2(0, 0), radius, ColorN("black"))

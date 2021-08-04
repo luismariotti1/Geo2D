@@ -55,6 +55,9 @@ func select_figure():
 
 func set_is_selected(boolean):
 	is_select = boolean
+	if boolean == false:
+		for control in controllers:
+			control.curve_selected = false
 
 
 func get_is_selected():
@@ -128,14 +131,13 @@ func bspline(x, t, controle, k):
 
 func _physics_process(_delta):
 	if is_select:
-		pass
-		# update_values()
+		for control in controllers:
+			control.curve_selected = true
+			if control.moving:
+				calculate_points()
 	else:
 		if selection_button:
 			selection_button.pressed = false
-	for control in controllers:
-		if control.moving:
-			calculate_points()
 	update()
 	transform = Transform2D.IDENTITY
 	transform.origin = CP.convert_cartesian_to_pos(translate)
@@ -151,7 +153,7 @@ func delete():
 
 func _draw():
 	draw_set_transform_matrix(transform)
-	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("blue"), 2.0)
+	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("blue"), 3.0)
 	draw_set_transform_matrix(transform1)
 	for i in controllers.size() - 1:
 		draw_line(
