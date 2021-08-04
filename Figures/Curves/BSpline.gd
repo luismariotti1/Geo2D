@@ -7,12 +7,12 @@ onready var CP = get_node("/root/CartesianPlane")
 
 # Load Scenes
 var button = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
-var controller = load("res://GUI/Menus/SideMenu/Selection/SelectionObject/SelectionObject.tscn")
+var controller = load("res://Figures/Curves/Controller.tscn")
 
 #Properties
 var transform = Transform2D.IDENTITY
 var points = PoolVector2Array()
-var controllers
+var controllers = []
 var degree = 1
 var knots = []
 var num_knots
@@ -78,10 +78,18 @@ func init(id, info):
 	degree = info["degree"]
 	_figure_name = "Curve (" + String(_id) + ")"
 	selection_button.init(_figure_name, self)
-	controllers = info["controls"]
-	num_controls = controllers.size()
+	num_controls = info["controls"].size()
+	for i in range(num_controls):
+		var new_control = controller.instance()
+		new_control.init(info["controls"][i])
+		add_child(new_control)
+		controllers.append(new_control)
 	num_knots = num_controls + degree + 1
 	create_knots()
+	calculate_points()
+
+func calculate_points():
+	points = PoolVector2Array()
 	var u = 0
 	for _i in range(0, sub_division + 1):
 		points.push_back(bspline(u, knots, controllers, degree))
@@ -112,7 +120,7 @@ func bspline(x, t, controle, k):
 		var sum = Vector2(0, 0)
 		for i in range(n):
 			var b = bias(x, k, i, t)
-			sum += controle[i] * b
+			sum += controle[i].get_coord() * b
 		return sum
 
 
@@ -123,6 +131,10 @@ func _physics_process(_delta):
 	else:
 		if selection_button:
 			selection_button.pressed = false
+	for control in controllers:
+		if control.moving:
+			calculate_points()
+	update()
 	transform = Transform2D.IDENTITY
 	transform.origin = CP.convert_cartesian_to_pos(translate)
 
@@ -130,5 +142,3 @@ func _physics_process(_delta):
 func _draw():
 	draw_set_transform_matrix(transform)
 	draw_polyline(CP.convert_array_of_coord_to_distance(points), ColorN("red"), 4.0)
-	for control in controllers:
-		draw_circle(CP.convert_array_of_coord_to_distance(points), 5, ColorN("black"))

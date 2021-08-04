@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GUI/Menus/MenuBar/MenuBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Menus/SideMenu/SideMenu.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/StyleBox/Buttons/Home/ButtonHome.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/StyleBox/Buttons/Home/HomeButton.gd" type="Script" id=7]
 [ext_resource path="res://GUI/Layout/Layout.gd" type="Script" id=8]
-[ext_resource path="res://Figures/Curves/Controller.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 corner_radius_top_left = 12
@@ -47,6 +46,4 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Controller" parent="." instance=ExtResource( 9 )]
 [connection signal="toggled" from="HomeButton" to="HomeButton" method="_on_HomeButton_toggled"]
