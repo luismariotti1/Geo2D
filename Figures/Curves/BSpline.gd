@@ -25,6 +25,7 @@ var _id: int setget , get_id
 var _figure_name = "" setget set_figure_name, get_figure_name
 var vertex_to_draw
 var translate = Vector2(0, 0)
+var curve_ids
 
 
 #getters and setters
@@ -130,11 +131,23 @@ func bspline(x, t, controle, k):
 
 
 func _physics_process(_delta):
+	var controls_to_move = []
 	if is_select:
 		for control in controllers:
 			control.curve_selected = true
-			if control.moving:
-				calculate_points()
+			if control.trying_to_move == true:
+				controls_to_move.append(control)
+		if controls_to_move.size() > 0:
+			var change_priority = true
+			for ctm in controls_to_move:
+				if ctm.moving == true:
+					change_priority = false
+			if change_priority:
+				controls_to_move[0].has_priority = true
+			for control in controllers:
+				if control.moving:
+					calculate_points()
+			controls_to_move.clear()
 	else:
 		if selection_button:
 			selection_button.pressed = false
