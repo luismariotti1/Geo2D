@@ -118,7 +118,8 @@ func _input(event):
 			creating_regular = false
 
 	if event.is_action_pressed("delete_figure") and figures.size() > 0:
-		GF.delete_object()
+		if !(creating_irregular or creating_regular or creating_curve):
+			GF.delete_object()
 
 	if event.is_action_pressed("cancel") and (creating_irregular or creating_curve):
 		figures[figures.size() - 1].queue_free()

@@ -257,6 +257,7 @@ func _physics_process(_delta):
 
 
 func delete():
+	is_select = false
 	queue_free()
 	controllers.clear()
 	selection_button._remove = true
